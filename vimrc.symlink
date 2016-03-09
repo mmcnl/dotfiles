@@ -4,70 +4,94 @@ set nocompatible
 syntax on
 filetype plugin indent on
 set history=2000
-" always show status line
+set updatetime=500
+set autoread " reload files changed outside of Vim
+set hidden
+
+""""""""""""""""""" status line
+" always show
 set laststatus=2
 " abbreviate status line messages; don't show intro or swp file warnings
 set shortmess+=atIA
-let &statusline='%<[%{&ft}]  %f  %m  %=%2c %3l/%L   %{strftime("%l:%M")} '
-set nowrap
+let &statusline='%<[%{&ft}]  %F  %m  %=%2c %3l/%L   %{strftime("%l:%M")} '
+
+" change the status line based on mode
+au InsertEnter * hi statusline ctermfg=blue
+au InsertLeave * hi statusline ctermfg=0
+hi statusline ctermfg=0
+
+""""""""""""""""""" search
 set ignorecase
 set smartcase
 set incsearch
 set nohlsearch
 nnoremap <silent> <CR> :nohlsearch<CR>mq<CR>`q
+
+""""""""""""""""""" basic editing
+set nowrap
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set wildmenu " show command line completion menus
+
+""""""""""""""""""" command line completion
+set wildmenu
 set wildmode=longest,full
 set completeopt=longest,menuone,preview
 set complete-=d,i
-set list " show whitespace
+
+""""""""""""""""""" whitespace
+set list
 set listchars=tab:▸\ ,trail:·,extends:▸
+
+""""""""""""""""""" numbering
 " set relativenumber
 set number
 set confirm
 
-set updatetime=500
-
-set autoread " reload files changed outside of Vim
-set hidden
-
+""""""""""""""""""" abbreviations
 abbr pry;   require 'pry'; binding.pry; true
 
+""""""""""""""""""" escape
+" inspired by https://github.com/syl20bnr/evil-escape
 inoremap fd <Esc>
 vnoremap fd <Esc>
 cnoremap fd <C-C><Esc>
 
-" quickly add blank lines
+""""""""""""""""""" quickly add blank lines
 nnoremap <S-CR> i<CR><esc>
 inoremap <S-CR> <CR><esc>O
 nnoremap <C-j> i<CR><esc>
 nnoremap <C-CR> kO<ESC>
 inoremap <C-CR> <ESC>jcc<ESC>k
 
-" insert mode mappings
+""""""""""""""""""" insert mode
 inoremap <C-k> <ESC>lDa
 
-" Treat long lines as break lines (useful when moving around in them)
+""""""""""""""""""" Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
 
-""""""""""""""""""""""""" leader
-set timeoutlen=500
+""""""""""""""""""" leader
+" inspired by https://github.com/syl20bnr/spacemacs
 let mapleader = "\<Space>"
+set timeoutlen=500
+
 nnoremap <leader><tab> <C-^>
 nnoremap <leader>qq :qa<CR>
-nnoremap <leader>ff :e 
+nnoremap <leader>qQ :qa!<CR>
+nnoremap <leader>ff :e<Space>
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>tn :set number!<CR>
+
+nnoremap <leader>bb :buffers<CR>:buffer<Space>
+nnoremap <leader>bd :bdelete<CR>
 
 """ windows and splits
 set splitbelow
 set splitright
 nnoremap <leader>wo :only<CR>
-nnoremap <leader>wc :close<CR>
+nnoremap <leader>wd :close<CR>
 nnoremap <leader>ws :split<CR>
 nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>wh <C-w>h
@@ -75,10 +99,13 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
+""""""""""""""""""" search
 nnoremap <leader>sr :%s//g<left><left>
 vnoremap <leader>sr :s//g<left><left>
 
 nnoremap <leader>/ :Ag! ''<left>
+
+""""""""""""""""""" indent buffer
 nnoremap <leader>j= mzgg=G`z
 
 " duplicate lines
