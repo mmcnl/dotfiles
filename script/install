@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -o errexit
+
+# symlink files into home dir
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+
+install_dotfiles () {
+    echo 'installing dotfiles'
+
+    while IFS= read -r -d '' src
+    do
+        dst="$HOME/.$(basename "${src%.*}")"
+        ln -s "$src" "$dst"
+        echo "linked $src to $dst"
+    done <   <(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' -print0)
+}
+
+install_dotfiles
+
+echo ''
