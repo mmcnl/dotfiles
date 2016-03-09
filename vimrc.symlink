@@ -127,3 +127,27 @@ nnoremap <S-Up> :<C-p>
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
 " don't lose ability to undo word deletion
 inoremap <c-w> <c-g>u<c-w>
+
+" toggle comments
+" modified from http://stackoverflow.com/a/24652257/1163042
+autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
+autocmd FileType sh,ruby,python  let b:comment_leader = '#'
+autocmd FileType conf,fstab      let b:comment_leader = '#'
+autocmd FileType vim             let b:comment_leader = '"'
+
+function! ToggleComment()
+" help with :h \v or pattern-atoms
+  if !exists("b:comment_leader")
+    let b:comment_leader = '#'
+  endif
+    if getline('.') =~ '\v^\s*' .b:comment_leader
+      " uncomment the line
+      execute 'silent s/\v^\s*\zs' .b:comment_leader.'[ ]?//g'
+    else
+      " comment the line
+      execute 'silent s/\v^\s*\zs\ze(\S|\n)/' .b:comment_leader.' /g'
+    endif
+endfunction
+
+nnoremap <leader>; :call ToggleComment()<cr>
+vnoremap <leader>; :call ToggleComment()<cr>
