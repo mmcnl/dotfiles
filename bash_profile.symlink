@@ -16,7 +16,7 @@ fi
 alias be="bundle exec"
 alias dfh="df -h"
 alias gaa="git add --all"
-alias gacm='gaa && git ci -m'
+alias gacm='gaa && git commit -m'
 alias gap="git add -p"
 alias gb="git branch -a"
 alias gc="git commit"
@@ -28,14 +28,10 @@ alias gdw="gd --color-words"
 alias gdwc="gdc --color-words"
 alias gf="git fetch"
 alias gg="git --no-pager grep --break --heading --line-number --color"
-alias gl="git l"
-alias gla="git la"
+alias gl="git log"
 alias gll="git log --summary --stat"
 alias glp="git log -p --since='1 month ago'"
-alias gp="gp"
-alias gr="git ra"
 alias gs="git status"
-alias gss="git short-status"
 alias l.='ls -l -d .*'
 alias l='ls -ll'
 alias la='ls -lA'
