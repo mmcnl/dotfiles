@@ -139,6 +139,7 @@ autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
 autocmd FileType sh,ruby,python  let b:comment_leader = '#'
 autocmd FileType conf,fstab      let b:comment_leader = '#'
 autocmd FileType vim             let b:comment_leader = '"'
+autocmd FileType lisp            let b:comment_leader = ';;'
 
 function! ToggleComment()
 " help with :h \v or pattern-atoms
