@@ -67,6 +67,11 @@ inoremap <C-CR> <ESC>jcc<ESC>k
 
 """"""""""""""""""" insert mode
 inoremap <C-k> <ESC>lDa
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+inoremap <C-d> <C-o>x
+inoremap <C-f> <right>
+inoremap <C-b> <left>
 
 """"""""""""""""""" Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
