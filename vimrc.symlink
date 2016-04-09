@@ -84,6 +84,7 @@ set timeoutlen=500
 
 nnoremap <leader><tab> <C-^>
 nnoremap <leader>qq :qa<CR>
+nnoremap <leader>qs :xa<CR>
 nnoremap <leader>qQ :qa!<CR>
 nnoremap <leader>ff :e<Space>
 nnoremap <leader>fs :w<CR>
