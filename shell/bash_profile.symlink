@@ -1,0 +1,8 @@
+# -*- mode: shell-script -*-
+
+# set private env vars and config in file shared between bash and zsh
+source "$HOME/.sh_env"
+
+# on OSX, all shells are started as login shells so it's important to source
+# .bashrc now to set up for an interactive session
+source "$HOME/.bashrc"

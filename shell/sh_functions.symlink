@@ -1,0 +1,72 @@
+# -*- mode: shell-script -*-
+
+# functions shared between zsh and bash
+git() {
+    /usr/bin/env git "$@"
+    estatus="$?"
+    [[ $estatus = 0 ]] || return $status
+
+    if [ -e tags ]
+    then
+        for opt in "$@"; do
+            case "$opt" in
+                ci | commit | rebase | merge | pull)
+                    echo "updating tags..."
+                    git ls-files | grep -E '\.rb|yml|py$' | xargs ctags -e --languages=ruby,yaml,python
+                    break
+                    ;;
+            esac
+        done
+    fi
+}
+
+alias ag='ag --noheading --hidden --smart-case'
+alias agl='ag -l'
+
+agig() {
+    ag -v '\.git/|\.DS_Store|tmp/cache'
+}
+
+au() {
+    ag --unrestricted "$@" | agig
+}
+
+# using grep to compress blank lines in output
+agv() {
+    ag -v "$@" | grep --color=none .
+}
+
+# fasd
+alias ef='f -e emacsclient_no_wait'
+efs() {
+    emacsclient_no_wait "$(fasd -fl | selecta -s "${@:- }")"
+}
+zs() {
+    cd "$(fasd -dl | selecta -s "${@:- }")" || exit
+}
+
+# ag - find files
+agg() {
+    ag --unrestricted --depth 10 -g ${@:-.} | agig
+}
+as() {
+    agg . | selecta -s "${@:- }"
+}
+ea() {
+    emacsclient_no_wait `as "$@"`
+}
+
+# ag - find text
+eg() {
+    emacsclient_no_wait `ag "$@" | selecta --height=full`
+}
+
+# recent files
+r() {
+    ag --depth 8 -g "${@:-.}" | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -30
+}
+
+er() {
+    emacsclient_no_wait `r | selecta -s "${@:- }"`
+}
+

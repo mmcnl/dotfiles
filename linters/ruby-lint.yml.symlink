@@ -1,0 +1,7 @@
+# -*- mode: yaml -*-
+
+---
+analysis_classes:
+  - pedantics
+  - shadowing_variables
+  - useless_equality_checks

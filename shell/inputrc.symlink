@@ -1,0 +1,62 @@
+# -*- mode: shell-script -*-
+
+# https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html
+
+# https://github.com/netj/dotfiles/blob/master/.inputrc#L15
+# Vim-like menu-complete (set wildmode=list:full wildchar=<Tab>)
+set show-all-if-unmodified off
+set menu-complete-display-prefix off
+set skip-completed-text on
+set completion-query-items -1  # without disabling this, menu-complete may not work when there are too many possible completions
+
+set completion-ignore-case on
+set expand-tilde on
+set menu-complete-display-prefix on
+
+# allow single tab completion as opposed to requiring a double tab.
+set show-all-if-ambiguous on
+
+# suffix each returned file completion with a character denoting its type
+set visible-stats on
+
+# turns off the use of the internal pager when returning long completion lists.
+set page-completions off
+
+# bindings
+Tab:      menu-complete
+"\e[Z":menu-complete-backward
+
+# set meta-flag on
+# set input-meta on
+# set output-meta on
+# set convert-meta off
+
+# "\e[A": history-search-backward # control-up
+# "\e[B": history-search-forward #control-down
+#"\C-y": menu-complete # shift-tab
+
+"\C-w": backward-kill-word # this works for pry. for bash, look at setting in bashrc
+# "\e[9998": backward-kill-word #must add this to iterm keyboard config
+# "\M-d": forward-kill-word #must add this to iterm keyboard config
+
+# iTerm2; word-jumping
+# http://code.google.com/p/iterm2/wiki/Keybindings
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+#"\e[1;9E": unix-filename-rubout #must add this to iterm keyboard config
+
+# # for Terminal.app
+# #"\e[5C": forward-word
+# "\e[5D": backward-word
+# #"\e\e[C": forward-word
+# #"\e\e[D": backward-word
+
+# # needed for iTerm
+# "\e[1~": beginning-of-line
+# "\e[4~": end-of-line
+# "\e[3~": delete-char
+
+# "\eC": forward-word
+# "\eD": backward-word
+# "\eO5C": forward-word
+# "\eO5D": backward-word

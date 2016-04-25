@@ -1,0 +1,51 @@
+# -*- mode: shell-script -*-
+
+alias be="bundle exec"
+alias dfh="df -h"
+alias gaa="git add --all"
+alias gacm='gaa && git ci -m'
+alias gap="git add -p"
+alias gb="git branch -a"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gd="git diff --minimal -p"
+alias gdc="gd --cached"
+alias gdcw="gdc --color-words"
+alias gdw="gd --color-words"
+alias gdwc="gdc --color-words"
+alias gf="git fetch"
+alias gg="git --no-pager grep --break --heading --line-number --color"
+alias gl="git l"
+alias gla="git la"
+alias gll="git log --summary --stat"
+alias glp="git log -p --since='1 month ago'"
+alias gp="gp"
+alias gr="git ra"
+alias gs="git status"
+alias gss="git short-status"
+alias l.='ls -l -d .*'
+alias l='ls -ll'
+alias la='ls -lA'
+alias las='ls -A'
+alias lh='ls -lh'
+alias ls='ls --group-directories-first --color=auto'
+alias lt='ls -ltr'
+alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+alias wdiff="diff --color-words"
+
+# extra
+alias e='emacsclient_no_wait'
+alias htop="sudo htop"
+alias iftop='sudo iftop'
+alias kl="KITCHEN_LOCAL_YAML=.kitchen.local.yml KITCHEN_YAML=.kitchen.vagrant.yml bundle exec kitchen"
+alias kr="bundle exec kitchen"
+alias pk="kill -9 \`ps aux | ag -v '%CPU' | ag -v '%CPU' | selecta | awk '{print \$2 }'\`"
+alias py='ptipython'
+alias rm=rm
+alias sel=selecta
+alias t='tree -a -F -AC -I "tmp|.DS_Store|.git|.gitkeep|.keep"'
+alias top=top
+alias tp='top -ocpu -Otime'
+alias wget_page='wget --timestamping  -p -k --adjust-extension --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21" --no-directories --load-cookies=cookies.txt'

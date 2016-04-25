@@ -1,0 +1,33 @@
+# -*- mode: shell-script -*-
+
+# exit if not in an interactive shell
+[ -z "$PS1" ] && return
+
+############ Bash options ############
+
+# ignore duplicate and empty lines
+export HISTCONTROL=ignoreboth
+# save lots of bash_history
+export HISTSIZE=10000
+# save history from simultaneous shells
+shopt -s histappend
+# save multiline cmds
+shopt -s cmdhist
+# ignore small spelling errors
+shopt -s cdspell
+
+############ aliases, functions, prompt ############
+
+# interactive shell setup shared between zsh and bash
+source "$HOME/.sh_rc"
+
+# specific to bash
+source "$HOME/.bash_functions"
+
+# enable bash completions added by brew formulae
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    source "$(brew --prefix)/etc/bash_completion"
+fi
+
+PROMPT_COMMAND='history -a; PS1="$GREEN\w$(git_prompt)$NO_COLOR \n$ "'
+

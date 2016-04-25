@@ -1,0 +1,5 @@
+--fields=+l
+--langdef=yaml 
+--langmap=yaml:.yml
+--regex-yaml=/^([a-zA-Z0-9_]+):/\1/d,definition/
+--regex-ruby=/(:["']*[A-Za-z_]*["']*)/\1/s,symbol,symbols/

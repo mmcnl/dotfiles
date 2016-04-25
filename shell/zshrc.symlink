@@ -1,0 +1,27 @@
+# -*- mode: shell-script -*-
+
+############ Prezto ############
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+    prompt_matt_setup "$@"
+fi
+
+############ Zsh options ############
+
+unsetopt correct
+unsetopt correct_all
+export DISABLE_CORRECTION="true"
+
+# don't prompt when redirecting output with >
+# http://unix.stackexchange.com/a/212135
+setopt clobber
+
+############ aliases, functions, prompt ############
+
+# interactive shell setup shared between zsh and bash
+source "$HOME/.sh_rc"
+
+# enable zsh completions added by brew formulae
+if [ -f "$(brew --prefix)/etc/zsh_completion" ]; then
+    source "$(brew --prefix)/etc/zsh_completion"
+fi
