@@ -8,7 +8,7 @@ set updatetime=500
 set autoread " reload files changed outside of Vim
 set hidden
 
-""""""""""""""""""" status line
+""""""""""""""""""""""""""""""""""""""""""""" status line
 " always show
 set laststatus=2
 " abbreviate status line messages; don't show intro or swp file warnings
@@ -20,51 +20,30 @@ au InsertEnter * hi statusline ctermfg=blue
 au InsertLeave * hi statusline ctermfg=0
 hi statusline ctermfg=0
 
-""""""""""""""""""" search
+""""""""""""""""""""""""""""""""""""""""""""" search
 set ignorecase
 set smartcase
 set incsearch
 set nohlsearch
 nnoremap <silent> <CR> :nohlsearch<CR>mq<CR>`q
 
-""""""""""""""""""" basic editing
+nnoremap <leader>sr :%s//g<left><left>
+vnoremap <leader>sr :s//g<left><left>
+
+nnoremap <leader>/ :Ag! ''<left>
+
+""""""""""""""""""""""""""""""""""""""""""""" basic editing
 set nowrap
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-""""""""""""""""""" command line completion
-set wildmenu
-set wildmode=longest,full
-set completeopt=longest,menuone,preview
-set complete-=d,i
+" http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
+" don't lose ability to undo word deletion
+inoremap <c-w> <c-g>u<c-w>
 
-""""""""""""""""""" whitespace
-set list
-set listchars=tab:▸\ ,trail:·,extends:▸
-
-""""""""""""""""""" numbering
-set relativenumber
-set confirm
-
-""""""""""""""""""" abbreviations
-abbr pry;   require 'pry'; binding.pry; true
-
-""""""""""""""""""" escape
-" inspired by https://github.com/syl20bnr/evil-escape
-inoremap fd <Esc>
-vnoremap fd <Esc>
-cnoremap fd <C-C><Esc>
-
-""""""""""""""""""" quickly add blank lines
-nnoremap <S-CR> i<CR><esc>
-inoremap <S-CR> <CR><esc>O
-nnoremap <C-j> i<CR><esc>
-nnoremap <C-CR> kO<ESC>
-inoremap <C-CR> <ESC>jcc<ESC>k
-
-""""""""""""""""""" insert mode
+" emacs style editing for insert mode
 inoremap <C-k> <ESC>lDa
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
@@ -72,29 +51,69 @@ inoremap <C-d> <C-o>x
 inoremap <C-f> <right>
 inoremap <C-b> <left>
 
-""""""""""""""""""" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
+" duplicate lines
+nmap <leader>yy mz"qyy"qP`z
+vmap <leader>yy mz"qy"qP`z
 
-""""""""""""""""""" leader
+""""""""""""""""""""""""""""""""""""""""""""" command line completion
+set wildmenu
+set wildmode=longest,full
+set completeopt=longest,menuone,preview
+set complete-=d,i
+
+""""""""""""""""""""""""""""""""""""""""""""" whitespace
+set list
+set listchars=tab:▸\ ,trail:·,extends:▸
+
+" indent buffer
+nnoremap <leader>j= mzgg=G`z
+
+""""""""""""""""""""""""""""""""""""""""""""" numbering
+set relativenumber
+set confirm
+
+""""""""""""""""""""""""""""""""""""""""""""" abbreviations
+abbr pry;   require 'pry'; binding.pry; true
+
+""""""""""""""""""""""""""""""""""""""""""""" escape
+" inspired by https://github.com/syl20bnr/evil-escape
+inoremap fd <Esc>
+vnoremap fd <Esc>
+cnoremap fd <C-C><Esc>
+
+""""""""""""""""""""""""""""""""""""""""""""" quickly add blank lines
+nnoremap <S-CR> i<CR><esc>
+inoremap <S-CR> <CR><esc>O
+nnoremap <C-j> i<CR><esc>
+nnoremap <C-CR> kO<ESC>
+inoremap <C-CR> <ESC>jcc<ESC>k
+nnoremap [<Space> mmO<ESC>`m
+nnoremap ]<Space> mmo<ESC>`m
+
+""""""""""""""""""""""""""""""""""""""""""""" leader
 " inspired by https://github.com/syl20bnr/spacemacs
 let mapleader = "\<Space>"
 set timeoutlen=500
 
-nnoremap [<Space> mmO<ESC>`m
-nnoremap ]<Space> mmo<ESC>`m
+""""""""""""""""""""""""""""""""""""""""""""" buffers
+" switch to previous buffer
 nnoremap <leader><tab> <C-^>
-nnoremap <leader>qs :xa<CR>
-nnoremap <leader>qq :qa<CR>
-nnoremap <leader>qQ :qa!<CR>
-nnoremap <leader>ff :e<Space>
-nnoremap <leader>fs :w<CR>
-nnoremap <leader>tn :set relativenumber!<CR>
-
-nnoremap <leader>bb :buffers<CR>:buffer<Space>
+" buffer list
+" nnoremap <leader>bb :buffers<CR>:buffer<Space>
+" " close current buffer
 nnoremap <leader>bd :bdelete<CR>
 
-""" windows and splits
+""""""""""""""""""""""""""""""""""""""""""""" quitting
+nnoremap <leader>qs :xa<CR> " save all and quit
+nnoremap <leader>qq :qa<CR> " quit, ask if save needed
+nnoremap <leader>qQ :qa!<CR> " quit without saving
+nnoremap <leader>ff :e<Space>
+nnoremap <leader>fs :w<CR> " save file
+
+""""""""""""""""""""""""""""""""""""""""""""" misc toggles
+nnoremap <leader>tn :set relativenumber!<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""" windows and splits
 set splitbelow
 set splitright
 nnoremap <leader>wo :only<CR>
@@ -106,18 +125,23 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
-""""""""""""""""""" search
-nnoremap <leader>sr :%s//g<left><left>
-vnoremap <leader>sr :s//g<left><left>
+""""""""""""""""""""""""""""""""""""""""""""" visual theming
+highlight LineNr ctermfg=darkgrey
 
-nnoremap <leader>/ :Ag! ''<left>
+""""""""""""""""""""""""""""""""""""""""""""" navigation
+" Treat long lines as break lines (useful when moving around in them)
+nnoremap j gj
+nnoremap k gk
 
-""""""""""""""""""" indent buffer
-nnoremap <leader>j= mzgg=G`z
+runtime macros/matchit.vim " extended % switching
 
-" duplicate lines
-nmap <leader>yy mz"qyy"qP`z
-vmap <leader>yy mz"qy"qP`z
+""""""""""""""""""""""""""""""""""""""""""""" ex
+" quickly search for previous Ex commands
+nnoremap <S-Up> :<C-p>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""" external code """"""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " from https://github.com/tpope/vim-unimpaired/blob/master/plugin/unimpaired.vim
 function! s:BlankUp(count) abort
@@ -169,17 +193,9 @@ nmap ]e <Plug>unimpairedMoveDown
 xmap [e <Plug>unimpairedMoveSelectionUp
 xmap ]e <Plug>unimpairedMoveSelectionDown
 
-runtime macros/matchit.vim " extended % switching
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" quickly search for previous Ex commands
-nnoremap <S-Up> :<C-p>
-
-" http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-" don't lose ability to undo word deletion
-inoremap <c-w> <c-g>u<c-w>
-
-" toggle comments
-" modified from http://stackoverflow.com/a/24652257/1163042
+" toggle comments - modified from http://stackoverflow.com/a/24652257/1163042
 autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
 autocmd FileType sh,ruby,python  let b:comment_leader = '#'
 autocmd FileType conf,fstab      let b:comment_leader = '#'
@@ -203,96 +219,4 @@ endfunction
 nnoremap <leader>; :call ToggleComment()<cr>
 vnoremap <leader>; :call ToggleComment()<cr>
 
-highlight LineNr ctermfg=darkgrey
-
-let g:repeat_tick = -1
-let g:repeat_reg = ['', '']
-
-" Special function to avoid spurious repeats in a related, naturally repeating
-" mapping when your repeatable mapping doesn't increase b:changedtick.
-function! Repeatinvalidate()
-    autocmd! repeat_custom_motion
-    let g:repeat_tick = -1
-endfunction
-
-function! Repeatset(sequence,...)
-    let g:repeat_sequence = a:sequence
-    let g:repeat_count = a:0 ? a:1 : v:count
-    let g:repeat_tick = b:changedtick
-    augroup repeat_custom_motion
-        autocmd!
-        autocmd CursorMoved <buffer> let g:repeat_tick = b:changedtick | autocmd! repeat_custom_motion
-    augroup END
-endfunction
-
-function! Repeatsetreg(sequence,register)
-    let g:repeat_reg = [a:sequence, a:register]
-endfunction
-
-function! Repeatrun(count)
-    try
-        if g:repeat_tick == b:changedtick
-            let r = ''
-            if g:repeat_reg[0] ==# g:repeat_sequence && !empty(g:repeat_reg[1])
-                if g:repeat_reg[1] ==# '='
-                    " This causes a re-evaluation of the expression on repeat, which
-                    " is what we want.
-                    let r = '"=' . getreg('=', 1) . "\<CR>"
-                else
-                    let r = '"' . g:repeat_reg[1]
-                endif
-            endif
-
-            let c = g:repeat_count
-            let s = g:repeat_sequence
-            let cnt = c == -1 ? "" : (a:count ? a:count : (c ? c : ''))
-            if ((v:version == 703 && has('patch100')) || (v:version == 704 && !has('patch601')))
-                exe 'norm ' . r . cnt . s
-            else
-                call feedkeys(s, 'i')
-                call feedkeys(r . cnt, 'ni')
-            endif
-        else
-            if ((v:version == 703 && has('patch100')) || (v:version == 704 && !has('patch601')))
-                exe 'norm! '.(a:count ? a:count : '') . '.'
-            else
-                call feedkeys((a:count ? a:count : '') . '.', 'ni')
-            endif
-        endif
-    catch /^Vim(normal):/
-        return 'echoerr v:errmsg'
-    endtry
-    return ''
-endfunction
-
-function! Repeatwrap(command,count)
-    let preserve = (g:repeat_tick == b:changedtick)
-    exe 'norm! '.(a:count ? a:count : '').a:command . (&foldopen =~# 'undo\|all' ? 'zv' : '')
-    if preserve
-        let g:repeat_tick = b:changedtick
-    endif
-endfunction
-
-nnoremap <silent> <Plug>(RepeatDot)      :<C-U>exe Repeatrun(v:count)<CR>
-nnoremap <silent> <Plug>(RepeatUndo)     :<C-U>call Repeatwrap('u',v:count)<CR>
-nnoremap <silent> <Plug>(RepeatUndoLine) :<C-U>call Repeatwrap('U',v:count)<CR>
-nnoremap <silent> <Plug>(RepeatRedo)     :<C-U>call Repeatwrap("\<Lt>C-R>",v:count)<CR>
-
-if !hasmapto('<Plug>(RepeatDot)', 'n')
-    nmap . <Plug>(RepeatDot)
-endif
-if !hasmapto('<Plug>(RepeatUndo)', 'n')
-    nmap u <Plug>(RepeatUndo)
-endif
-if maparg('U','n') ==# '' && !hasmapto('<Plug>(RepeatUndoLine)', 'n')
-    nmap U <Plug>(RepeatUndoLine)
-endif
-if !hasmapto('<Plug>(RepeatRedo)', 'n')
-    nmap <C-R> <Plug>(RepeatRedo)
-endif
-
-augroup repeatPlugin
-    autocmd!
-    autocmd BufLeave,BufWritePre,BufReadPre * let g:repeat_tick = (g:repeat_tick == b:changedtick || g:repeat_tick == 0) ? 0 : -1
-    autocmd BufEnter,BufWritePost * if g:repeat_tick == 0|let g:repeat_tick = b:changedtick|endif
-augroup END
+""""""""""""""""""""""""""""""""""""""""""""""""""""
