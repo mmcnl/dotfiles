@@ -112,6 +112,7 @@ nnoremap <leader>fs :w<CR> " save file
 
 """"""""""""""""""""""""""""""""""""""""""""" misc toggles
 nnoremap <leader>tn :set relativenumber!<CR>
+nnoremap <leader>tl :set wrap!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""" windows and splits
 set splitbelow
