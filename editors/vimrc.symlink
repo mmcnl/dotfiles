@@ -51,6 +51,8 @@ inoremap <C-d> <C-o>x
 inoremap <C-f> <right>
 inoremap <C-b> <left>
 
+" break line but stay in normal mode
+nnoremap <C-j> i<CR><esc>
 " duplicate lines
 nmap <leader>yy mz"qyy"qP`z
 vmap <leader>yy mz"qy"qP`z
@@ -68,6 +70,12 @@ set listchars=tab:▸\ ,trail:·,extends:▸
 " indent buffer
 nnoremap <leader>j= mzgg=G`z
 
+""""""""""""""""""""""""""""""""""""""""""""" quickly add blank lines
+" add blank line above
+nnoremap <CR> O<ESC>
+" mimic unimpaired; add blank lines below
+nnoremap ]<Space> mmo<ESC>`m
+
 """"""""""""""""""""""""""""""""""""""""""""" numbering
 set relativenumber
 set confirm
@@ -80,15 +88,6 @@ abbr pry;   require 'pry'; binding.pry; true
 inoremap fd <Esc>
 vnoremap fd <Esc>
 cnoremap fd <C-C><Esc>
-
-""""""""""""""""""""""""""""""""""""""""""""" quickly add blank lines
-nnoremap <S-CR> i<CR><esc>
-inoremap <S-CR> <CR><esc>O
-nnoremap <C-j> i<CR><esc>
-nnoremap <C-CR> kO<ESC>
-inoremap <C-CR> <ESC>jcc<ESC>k
-nnoremap [<Space> mmO<ESC>`m
-nnoremap ]<Space> mmo<ESC>`m
 
 """"""""""""""""""""""""""""""""""""""""""""" leader
 " inspired by https://github.com/syl20bnr/spacemacs
@@ -145,24 +144,6 @@ nnoremap <S-Up> :<C-p>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " from https://github.com/tpope/vim-unimpaired/blob/master/plugin/unimpaired.vim
-function! s:BlankUp(count) abort
-  put!=repeat(nr2char(10), a:count)
-  ']+1
-  silent! call Repeatset("\<Plug>unimpairedBlankUp", a:count)
-endfunction
-
-function! s:BlankDown(count) abort
-  put =repeat(nr2char(10), a:count)
-  '[-1
-  silent! call Repeatset("\<Plug>unimpairedBlankDown", a:count)
-endfunction
-
-nnoremap <silent> <Plug>unimpairedBlankUp   :<C-U>call <SID>BlankUp(v:count1)<CR>
-nnoremap <silent> <Plug>unimpairedBlankDown :<C-U>call <SID>BlankDown(v:count1)<CR>
-
-nmap [<Space> <Plug>unimpairedBlankUp
-nmap ]<Space> <Plug>unimpairedBlankDown
-
 function! s:Move(cmd, count, map) abort
   normal! m`
   silent! exe 'move'.a:cmd.a:count
@@ -170,29 +151,14 @@ function! s:Move(cmd, count, map) abort
   silent! call Repeatset("\<Plug>unimpairedMove".a:map, a:count)
 endfunction
 
-function! s:MoveSelectionUp(count) abort
-  normal! m`
-  silent! exe "'<,'>move'<--".a:count
-  norm! ``
-  silent! call Repeatset("\<Plug>unimpairedMoveSelectionUp", a:count)
-endfunction
-
-function! s:MoveSelectionDown(count) abort
-  normal! m`
-  exe "'<,'>move'>+".a:count
-  norm! ``
-  silent! call Repeatset("\<Plug>unimpairedMoveSelectionDown", a:count)
-endfunction
-
 nnoremap <silent> <Plug>unimpairedMoveUp            :<C-U>call <SID>Move('--',v:count1,'Up')<CR>
 nnoremap <silent> <Plug>unimpairedMoveDown          :<C-U>call <SID>Move('+',v:count1,'Down')<CR>
-noremap  <silent> <Plug>unimpairedMoveSelectionUp   :<C-U>call <SID>MoveSelectionUp(v:count1)<CR>
-noremap  <silent> <Plug>unimpairedMoveSelectionDown :<C-U>call <SID>MoveSelectionDown(v:count1)<CR>
 
 nmap [e <Plug>unimpairedMoveUp
 nmap ]e <Plug>unimpairedMoveDown
-xmap [e <Plug>unimpairedMoveSelectionUp
-xmap ]e <Plug>unimpairedMoveSelectionDown
+
+nmap <C-p> <Plug>unimpairedMoveUp
+nmap <C-n> <Plug>unimpairedMoveDown
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
