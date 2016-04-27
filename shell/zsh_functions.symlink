@@ -1,0 +1,8 @@
+# -*- mode: shell-script -*-
+
+autoload -U colors && colors
+
+export NO_COLOR="%{$fg[reset_color%]%}"
+export RED="%{$fg[red]%}"
+export GREEN="%{$fg[green]%}"
+export CYAN="%{$fg[cyan]%}"

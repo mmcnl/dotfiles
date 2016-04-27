@@ -3,7 +3,6 @@
 ############ Prezto ############
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-    prompt_matt_setup "$@"
 fi
 
 ############ Zsh options ############
@@ -20,8 +19,10 @@ setopt clobber
 
 # interactive shell setup shared between zsh and bash
 source "$HOME/.sh_rc"
+source "$HOME/.sh_functions"
 
-# enable zsh completions added by brew formulae
-if [ -f "$(brew --prefix)/etc/zsh_completion" ]; then
-    source "$(brew --prefix)/etc/zsh_completion"
-fi
+# specific to zsh
+source "$HOME/.zsh_functions"
+
+precmd() { print -rP "%{$fg[green]%}%~$(git_prompt)%{$reset_color%}" }
+export PROMPT="%(!.#.$) "

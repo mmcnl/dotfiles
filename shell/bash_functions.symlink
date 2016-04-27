@@ -4,19 +4,3 @@ export NO_COLOR="\[\033[0m\]"
 export GREEN="\[\033[0;32m\]"
 export RED="\[\033[0;31m\]"
 export CYAN="\[\033[0;36m\]"
-
-function time_since_last_commit() {
-    ref=$(git symbolic-ref HEAD 2> /dev/null 2>&1) || return
-    git log -1 --pretty=format:"%ar" | sed 's/\([0-9]*\) \(.\).*/\1\2/'
-}
-
-git_prompt () {
-    if ! git rev-parse --git-dir > /dev/null 2>&1; then return 0; fi
-    git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
-    git_rev="$(git rev-parse --short HEAD | sed s/...$//)"
-    if [[ `git status` =~ 'up-to-date' && `git status` =~ 'clean' ]]; then
-        echo "$CYAN ∆$(time_since_last_commit) [$git_branch $git_rev]"
-    else
-        echo "$RED ∆$(time_since_last_commit) [$git_branch $git_rev]"
-    fi
-}

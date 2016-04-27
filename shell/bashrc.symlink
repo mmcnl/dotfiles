@@ -20,14 +20,9 @@ shopt -s cdspell
 
 # interactive shell setup shared between zsh and bash
 source "$HOME/.sh_rc"
+source "$HOME/.sh_functions"
 
 # specific to bash
 source "$HOME/.bash_functions"
 
-# enable bash completions added by brew formulae
-if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    source "$(brew --prefix)/etc/bash_completion"
-fi
-
 PROMPT_COMMAND='history -a; PS1="$GREEN\w$(git_prompt)$NO_COLOR \n$ "'
-
