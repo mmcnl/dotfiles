@@ -1,8 +1,9 @@
 # -*- mode: shell-script -*-
 
 # enable bash completions added by brew formulae
-if [ -f "$(brew --prefix)/etc/$SHELL_BASENAME_completion" ]; then
-    source "$(brew --prefix)/etc/$SHELL_BASENAM_completion"
+if [ $(which brew) ]; then
+    [ -f "$(brew --prefix)/etc/${SHELL_BASENAME}_completion" ] &&
+        source "$(brew --prefix)/etc/${SHELL_BASENAME}_completion"
 fi
 
 # functions shared between zsh and bash

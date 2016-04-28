@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-
+from __future__ import print_function
 import os
+import sys
 
 OKGREEN = '\033[92m'
 WARNING = '\033[93m'
@@ -10,7 +11,7 @@ RESET_COLOR = '\033[0m'
 def install_dotfiles():
     home_dir = os.path.expanduser('~')
     print("installing dotfiles into", home_dir, "...\n")
-    for root, _, files in os.walk("/Users/matt/dotfiles"):
+    for root, _, files in os.walk("."):
         for name in files:
             if not name.endswith('.symlink'):
                 continue
@@ -19,7 +20,7 @@ def install_dotfiles():
             if os.path.exists(dest) and not overwrite_existing(dest):
                 continue
             source = os.path.join(root, name)
-            os.symlink(source, dest)
+            os.symlink(os.path.abspath(source), dest)
             print("{}created symlink {} -> {} {}".format(
                 OKGREEN, dest, source, RESET_COLOR))
     print("\ndone")
@@ -31,11 +32,13 @@ def overwrite_existing(dest):
             WARNING, dest, RESET_COLOR))
         return
 
-    print("A symlink at {} already exists. Overwrite?".format(
-        dest), end=' [n]: ')
+    print("A symlink at {} already exists... ".format(dest), end='')
 
-    if input().lower().startswith('y'):
+    if len(sys.argv) > 1 and sys.argv[1] == '--force':
+        print("overwiting.")
         os.unlink(dest)
         return True
+    else:
+        print("skipping. Use --force to overwrite.")
 
 install_dotfiles()
