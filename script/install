@@ -1,35 +1,41 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python
 
-# make links from dotfiles/*/*.symlink into home dir
+import os
 
-# use this command to find and delete old symlinks first
-# find "$HOME" -type l -maxdepth 1 -delete
+OKGREEN = '\033[92m'
+WARNING = '\033[93m'
+RESET_COLOR = '\033[0m'
 
-# i.e. after this, `ls -la` from the home dir will look like:
-# ~/.vimrc -> ~/dotfiles/editors/vimrc.symlink
-# ~/.zshrc -> ~/dotfiles/shell/zshrc.symlink
 
-set -o errexit
+def install_dotfiles():
+    home_dir = os.path.expanduser('~')
+    print("installing dotfiles into", home_dir, "...\n")
+    for root, _, files in os.walk("/Users/matt/dotfiles"):
+        for name in files:
+            if not name.endswith('.symlink'):
+                continue
+            base = '.' + name[:-len('.symlink')]
+            dest = os.path.join(home_dir, base)
+            if os.path.exists(dest) and not overwrite_existing(dest):
+                continue
+            source = os.path.join(root, name)
+            os.symlink(source, dest)
+            print("{}created symlink {} -> {} {}".format(
+                OKGREEN, dest, source, RESET_COLOR))
+    print("\ndone")
 
-cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
 
-install_dotfiles () {
-    printf 'installing dotfiles'
+def overwrite_existing(dest):
+    if not os.path.islink(dest):
+        print("{}{} exists but is not a symlink. Skipping...{}".format(
+            WARNING, dest, RESET_COLOR))
+        return
 
-    while IFS= read -r -d '' src
-    do
-        dest="$HOME/.$(basename "${src%.*}")"
-        printf "\nlinking %s to %s - \n" "$src" "$dest"
-        if [[ -L "$dest" && -e "$dest" ]]
-        then
-            echo "removing old symlink $dest"
-            rm $dest
-        fi
-        ln -s "$src" "$dest" && printf "ok"
-    done <   <(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' -print0)
-    printf '\ndone'
-}
+    print("A symlink at {} already exists. Overwrite?".format(
+        dest), end=' [n]: ')
 
-install_dotfiles
+    if input().lower().startswith('y'):
+        os.unlink(dest)
+        return True
 
+install_dotfiles()
