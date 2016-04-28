@@ -33,13 +33,16 @@ function time_since_last_commit() {
 git_prompt () {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then return 0; fi
     git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
-    git_rev="$(git rev-parse --short HEAD | sed s/...$//)"
-    if [[ `git status` =~ 'up-to-date' && `git status` =~ 'clean' ]]; then
-        echo "$CYAN ∆$(time_since_last_commit) [$git_branch $git_rev]"
+    git_rev="$(git rev-parse --short HEAD | sed s/..$//)"
+    git_status=`git status`
+    if [[ $git_status =~ 'up-to-date' && $git_status =~ 'clean' ]]; then
+        echo -n "$CYAN"
     else
-        echo "$RED ∆$(time_since_last_commit) [$git_branch $git_rev]"
+        echo -n "$RED"
     fi
+    echo "[$git_branch $git_rev]"
 }
+
 alias ag='ag --noheading --hidden --smart-case'
 alias agl='ag -l'
 

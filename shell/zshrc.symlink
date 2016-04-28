@@ -24,5 +24,11 @@ source "$HOME/.sh_functions"
 # specific to zsh
 source "$HOME/.zsh_functions"
 
-precmd() { print -rP "%{$fg[green]%}%~$(git_prompt)%{$reset_color%}" }
-export PROMPT="%(!.#.$) "
+precmd() {
+    # work around trailing newlines being swallowed by command substitution
+    # http://stackoverflow.com/a/15184414/1163042
+    # add newline only if non-null
+    gp=$(git_prompt)
+    [[ -n $gp ]] && gp=$gp$'\n'
+    PROMPT="${NEWLINE}$gp%{$fg[green]%}%~ %{$reset_color%}%(!.#.❯) "
+}
