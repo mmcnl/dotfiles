@@ -23,13 +23,14 @@ alias gp="gp"
 alias gr="git ra"
 alias gs="git status"
 alias gss="git short-status"
-alias ls='ls -lAF --group-directories-first --color=auto'
-alias l='ls -CF'
-alias la='l -A'
-alias ll='ls -lAF'
-alias l.='ls -lAF -d .*'
-alias lh='ls -lAF -lh'
-alias lt='ls -lAF -ltr'
+alias ls='ls --group-directories-first --color=auto'
+alias las='ls -A'
+alias l='ls -l'
+alias ll='ls -l'
+alias la='ls -lA'
+alias l.='ls -lA -d .*'
+alias lh='ls -lA -lh'
+alias lt='ls -lA -ltr'
 alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
