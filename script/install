@@ -20,8 +20,13 @@ install_dotfiles () {
     while IFS= read -r -d '' src
     do
         dest="$HOME/.$(basename "${src%.*}")"
-        printf "\nlinking %s to %s- " "$src" "$dest"
-        ln -s "$src" "$dest" && printf 'ok'
+        printf "\nlinking %s to %s - \n" "$src" "$dest"
+        if [[ -L "$dest" && -e "$dest" ]]
+        then
+            echo "removing old symlink $dest"
+            rm $dest
+        fi
+        ln -s "$src" "$dest" && printf "ok"
     done <   <(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' -print0)
     printf '\ndone'
 }
