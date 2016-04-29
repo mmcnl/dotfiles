@@ -6,8 +6,13 @@ export RED="\[\033[0;31m\]"
 export BLUE="\[\033[0;34m\]"
 export CYAN="\[\033[0;36m\]"
 
-# enable bash zsh completions added by brew formulae;
-#   no need to for zsh as the zprezto completion module handles it
+# handle completion on ubuntu or other linux
+if [ -f '/etc/bash_completion' ]; then
+    source "/etc/bash_completion"
+fi
+
+# enable bash zsh completions added by brew formulae; no need to do this for zsh
+#   as the zprezto completion module handles it
 if which brew > /dev/null; then
     source "$(brew --prefix)/etc/bash_completion"
 fi
