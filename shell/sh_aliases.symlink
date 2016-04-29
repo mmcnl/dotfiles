@@ -43,7 +43,6 @@ alias htop="sudo htop"
 alias iftop='sudo iftop'
 alias kl="KITCHEN_LOCAL_YAML=.kitchen.local.yml KITCHEN_YAML=.kitchen.vagrant.yml bundle exec kitchen"
 alias kr="bundle exec kitchen"
-alias pk="kill -9 \`ps aux | ag -v '%CPU' | ag -v '%CPU' | selecta | awk '{print \$2 }'\`"
 alias py='ptipython'
 alias rm=rm
 alias sel=selecta

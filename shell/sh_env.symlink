@@ -10,10 +10,11 @@ export NEWLINE=$'\n'
 # transform something like the following to "zsh"
 #   PID TTY           TIME CMD
 #27221 ttys000    0:00.30 -zsh
-export SHELL_BASENAME=$(basename $(ps -p $$ | grep -v TTY | awk '{ print $4 }' | sed s/-//))
+# shellcheck disable=SC2009
+SHELL_BASENAME=$(basename "$(ps -p $$ | grep -v TTY | awk '{ print $4 }' | sed s/-//)")
 
 # set private env vars and config
 [ -f "$HOME/.personal_env" ] && source "$HOME/.personal_env"
 
 # set up vars and shell for development
-[ -n $DEV_ENV_SETUP ] && source "$HOME/.dev_env_setup"
+[ -n "$DEV_ENV_SETUP" ] && source "$HOME/.dev_env_setup"

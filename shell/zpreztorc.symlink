@@ -12,17 +12,12 @@ zstyle ':prezto:load' pmodule \
        'completion' \
        'syntax-highlighting' \
 
-# Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-zstyle ':prezto:module:git:status:ignore' submodules 'all'
-
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
   'pattern' \
-  'cursor' \
-  'root'
 
 # Auto set the tab and window titles.
 zstyle ':prezto:module:terminal' auto-title 'yes'

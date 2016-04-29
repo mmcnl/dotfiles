@@ -2,8 +2,17 @@
 
 autoload -U colors && colors
 
+# don't complain about vars defined by zsh plugins
+# shellcheck disable=SC2154
+
 export NO_COLOR="%{$fg[reset_color%]%}"
 export RED="%{$fg[red]%}"
 export GREEN="%{$fg[green]%}"
 export BLUE="%{$fg[blue]%}"
 export CYAN="%{$fg[cyan]%}"
+
+# custom syntax highlighting
+zle_highlight=(paste:fg=blue)
+# shellcheck disable=SC2154
+ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')

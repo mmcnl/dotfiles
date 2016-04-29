@@ -5,7 +5,7 @@
 git() {
     /usr/bin/env git "$@"
     estatus="$?"
-    [[ $estatus = 0 ]] || return $status
+    [[ $estatus = 0 ]] || return $estatus
 
     if [ -e tags ]
     then
@@ -30,7 +30,7 @@ git_prompt () {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then return 0; fi
     git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
     git_rev="$(git rev-parse --short HEAD | sed s/..$//)"
-    git_status=`git status`
+    git_status=$(git status)
     if [[ $git_status =~ 'up-to-date' && $git_status =~ 'clean' ]]; then
         echo -n "$CYAN"
     else
@@ -39,18 +39,24 @@ git_prompt () {
     echo "[$(time_since_last_commit) $git_branch $git_rev] $NO_COLOR"
 }
 
+pk() {
+    kill -9 "$(ps aux | ag -v '%CPU' | ag -v '%CPU' | selecta | awk '{print $2 }')"
+}
+
 alias ag='ag --noheading --hidden --smart-case'
 alias agl='ag -l'
 
+# ignore noisy files
 agig() {
     ag -v '\.git/|\.DS_Store|tmp/cache'
 }
 
+# find all files without exception
 au() {
-    ag --unrestricted "$@" | agig
+    ag --unrestricted "$@"
 }
 
-# using grep to compress blank lines in output
+# use grep to compress blank lines in output
 agv() {
     ag -v "$@" | grep --color=none .
 }
@@ -64,28 +70,26 @@ zs() {
     cd "$(fasd -dl | selecta -s "${@:- }")" || exit
 }
 
-# ag - find files
+# ag -g - find files by filename
 agg() {
-    ag --unrestricted --depth 10 -g ${@:-.} | agig
+    ag --unrestricted --depth 10 -g "${@:-.}" | agig
 }
 as() {
     agg . | selecta -s "${@:- }"
 }
 ea() {
-    emacsclient_no_wait `as "$@"`
+    emacsclient_no_wait "$(as "$@")"
 }
 
-# ag - find text
+# open file matching text in emacs
 eg() {
-    emacsclient_no_wait `ag "$@" | selecta --height=full`
+    ~/bin/launch_emacs.rb "$(ag "$@" | selecta -s "${@:- }" --height=full )"
 }
 
 # recent files
 r() {
-    ag --depth 8 -g "${@:-.}" | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -30
+    ag --depth 8 -g . | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -30
 }
-
 er() {
-    emacsclient_no_wait `r | selecta -s "${@:- }"`
+    emacsclient_no_wait "$(r | selecta -s "${@:- }")"
 }
-
