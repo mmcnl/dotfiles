@@ -4,8 +4,8 @@ autoload -U colors && colors
 
 # don't complain about vars defined by zsh plugins
 # shellcheck disable=SC2154
-
-export NO_COLOR="%{$fg[reset_color%]%}"
+export NO_COLOR="%{$reset_color%}"
+# shellcheck disable=SC2154
 export RED="%{$fg[red]%}"
 export GREEN="%{$fg[green]%}"
 export BLUE="%{$fg[blue]%}"
