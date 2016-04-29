@@ -32,13 +32,13 @@ def overwrite_existing(dest):
             WARNING, dest, RESET_COLOR))
         return
 
-    print("A symlink at {} already exists... ".format(dest), end='')
+    print("symlink at {} already exists - ".format(dest), end='')
 
     if len(sys.argv) > 1 and sys.argv[1] == '--force':
-        print("overwiting.")
+        print("overwriting.")
         os.unlink(dest)
         return True
     else:
-        print("skipping. Use --force to overwrite.")
+        print("use --force to overwrite.")
 
 install_dotfiles()
