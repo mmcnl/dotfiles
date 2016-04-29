@@ -19,7 +19,6 @@ setopt clobber
 
 # interactive shell setup shared between zsh and bash
 source "$HOME/.sh_rc"
-source "$HOME/.sh_functions"
 
 # specific to zsh
 source "$HOME/.zsh_functions"

@@ -5,4 +5,5 @@ autoload -U colors && colors
 export NO_COLOR="%{$fg[reset_color%]%}"
 export RED="%{$fg[red]%}"
 export GREEN="%{$fg[green]%}"
+export BLUE="%{$fg[blue]%}"
 export CYAN="%{$fg[cyan]%}"

@@ -1,0 +1,20 @@
+# -*- mode: shell-script -*-
+
+# set up vars and shell for development
+
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/opt/miniconda3/bin:$PATH"
+
+############ eval'd helper functions ############
+
+# for z, f, and other nice helpers - https://github.com/clvv/fasd
+if which hub > /dev/null; then eval "$(fasd --init auto)"; fi
+
+# alias hub to git
+if which hub > /dev/null; then eval "$(hub alias -s)"; fi
+
+# lighter weight than rbenv - https://github.com/postmodern/chruby
+if [[ -x "/usr/local/share/chruby" ]]; then
+    source "/usr/local/share/chruby/chruby.sh"
+    source "/usr/local/share/chruby/auto.sh"
+fi

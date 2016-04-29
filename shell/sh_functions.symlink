@@ -1,12 +1,7 @@
 # -*- mode: shell-script -*-
 
-# enable bash completions added by brew formulae
-if [ $(which brew) ]; then
-    [ -f "$(brew --prefix)/etc/${SHELL_BASENAME}_completion" ] &&
-        source "$(brew --prefix)/etc/${SHELL_BASENAME}_completion"
-fi
-
 # functions shared between zsh and bash
+
 git() {
     /usr/bin/env git "$@"
     estatus="$?"
@@ -26,7 +21,7 @@ git() {
     fi
 }
 
-function time_since_last_commit() {
+time_since_last_commit() {
     ref=$(git symbolic-ref HEAD 2> /dev/null 2>&1) || return
     git log -1 --pretty=format:"%ar" | sed 's/\([0-9]*\) \(.\).*/\1\2/'
 }
@@ -41,7 +36,7 @@ git_prompt () {
     else
         echo -n "$RED"
     fi
-    echo "[$(time_since_last_commit) $git_branch $git_rev]$NO_COLOR"
+    echo "[$(time_since_last_commit) $git_branch $git_rev] $NO_COLOR"
 }
 
 alias ag='ag --noheading --hidden --smart-case'

@@ -15,17 +15,3 @@ export VISUAL=$EDITOR
 
 source "$HOME/.sh_aliases"
 source "$HOME/.sh_functions"
-
-############ eval'd helper functions ############
-
-# for z, f, and other nice helpers - https://github.com/clvv/fasd
-[ $(which fasd) ] && eval "$(fasd --init auto)"
-
-# alias hub to git
-[ $(which hub) ] && eval "$(hub alias -s)"
-
-if [[ -x "/usr/local/share/chruby" ]]; then
-    # lighter weight than rbenv - https://github.com/postmodern/chruby
-    source "/usr/local/share/chruby/chruby.sh"
-    source "/usr/local/share/chruby/auto.sh"
-fi

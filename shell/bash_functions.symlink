@@ -3,7 +3,11 @@
 export NO_COLOR="\[\033[0m\]"
 export GREEN="\[\033[0;32m\]"
 export RED="\[\033[0;31m\]"
+export BLUE="\[\033[0;34m\]"
 export CYAN="\[\033[0;36m\]"
 
-# export bash specific env vars - do this here for non-login shells
-export SHELL_BASENAME=bash
+# enable bash zsh completions added by brew formulae;
+#   no need to for zsh as the zprezto completion module handles it
+if which brew > /dev/null; then
+    source "$(brew --prefix)/etc/bash_completion"
+fi

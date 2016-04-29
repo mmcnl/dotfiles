@@ -3,5 +3,4 @@
 # set private env vars and config in file shared between bash and zsh
 source "$HOME/.sh_env"
 
-# export zsh specific env vars
-export SHELL_BASENAME=zsh
+# export zsh specific env vars below
