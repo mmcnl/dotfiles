@@ -62,7 +62,7 @@
 (smartparens-mode t)
 
 (setq-default evil-escape-key-sequence "fd")
-(setq-default evil-escape-delay 0.3)
+(setq-default evil-escape-delay 0.2)
 
 ;; don't create .#filename lock files
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Locks.html
