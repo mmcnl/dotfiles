@@ -28,7 +28,7 @@ def overwrite_existing(link_path):
     if not os.path.islink(link_path):
         print("{}{} exists but is not a symlink. Skipping...{}".format(
             WARNING, link_path, RESET_COLOR))
-        return
+        return False
 
     print("symlink at {} already exists - ".format(link_path), end='')
 
@@ -37,11 +37,16 @@ def overwrite_existing(link_path):
         return True
     else:
         print("use --force to overwrite.")
+        return False
 
 
 def _create_symlink(root, target_name, link_path):
     target_path = os.path.join(root, target_name)
-    os.unlink(link_path)
+    try:
+        # in case an old symlink already exists
+        os.unlink(link_path)
+    except OSError:
+        pass
     os.symlink(os.path.abspath(target_path), link_path)
     print("{}created symlink {} -> {} {}".format(
         OKGREEN, link_path, target_path, RESET_COLOR))
