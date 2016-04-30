@@ -79,10 +79,13 @@
 (define-key evil-motion-state-map [?\H-i] 'evil-jump-forward)
 (define-key evil-normal-state-map [?\H-i] 'evil-jump-forward)
 
-;; https://www.emacswiki.org/emacs/MidnightMode
-(require 'midnight)
-(midnight-mode 1)
-(setq midnight-period 43200) ;; run every 12 hours
+;; midnight-mode may not be available on all emacs versions
+(ignore-errors
+  ;; https://www.emacswiki.org/emacs/MidnightMode
+  (require 'midnight)
+  (midnight-mode 1)
+  (setq midnight-period 43200) ;; run every 12 hours
+  )
 
 ;; ;; https://www.emacswiki.org/emacs/CleanBufferList
 ;; ;; clean up buffers that haven't been touched in 1 day
