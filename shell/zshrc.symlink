@@ -15,6 +15,10 @@ export DISABLE_CORRECTION="true"
 # http://unix.stackexchange.com/a/212135
 setopt clobber
 
+# require confirmation before closing session with C-d
+# http://zsh.sourceforge.net/Intro/intro_16.html
+setopt ignoreeof
+
 ############ aliases, functions, prompt ############
 
 # interactive shell setup shared between zsh and bash
