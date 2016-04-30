@@ -1,7 +1,0 @@
-# -*- mode: shell-script -*-
-
-# set private env vars and config in file shared between bash and zsh
-
-# source this explicitly to reset the path and override anything the system
-# login shell sequence might have set
-source "$HOME/.sh_env"

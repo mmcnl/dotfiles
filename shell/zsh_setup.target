@@ -1,5 +1,17 @@
 # -*- mode: shell-script -*-
 
+unsetopt correct
+unsetopt correct_all
+export DISABLE_CORRECTION="true"
+
+# don't prompt when redirecting output with >
+# http://unix.stackexchange.com/a/212135
+setopt clobber
+
+# require confirmation before closing session with C-d
+# http://zsh.sourceforge.net/Intro/intro_16.html
+setopt ignoreeof
+
 autoload -U colors && colors
 
 # don't complain about vars defined by zsh plugins
@@ -17,11 +29,12 @@ zle_highlight=(paste:fg=blue)
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
 
-############ extra zsh-completions ############
-# (most are set up automatically by zprezto)
-
-# warn if custom directory is not set up
-[ -d "$HOME/.zsh-completions" ] || echo "$0: $HOME/.zsh-completions not available"
-
-fpath+="$HOME/.zsh-completions/conda-zsh-completion"
-compinit conda
+############ zsh prompt ############
+precmd() {
+    # work around trailing newlines being swallowed by command substitution
+    # http://stackoverflow.com/a/15184414/1163042
+    # add newline only if non-null
+    gp=$(git_prompt)
+    [[ -n $gp ]] && gp=$gp$'\n'
+    PROMPT="${NEWLINE}${gp}$GREEN%~ $NO_COLOR%(!.#.❯) "
+}

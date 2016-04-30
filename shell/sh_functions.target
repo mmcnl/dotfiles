@@ -31,7 +31,9 @@ git_prompt () {
     git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
     git_rev="$(git rev-parse --short HEAD | sed s/..$//)"
     git_status=$(git status)
-    if [[ $git_status =~ 'up-to-date' && $git_status =~ 'clean' ]]; then
+    if [[ $git_status =~ 'clean' &&
+              $git_status != 'ahead' &&
+              $git_status != 'behind' ]]; then
         echo -n "$CYAN"
     else
         echo -n "$RED"

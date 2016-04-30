@@ -1,36 +1,13 @@
 # -*- mode: shell-script -*-
 
-# set private env vars and config in file shared between bash and zsh
+# env vars shared between bash and zsh
 source "$HOME/.sh_env"
 
-# exit if not in an interactive shell
+# exit if this is not an interactive shell
 [ -z "$PS1" ] && return
 
-############ Bash options ############
-
-# ignore duplicate and empty lines
-export HISTCONTROL=ignoreboth
-# save lots of bash_history
-export HISTSIZE=10000
-# save history from simultaneous shells
-shopt -s histappend
-# save multiline cmds
-shopt -s cmdhist
-# ignore small spelling errors
-shopt -s cdspell
-
-############ shared interactive shell setup ############
+# shared interactive shell setup
 source "$HOME/.sh_rc"
 
-############ bash-specific setup ############
+# bash-specific setup
 source "$HOME/.bash_setup"
-
-bash_prompt() {
-    # work around trailing newlines being swallowed by command substitution
-    # http://stackoverflow.com/a/15184414/1163042
-    # add newline only if non-null
-    gp=$(git_prompt)
-    [[ -n $gp ]] && gp=$gp$'\n'
-    echo "${NEWLINE}$gp\u@\h $GREEN\w$NO_COLOR $ "
-}
-PROMPT_COMMAND='history -a; PS1="$(bash_prompt)"'

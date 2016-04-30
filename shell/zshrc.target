@@ -1,35 +1,18 @@
 # -*- mode: shell-script -*-
 
-############ Prezto ############
+# env vars shared between bash and zsh
+source "$HOME/.sh_env"
+
+# exit if not in an interactive shell
+if ! [[ -o interactive ]]; then return 0; fi
+
+# Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-############ Zsh options ############
-unsetopt correct
-unsetopt correct_all
-export DISABLE_CORRECTION="true"
-
-# don't prompt when redirecting output with >
-# http://unix.stackexchange.com/a/212135
-setopt clobber
-
-# require confirmation before closing session with C-d
-# http://zsh.sourceforge.net/Intro/intro_16.html
-setopt ignoreeof
-
-############ shared interactive shell setup ############
+# shared interactive shell setup
 source "$HOME/.sh_rc"
 
-############ zsh-specific ############
+# zsh-specific setup
 source "$HOME/.zsh_setup"
-
-############ zsh prompt ############
-precmd() {
-    # work around trailing newlines being swallowed by command substitution
-    # http://stackoverflow.com/a/15184414/1163042
-    # add newline only if non-null
-    gp=$(git_prompt)
-    [[ -n $gp ]] && gp=$gp$'\n'
-    PROMPT="${NEWLINE}${gp}$GREEN%~ $NO_COLOR%(!.#.❯) "
-}

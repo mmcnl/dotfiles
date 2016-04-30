@@ -18,3 +18,9 @@ if [[ -x "/usr/local/share/chruby" ]]; then
     source "/usr/local/share/chruby/chruby.sh"
     source "/usr/local/share/chruby/auto.sh"
 fi
+
+# source any .env file upon cd'ing to new dir
+# https://github.com/kennethreitz/autoenv
+if [[ -x "/usr/local/opt/autoenv/activate.sh" ]]; then
+    source /usr/local/opt/autoenv/activate.sh
+fi
