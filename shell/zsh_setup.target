@@ -16,3 +16,12 @@ zle_highlight=(paste:fg=blue)
 # shellcheck disable=SC2154
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
+
+############ extra zsh-completions ############
+# (most are set up automatically by zprezto)
+
+# warn if custom directory is not set up
+[ -d "$HOME/.zsh-completions" ] || echo "$0: $HOME/.zsh-completions not available"
+
+fpath+="$HOME/.zsh-completions/conda-zsh-completion"
+compinit conda

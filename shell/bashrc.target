@@ -19,13 +19,11 @@ shopt -s cmdhist
 # ignore small spelling errors
 shopt -s cdspell
 
-############ aliases, functions, prompt ############
-
-# interactive shell setup shared between zsh and bash
+############ shared interactive shell setup ############
 source "$HOME/.sh_rc"
 
-# specific to bash
-source "$HOME/.bash_functions"
+############ bash-specific setup ############
+source "$HOME/.bash_setup"
 
 bash_prompt() {
     # work around trailing newlines being swallowed by command substitution

@@ -6,7 +6,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 ############ Zsh options ############
-
 unsetopt correct
 unsetopt correct_all
 export DISABLE_CORRECTION="true"
@@ -19,14 +18,13 @@ setopt clobber
 # http://zsh.sourceforge.net/Intro/intro_16.html
 setopt ignoreeof
 
-############ aliases, functions, prompt ############
-
-# interactive shell setup shared between zsh and bash
+############ shared interactive shell setup ############
 source "$HOME/.sh_rc"
 
-# specific to zsh
-source "$HOME/.zsh_functions"
+############ zsh-specific ############
+source "$HOME/.zsh_setup"
 
+############ zsh prompt ############
 precmd() {
     # work around trailing newlines being swallowed by command substitution
     # http://stackoverflow.com/a/15184414/1163042
