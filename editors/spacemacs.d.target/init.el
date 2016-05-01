@@ -113,6 +113,9 @@ user code."
   (setq custom-file "/tmp/emacs_customizations")
 
   (setq-default solarized-use-less-bold t)
+
+  ;; stop useless warning about ENV vars being set in bashrc/zshrc
+  (setq exec-path-from-shell-check-startup-files nil)
   )
 
 (defun dotspacemacs/user-config ()

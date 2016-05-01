@@ -1,5 +1,4 @@
 (defun prog-mode-common-setup ()
-  (company-mode 1)
   (flycheck-mode 1)
   (flyspell-mode-off)
   (linum-mode)
@@ -15,15 +14,25 @@
 
 (add-hook 'org-mode-hook
           (function (lambda ()
-                      (spacemacs/toggle-aggressive-indent-off)
                       (flycheck-mode -1)
-                      (org-indent-mode)
                       (whitespace-mode -1)
+                      (org-indent-mode)
+                      (spacemacs/toggle-aggressive-indent-off)
                       )) t)
 
 (add-hook 'text-mode-hook
           (function (lambda ()
                       (visual-line-mode 1)
+                      (flyspell-mode)
+
+                      ;; needed to enable completion in git commit buffer
+                      (company-mode)
+
+                      (set (make-local-variable 'company-backends)
+                           '((
+                              company-dabbrev
+                              company-ispell
+                              )))
                       )) t)
 
 (add-hook 'yaml-mode-hook
@@ -35,7 +44,7 @@
           (function (lambda ()
                       (aggressive-indent-mode 1)
                       (flycheck-mode -1)
-                      (setq flycheck-disabled-checkers '(
-                                                         emacs-lisp-checkdoc
-                                                         ))
+                      ;; (setq flycheck-disabled-checkers '(
+                      ;;                                    emacs-lisp-checkdoc
+                      ;;                                    ))
                       )) t)

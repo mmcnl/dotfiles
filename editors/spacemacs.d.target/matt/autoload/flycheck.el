@@ -1,8 +1,6 @@
 (with-eval-after-load 'flycheck
-  ;; shell-mode
-  (add-to-list 'flycheck-shellcheck-excluded-warnings "SC1090")
-  (add-to-list 'flycheck-shellcheck-excluded-warnings "SC1091")
-  (add-to-list 'flycheck-shellcheck-excluded-warnings "SC2034")
+  ;; disable by default; re-enable in prog-mode-hook
+  (global-flycheck-mode -1)
 
   (defconst flycheck-error-list-format
     [("Line" 4 flycheck-error-list-entry-< :right-align t)
@@ -24,4 +22,9 @@
               (with-selected-window (flycheck-get-error-list-window t)
                 (text-scale-set -1)
                 (fit-window-to-buffer))))
+
+  ;; shell-mode
+  (add-to-list 'flycheck-shellcheck-excluded-warnings "SC1090")
+  (add-to-list 'flycheck-shellcheck-excluded-warnings "SC1091")
+  (add-to-list 'flycheck-shellcheck-excluded-warnings "SC2034")
   )

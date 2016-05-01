@@ -1,8 +1,10 @@
-(setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                 "%b"))))
-;; (setq kill-whole-line t)
+(global-evil-matchit-mode 1)
+(delete-selection-mode 1)
+(global-auto-revert-mode)
+
+(show-paren-mode 1)
+(show-smartparens-global-mode -1)
+
 (setq avy-keys '(?f ?d ?s ?a ?g ?h ?u ?k ?l ?q ?w ?e ?r ?t ?y ?i ?o ?j))
 
 (require 'recentf)
@@ -18,7 +20,6 @@
 (setq minibuffer-history-max 200)
 (setq shell-command-history-max 200)
 (setq find-file-history-max 200)
-(setq exec-path-from-shell-check-startup-files nil)
 
 (setq which-key-popup-type 'minibuffer)
 
@@ -61,9 +62,6 @@
 (setq-default truncate-lines t)
 (smartparens-mode t)
 
-(setq-default evil-escape-key-sequence "fd")
-(setq-default evil-escape-delay 0.2)
-
 ;; don't create .#filename lock files
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Locks.html
 (setq create-lockfiles nil)
@@ -72,12 +70,6 @@
 ;; http://emacs.stackexchange.com/a/642/10014
 (savehist-mode 1)
 (add-to-list 'savehist-additional-variables 'kill-ring)
-
-;; use C-i to jump forward (like Vim; opposite of C-o)
-;; http://stackoverflow.com/a/4513683/1163042
-(keyboard-translate ?\C-i ?\H-i)
-(define-key evil-motion-state-map [?\H-i] 'evil-jump-forward)
-(define-key evil-normal-state-map [?\H-i] 'evil-jump-forward)
 
 ;; midnight-mode may not be available on all emacs versions
 (ignore-errors

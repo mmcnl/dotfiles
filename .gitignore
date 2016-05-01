@@ -1,0 +1,2 @@
+# ignore provisional settings before they're merged into permanent location
+editors/spacemacs.d.target/matt/autoload/provisional.el
