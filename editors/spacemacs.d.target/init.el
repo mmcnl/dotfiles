@@ -1,6 +1,5 @@
 ;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -21,9 +20,6 @@ values."
                       auto-completion-private-snippets-directory nil)
      (git :variables git-magit-status-fullscreen t)
      dash
-     ;; spacemacs-ivy
-     ;; spell-checking
-     ;; colors
      ;; csv
      emacs-lisp
      fasd
@@ -53,7 +49,6 @@ values."
                                       atom-one-dark-theme
                                       vimrc-mode
                                       )
-
    dotspacemacs-excluded-packages '(
                                     evil-search-highlight-persist
                                     robe
@@ -71,12 +66,7 @@ values."
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
    dotspacemacs-startup-recent-list-size 0
-   dotspacemacs-themes '(
-                         atom-one-dark
-                         solarized-light
-                         ;; spacemacs-dark
-                         ;; spacemacs-light
-                         )
+   dotspacemacs-themes '(atom-one-dark solarized-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Source Code Pro" :size 15)
    dotspacemacs-leader-key "SPC"
@@ -112,7 +102,6 @@ values."
    dotspacemacs-whitespace-cleanup 'changed
    dotspacemacs-check-for-update nil
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
-   ;; (default nil)
    dotspacemacs-ex-substitute-global t
    ))
 
@@ -120,7 +109,6 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
-
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html
   (setq custom-file "/tmp/emacs_customizations")
 
@@ -129,10 +117,8 @@ user code."
 
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
-
   (message "autoloading config files from matt layer...")
   (mapc 'load (file-expand-wildcards "~/.emacs.d/private/matt/autoload/*.el"))
-
   ;; remove compile window
   (delete-other-windows)
   )
