@@ -12,6 +12,11 @@
                       (whitespace-mode -1)
                       )) t)
 
+(add-hook 'sh-mode-hook
+          (lambda ()
+            ;; allow sh-shellcheck to lint files (it's not compatible with zsh)
+            (sh-set-shell "bash")))
+
 (add-hook 'text-mode-hook
           (function (lambda ()
                       (visual-line-mode 1)
@@ -39,4 +44,11 @@
                       ;; (setq flycheck-disabled-checkers '(
                       ;;                                    emacs-lisp-checkdoc
                       ;;                                    ))
+                      )) t)
+
+(add-hook 'web-mode-hook
+          (function (lambda ()
+                      (setq web-mode-markup-indent-offset 2)
+                      (setq web-mode-css-indent-offset 2)
+                      (setq web-mode-code-indent-offset 2)
                       )) t)

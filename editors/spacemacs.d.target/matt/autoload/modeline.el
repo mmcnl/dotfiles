@@ -9,6 +9,10 @@
 (setq spaceline-buffer-encoding-abbrev-p t)
 (setq spaceline-hud-p nil)
 
+(setq display-time-load-average-threshold 3.0)
+(setq display-time-format "%l:%M%p")
+(display-time-mode)
+
 ;; extracted from http://stackoverflow.com/a/8191130
 (defvar my-mode-line-buffer-line-count "")
 (make-variable-buffer-local 'my-mode-line-buffer-line-count)

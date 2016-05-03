@@ -1,14 +1,6 @@
 (setq ruby-insert-encoding-magic-comment nil)
 
-(defadvice avy-goto-word-or-subword-1 (before update-syntax-before activate)
-  "treat underscores as punctuation"
-  (when (derived-mode-p 'ruby-mode)
-    (modify-syntax-entry ?_ "." ruby-mode-syntax-table)
-    )
-  )
-(defadvice avy-goto-word-or-subword-1 (after update-syntax-after activate)
-  "treat underscores as parts of words"
-  )
+(spacemacs|diminish rubocop-mode "" " RuboCop")
 
 (add-to-list 'auto-mode-alist '("\\pryrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Berksfile\\'" . ruby-mode))
@@ -27,42 +19,14 @@
                                                          ))
                       (setq company-dabbrev-code-other-buffers 'all)
                       (make-local-variable 'company-backends)
-                      (setq company-backends '(
-                                               (
+                      (setq company-backends '((
                                                 company-etags
                                                 company-dabbrev
                                                 company-dabbrev-code
                                                 company-yasnippet
                                                 company-keywords
-                                                )))
-                      )) t)
+                                                ))))) t)
 
 (evil-leader/set-key-for-mode 'ruby-mode "e" 'xmpfilter)
 (evil-leader/set-key-for-mode 'ruby-mode "B" 'ruby-beautify-region-or-buffer)
 (evil-leader/set-key-for-mode 'ruby-mode "xx" 'ruby-autocorrect-file)
-
-(spacemacs|diminish rubocop-mode "" " RuboCop")
-
-(defun ruby-autocorrect-file ()
-  "Tidy ruby file"
-  (interactive)
-  (save-buffer)
-  (spacemacs/indent-region-or-buffer)
-  (rubocop-autocorrect-current-file)
-  )
-
-(defun xmpfilter ()
-  "Replace the current region (or the whole buffer, if none) with the output
-of xmpfilter"
-  (interactive)
-  (let ((beg (if (region-active-p) (region-beginning) (point-min)))
-        (end (if (region-active-p) (region-end) (point-max))))
-    (shell-command-on-region beg end "xmpfilter" nil 'replace)))
-
-(defun ruby-beautify-region-or-buffer ()
-  "Replace the current region (or the whole buffer, if none) with the output
-of ruby-beautify"
-  (interactive)
-  (let ((beg (if (region-active-p) (region-beginning) (point-min)))
-        (end (if (region-active-p) (region-end) (point-max))))
-    (shell-command-on-region beg end "ruby-beautify" nil 'replace)))

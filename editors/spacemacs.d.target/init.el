@@ -7,9 +7,6 @@ values."
   (setq-default
    dotspacemacs-elpa-https nil
    dotspacemacs-distribution 'spacemacs
-   ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
      (auto-completion :variables
@@ -18,11 +15,11 @@ values."
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory nil)
-     (git :variables git-magit-status-fullscreen t)
+     csv
      dash
-     ;; csv
      emacs-lisp
      fasd
+     (git :variables git-magit-status-fullscreen t)
      github
      html
      ipython-notebook
@@ -33,6 +30,7 @@ values."
      osx
      (python :variables python-test-runner 'pytest)
      ruby
+     (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
      terraform
      (theming :variables
