@@ -74,7 +74,7 @@ zs() {
 
 # ag -g - find files by filename
 agg() {
-    ag --unrestricted --depth 10 -g "${@:-.}" | agig
+    ag --unrestricted --depth 15 -g "${@:-.}" | agig
 }
 as() {
     agg . | selecta -s "${@:- }"
