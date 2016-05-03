@@ -31,3 +31,16 @@
   (replace-regexp-in-string "[<>]" "" (s-trim (evil-state-property evil-state :tag t)))
   :when (bound-and-true-p evil-local-mode))
 
+;; prevent the Helm title from being highlighted
+(defface my-spaceline-highlight-face
+  `((t (:inherit 'font-lock-comment-face :italic nil)))
+  "Default highlight face for spaceline."
+  :group 'spaceline)
+
+(defun set-my-spaceline-highlight-face ()
+  "Custom highlight face function."
+  'my-spaceline-highlight-face)
+
+(setq spaceline-highlight-face-func 'set-my-spaceline-highlight-face)
+
+;; see also themes.el for more spaceline customizations

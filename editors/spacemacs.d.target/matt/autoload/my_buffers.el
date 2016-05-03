@@ -40,7 +40,6 @@ A special buffer is one whose name starts with an asterisk. And `TAGS'."
   (let ((name (buffer-name buffer)))
     (or (string-match "^ ?\\*" name)
         (equal "TAGS" name)
-        (equal "todo.org" name)
         )))
 
 (defun mybuffers-normal-buffer-p (buffer)

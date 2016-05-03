@@ -1,9 +1,10 @@
-(setq projectile-require-project-root t)
+(with-eval-after-load 'projectile
+  (setq projectile-require-project-root t)
 
-(add-to-list 'projectile-globally-ignored-files '"TAGS")
-(add-to-list 'projectile-globally-ignored-files '"undo-tree")
-(add-to-list 'projectile-globally-ignored-directories '"__pycache__")
-
+  (add-to-list 'projectile-globally-ignored-files '"TAGS")
+  (add-to-list 'projectile-globally-ignored-files '"undo-tree")
+  (add-to-list 'projectile-globally-ignored-directories '"__pycache__")
+  )
 ;; (defun projectile-idle-regenerate-tags ()
 ;;   "Regenerate the project's tags if in a project"
 ;;   (when (projectile-project-p)
@@ -14,10 +15,6 @@
 ;; (setq projectile-idle-timer (run-with-idle-timer 300 t 'projectile-invalidate-cache))
 ;; (setq tags-revert-without-query 1)
 
-(run-with-timer 0 (* 20 60) 'recentf-cleanup)
-
-;; run after n seconds of idle time
-(setq recentf-auto-cleanup 120)
 ;;
 ;; from here to the end of the file, set up a custom helm-projectile find files command
 ;;
@@ -46,7 +43,6 @@
                            (t (cons (propertize disp 'face 'helm-ff-file)
                                     abs))))))
 
-(require 'helm)
 (require 'helm-projectile)
 
 (defvar helm-source-projectile-recently-modified-files
@@ -72,4 +68,23 @@
       (helm-projectile-custom-find)
     (helm-recentf)
     )
+  )
+
+(defun projectile-kill-other-buffers ()
+  "Kill all buffers from other projects."
+  (interactive)
+  (let ((name (projectile-project-name))
+        (buffers (projectile-project-other-buffers)))
+    (if (yes-or-no-p
+         (format "Are you sure you want to kill %d buffer(s) for buffers other than '%s'? "
+                 (length buffers) name))
+        ;; we take care not to kill indirect buffers directly
+        ;; as we might encounter them after their base buffers are killed
+        (mapc #'kill-buffer (-remove 'buffer-base-buffer buffers)))))
+
+(defun projectile-project-other-buffers ()
+  "Get a list of project buffers."
+  (interactive)
+  (require 'cl)
+  (set-difference (buffer-list)(projectile-project-buffers))
   )

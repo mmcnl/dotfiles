@@ -1,38 +1,13 @@
-(with-eval-after-load 'linum-relative
-  (setq-default
-   linum-relative-current-symbol "-"
-   linum-format "%2s"
-   linum-relative-format "%2s "
-   linum-delay t)
-  )
-
-(setq hl-paren-colors '("SpringGreen3"
-                        "DarkGreen"
-                        "orange"
-                        "blue"
-                        "yellow"
-                        "SkyBlue"
-                        ))
-
-(setq-default fringe-indicator-alist '((truncation . (right-arrow right-arrow right-arrow)) (continuation . right-curly-arrow)))
-
 (defun matt-cycle-themes()
   (interactive)
+  (when (equal major-mode 'org-mode)
+    ;; fix an issue with org-hide not hiding leading stars
+    (org-indent-mode)
+    (org-indent-mode)
+    )
   (spacemacs/cycle-spacemacs-theme)
   (matt-customize-themes)
   )
-
-;; prevent the Helm title from being highlighted
-(defface my-spaceline-highlight-face
-  `((t (:inherit 'font-lock-comment-face :italic nil)))
-  "Default highlight face for spaceline."
-  :group 'spaceline)
-
-(defun set-my-spaceline-highlight-face ()
-  "Custom highlight face function."
-  'my-spaceline-highlight-face)
-
-(setq spaceline-highlight-face-func 'set-my-spaceline-highlight-face)
 
 (defun matt-customize-themes()
   ;; mods common to all themes -- add theme specific mods at end of this file
@@ -41,8 +16,6 @@
    '(link ((t (:weight normal :foreground nil))))
    '(linum ((t (:inherit default :foreground "#888" :height 0.75))))
    '(linum-relative-current-face ((t (:inherit linum))))
-   '(neo-dir-link-face ((t (:inherit default))))
-   '(neo-file-link-face ((t (:inherit neo-link-dir-face :height 0.85))))
    '(show-paren-match ((t (:foreground "yellow" :background "dim gray"))))
 
    '(font-lock-comment-face ((t ( :slant italic))))
@@ -78,41 +51,63 @@
    )
   )
 
-;; TODO: move common mods above to matt-customize-themes
-;; Theme modifications
 (setq-default
  theming-modifications
  '(
    (atom-one-dark
-
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    (diff-refine-added :inherit magit-diff-added :background "#3E4450" )
+    (diff-refine-removed :inherit magit-diff-removed :background "#3E4450" )
     (helm-source-header :foreground "#3E4450" :weight normal)
-
-    (powerline-active1 :inherit font-lock-comment-face :italic nil :box (:color "#3E4450"))
-    (mode-line :inherit powerline-active1 :foreground nil :weight normal :box (:color "#3E4450"))
-    (powerline-active2 :inherit powerline-active1 :background nil  :box (:color "#3E4450"))
-
     (magit-diff-added :inherit default :foreground "#7FC682" :background nil)
     (magit-diff-added-highlight :inherit default :foreground "#7FC682" :background nil)
-    (diff-refine-added :inherit magit-diff-added :background "#3E4450" )
-
     (magit-diff-removed :inherit default :foreground "#E16262" :background nil)
     (magit-diff-removed-highlight :inherit default :foreground "#E16262" :background nil)
-    (diff-refine-removed :inherit magit-diff-removed :background "#3E4450" )
-
+    (mode-line :inherit powerline-active1 :foreground nil :weight normal :box (:color "#3E4450"))
+    (neo-file-link-face :foreground "#8D9EB3" :height 0.85)
+    (neo-dir-link-face :foreground "#888")
+    (org-hide :foreground "#282C34") ;; match background color to hide stars
+    (org-level-1 :foreground "#D19A66")
+    (org-level-2 :foreground "#BB5D66")
+    (org-level-3 :foreground "#906CA2")
+    (org-level-4 :foreground "#6A6F7C")
+    (org-level-5 :foreground "#5A4369")
+    (powerline-active1 :inherit font-lock-comment-face :italic nil :box (:color "#3E4450"))
+    (powerline-active2 :inherit powerline-active1 :background nil  :box (:color "#3E4450"))
     )
-   (solarized-light
 
+   (solarized-light
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    (diff-refine-added :inherit magit-diff-added :foreground "#859900" )
+    (diff-refine-removed :inherit magit-diff-added :foreground "#DC322F" )
     (magit-diff-added :inherit default :foreground "#859821" :background "#EEE8D6")
     (magit-diff-added-highlight :inherit default :foreground "#859821" :background "#EEE8D6")
-    (diff-refine-added :inherit magit-diff-added :foreground "#859900" )
-
     (magit-diff-removed :inherit default :foreground "red" :background "#EEE8D6")
     (magit-diff-removed-highlight :inherit default :foreground "red" :background "#EEE8D6")
-    (diff-refine-removed :inherit magit-diff-added :foreground "#DC322F" )
-
+    (neo-dir-link-face :foreground "#268BD2")
+    (neo-file-link-face :height 0.85)
+    (org-hide :foreground "#FDF6E4") ;; match background color to hide stars
     )
    )
  )
 ;; work around custom themes not being applied at Emacs startup
 (spacemacs/load-theme 'atom-one-dark)
 (matt-customize-themes)
+
+(with-eval-after-load 'linum-relative
+  (setq-default
+   linum-relative-current-symbol "-"
+   linum-format "%2s"
+   linum-relative-format "%2s "
+   linum-delay t)
+  )
+
+(setq hl-paren-colors '("SpringGreen3"
+                        "DarkGreen"
+                        "orange"
+                        "blue"
+                        "yellow"
+                        "SkyBlue"
+                        ))
+
+(setq-default fringe-indicator-alist '((truncation . (right-arrow right-arrow right-arrow)) (continuation . right-curly-arrow)))

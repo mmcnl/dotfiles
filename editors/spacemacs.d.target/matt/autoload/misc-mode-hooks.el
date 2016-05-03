@@ -12,14 +12,6 @@
                       (whitespace-mode -1)
                       )) t)
 
-(add-hook 'org-mode-hook
-          (function (lambda ()
-                      (flycheck-mode -1)
-                      (whitespace-mode -1)
-                      (org-indent-mode)
-                      (spacemacs/toggle-aggressive-indent-off)
-                      )) t)
-
 (add-hook 'text-mode-hook
           (function (lambda ()
                       (visual-line-mode 1)

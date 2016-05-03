@@ -116,6 +116,14 @@ user code."
 
   ;; stop useless warning about ENV vars being set in bashrc/zshrc
   (setq exec-path-from-shell-check-startup-files nil)
+
+  ;; this needs to be here to trigger spacemaces to add to ruby-mode-hook
+  (setq ruby-version-manager 'chruby)
+
+  ;; define these as noops to prevent packages from adding useless menu items
+  (defun easy-menu-do-define (symbol maps doc menu))
+  (defun easy-menu-change (path name items &optional before map))
+  (defun easy-menu-add-item (map path item &optional before))
   )
 
 (defun dotspacemacs/user-config ()

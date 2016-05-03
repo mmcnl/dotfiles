@@ -58,8 +58,6 @@ KEY must be given in `kbd' notation."
 (define-key evil-normal-state-map (kbd "]h") 'git-gutter+-next-hunk)
 (define-key evil-normal-state-map (kbd "[h") 'git-gutter+-previous-hunk)
 
-(global-set-key (kbd "C-0") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))
-
 (defun git-add-all-commit() (interactive)(save-buffer)(shell-command "git add --all")(magit-commit-popup))
 (defun git-fetch() (interactive)(shell-command "git fetch --verbose"))
 (defun git-short-status() (interactive)(shell-command "git short-status | column -t"))
@@ -81,6 +79,7 @@ KEY must be given in `kbd' notation."
   "bd" 'kill-this-buffer
   "be" 'erase-buffer
   "bn" 'new-empty-buffer
+  "ce" 'clear-previous-comint-buffer
   "dd" 'dash-at-point
   "dg" 'google-this-noconfirm
   "ee" 'eval-expression
@@ -102,6 +101,7 @@ KEY must be given in `kbd' notation."
   "gX" 'version-control/revert-hunk
   "ha" 'helm-apropos
   "pm" 'helm-projectile-find-recently-modified
+  "pK" 'projectile-kill-other-buffers
   "sr" 'custom-evil-search-replace
   "tn" 'linum-mode
   "tt" 'matt-cycle-themes
@@ -130,7 +130,8 @@ KEY must be given in `kbd' notation."
 (define-key evil-normal-state-map (kbd "SPC yp") (simulate-key-press "v a p SPC yy") )
 
 ;; insert newline and move cursor down with line
-(define-key evil-normal-state-map (kbd "RET") (simulate-key-press "O <escape>") )
+
+(define-key evil-normal-state-map (kbd "RET") 'insert-and-indent-line-above )
 
 (setq-default evil-escape-key-sequence "fd")
 (setq-default evil-escape-delay 0.2)

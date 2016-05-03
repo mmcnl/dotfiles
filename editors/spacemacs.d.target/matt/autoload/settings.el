@@ -42,19 +42,20 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
 ;; http://emacs.stackexchange.com/questions/14802/never-keep-current-list-of-tags-tables-also
 (setq tags-add-tables nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq org-return-follows-link t)
 
 ;; (setq js2-basic-offset 2)
 
 ;; Ignore .DS_Store files with ido mode
 (add-to-list 'ido-ignore-files "\\.DS_Store")
-
-;; Makes (setq org-return-follows-link t) work
-;; (define-key evil-normal-state-map (kbd "RET") 'org-return)
 
 ;; select jump targets from all windows
 (setq avy-all-windows t)
@@ -96,3 +97,23 @@
 (add-hook 'sh-mode-hook
           (lambda ()
             (sh-set-shell "bash")))
+
+(run-with-timer 0 (* 20 60) 'recentf-cleanup)
+
+;; run after n seconds of idle time
+(setq recentf-auto-cleanup 120)
+
+(spacemacs/toggle-visual-line-navigation-on)
+
+(setq display-time-load-average-threshold 3.0)
+(setq display-time-format "%l:%M%p")
+(display-time-mode)
+
+(defun clear-previous-comint-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1))
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer))
+  (switch-to-buffer (other-buffer (current-buffer) 1))
+  )
+(setq comint-prompt-read-only t)
