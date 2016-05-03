@@ -12,6 +12,9 @@ setopt clobber
 # http://zsh.sourceforge.net/Intro/intro_16.html
 setopt ignoreeof
 
+# http://stackoverflow.com/a/11200998/1163042
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 autoload -U colors && colors
 
 # don't complain about vars defined by zsh plugins
@@ -28,6 +31,16 @@ zle_highlight=(paste:fg=blue)
 # shellcheck disable=SC2154
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
+
+# set up extra completions but don't enable by default as they're slow
+# (most are set up automatically by zprezto)
+# warn if custom directory is not set up
+[ -d "$HOME/.zsh-completions" ] || echo "$0: $HOME/.zsh-completions not available"
+
+# to enable, execute: $ compinit
+
+fpath+="$HOME/.zsh-completions/conda-zsh-completion"
+fpath+="$HOME/.zsh-completions/pip-completion/"
 
 ############ zsh prompt ############
 precmd() {
