@@ -5,6 +5,9 @@
 ;; check back later revisit https://github.com/gregsexton/ob-ipython/issues/28
 (setq python-shell-completion-native-enable nil)
 
+;; prevent warnings when bulk killing buffers
+(setq-default  anaconda-mode-process-fail-hook nil)
+
 ;;;;;;;;; virtual environments ;;;;;;;;
 (pyvenv-mode 1)
 (setq pyvenv-tracking-ask-before-change t)
