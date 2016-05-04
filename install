@@ -18,13 +18,13 @@ def install_dotfiles():
             link_name = '.' + target_name[:-len('.target')]
             link_path = os.path.join(home_dir, link_name)
             # os.path.exists returns False for broken symlinks
-            if os.path.exists(link_path) and not overwrite_existing(link_path):
+            if os.path.exists(link_path) and not _overwrite_link(link_path):
                 continue
             _create_symlink(root, target_name, link_path)
     print("\ndone")
 
 
-def overwrite_existing(link_path):
+def _overwrite_link(link_path):
     if not os.path.islink(link_path):
         print("{}{} exists but is not a symlink. Skipping...{}".format(
             WARNING, link_path, RESET_COLOR))
