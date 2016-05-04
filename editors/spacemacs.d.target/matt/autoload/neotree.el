@@ -3,7 +3,8 @@
 (setq-default neo-window-width 30)
 
 (setq-default neo-show-hidden-files t)
-(add-to-list 'neo-hidden-regexp-list "\\TAGS$")
+(add-to-list 'neo-hidden-regexp-list "TAGS$")
+(add-to-list 'neo-hidden-regexp-list "__pycache__")
 
 ;; patched to allow everything but .DS_Store
 ;; this must be run after neotree loads in order to monkeypatch
@@ -22,6 +23,8 @@
   (kbd "|") 'custom-neotree-enter-vertical-split-hide
   (kbd "RET") 'custom-neotree-enter-hide
   (kbd "TAB") 'custom-neotree-peek)
+
+(evil-leader/set-key "fk" 'neotree-find-maybe-in-project)
 
 (defun neotree-find-maybe-in-project ()
   (interactive)

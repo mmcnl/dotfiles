@@ -17,15 +17,16 @@
                                                          ruby-rubocop
                                                          chef-foodcritic
                                                          ))
-                      (setq company-dabbrev-code-other-buffers 'all)
-                      (make-local-variable 'company-backends)
-                      (setq company-backends '((
-                                                company-etags
-                                                company-dabbrev
-                                                company-dabbrev-code
-                                                company-yasnippet
-                                                company-keywords
-                                                ))))) t)
+                      ;; (setq company-dabbrev-code-other-buffers 'all)
+                      ;; (make-local-variable 'company-backends)
+                      ;; (setq company-backends '((
+                      ;;                           company-etags
+                      ;;                           company-dabbrev
+                      ;;                           company-dabbrev-code
+                      ;;                           company-yasnippet
+                      ;;                           company-keywords
+                      ;;                           )))
+                      )) t)
 
 (evil-leader/set-key-for-mode 'ruby-mode "e" 'xmpfilter)
 (evil-leader/set-key-for-mode 'ruby-mode "B" 'ruby-beautify-region-or-buffer)

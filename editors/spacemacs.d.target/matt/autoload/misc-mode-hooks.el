@@ -41,9 +41,9 @@
           (function (lambda ()
                       (aggressive-indent-mode 1)
                       (flycheck-mode -1)
-                      ;; (setq flycheck-disabled-checkers '(
-                      ;;                                    emacs-lisp-checkdoc
-                      ;;                                    ))
+                      (setq flycheck-disabled-checkers '(
+                                                         emacs-lisp-checkdoc
+                                                         ))
                       )) t)
 
 (add-hook 'web-mode-hook
@@ -51,4 +51,18 @@
                       (setq web-mode-markup-indent-offset 2)
                       (setq web-mode-css-indent-offset 2)
                       (setq web-mode-code-indent-offset 2)
+                      )) t)
+
+
+(setq ein:notebook-kill-buffer-ask nil)
+;; Start completion when inserting a dot.
+(setq ein:complete-on-dot t)
+(setq ein:use-auto-complete-superpack t)
+
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+(add-hook 'ein:notebook-multilang-mode-hook
+          (function (lambda ()
+                      (visual-line-mode)
+                      (auto-complete-mode)
+                      (define-key ac-completing-map (kbd "C-l") 'ac-expand)
                       )) t)

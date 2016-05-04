@@ -1,12 +1,3 @@
-;; basic editing
-(delete-selection-mode 1)
-
-;; navigation
-(global-evil-matchit-mode 1)
-(setq avy-keys '(?f ?d ?s ?a ?g ?h ?u ?k ?l ?q ?w ?e ?r ?t ?y ?i ?o ?j))
-;; select jump targets from all windows
-(setq avy-all-windows t)
-
 ;; text appearance
 (show-paren-mode 1)
 (show-smartparens-global-mode -1)

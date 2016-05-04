@@ -1,3 +1,4 @@
+(global-set-key [(control tab)]  'mybuffers-switch)
 
 (defvar mybuffers-repetitions 0
   "Number of times `mybuffers-switch' was repeated.")
@@ -25,7 +26,7 @@ You should bind this function to Ctrl-Tab or something."
   (switch-to-buffer (elt mybuffers-list 0))
   (mybuffers-reorder-buffer-list
    (append mybuffers-list
-       (mybuffers-filter-buffers 'mybuffers-special-buffer-p))))
+           (mybuffers-filter-buffers 'mybuffers-special-buffer-p))))
 
 (defun mybuffers-filter-buffers (filter-function)
   "Returns a list of buffers that match FILTER-FUNCTION."

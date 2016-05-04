@@ -31,6 +31,7 @@ values."
      (python :variables python-test-runner 'pytest)
      ruby
      (spell-checking :variables spell-checking-enable-by-default nil)
+     sql
      syntax-checking
      terraform
      (theming :variables
@@ -41,10 +42,11 @@ values."
      yaml
      )
    dotspacemacs-additional-packages '(
-                                      google-this
-                                      dired-single
-                                      undohist
                                       atom-one-dark-theme
+                                      company-jedi
+                                      dired-single
+                                      google-this
+                                      undohist
                                       vimrc-mode
                                       )
    dotspacemacs-excluded-packages '(

@@ -18,6 +18,31 @@
 ;; https://github.com/justbur/evil-magit
 (setq evil-magit-want-horizontal-movement t)
 
+;;;;;;;;;;;;;;;; keybindings ;;;;;;;;;;;;;;;;;;;
+
+(with-eval-after-load 'magit
+  (define-key magit-mode-map (kbd "1") 'magit-section-show-level-1-all)
+  (define-key magit-mode-map (kbd "2") 'magit-section-show-level-2-all)
+  (define-key magit-mode-map (kbd "3") 'magit-section-show-level-3-all)
+  (define-key magit-mode-map (kbd "4") 'magit-section-show-level-4-all)
+  )
+
+(define-key evil-normal-state-map (kbd "]h") 'git-gutter+-next-hunk)
+(define-key evil-normal-state-map (kbd "[h") 'git-gutter+-previous-hunk)
+
+(evil-leader/set-key
+  "as" 'stree
+  "gB" 'tig-blame-current-file
+  "gl" 'magit-log-all
+  "gP" 'git-push
+  "gS" 'git-short-status
+  "gU" 'vc-revert
+  "ga" 'git-add-all-commit
+  "gf" 'git-fetch
+  "gs" 'magit-status
+  "gv" 'vc-diff
+  "gX" 'version-control/revert-hunk
+  )
 ;;;;;;;;;;;;;;;; advice ;;;;;;;;;;;;;;;;;;;
 
 (defadvice vc-buffer-sync (before save-before-new activate)
@@ -55,6 +80,14 @@
   (text-scale-set -1)
   )
 
+;;;;;;;;;;;;;;; functions ;;;;;;;;;;;;;;;;
+(defun git-add-all-commit() (interactive)(save-some-buffers t)(shell-command "git add --all")(magit-commit-popup))
+(defun git-fetch() (interactive)(shell-command "git fetch --verbose"))
+(defun git-short-status() (interactive)(shell-command "git short-status | column -t"))
+(defun git-push() (interactive)(shell-command "git push --verbose"))
+(defun whitespace-cleanup-buffer() (interactive)(ws-butler-clean-region (point-min)(point-max)))
+(defun new-empty-buffer() (interactive)(spacemacs/new-empty-buffer)(text-mode))
+
 (defun send-to-terminal(command)
   (interactive)
   (shell-command (format "osascript -e 'tell application \"iTerm\"' -e 'tell current window' -e 'set newTab to (create tab with default profile)' -e 'tell newTab' -e 'activate current session' -e 'tell current session' -e 'write text \"%s\"' -e 'end tell' -e 'end tell' -e 'end tell' -e 'end tell'" command))
@@ -68,3 +101,8 @@
   (interactive)
   (send-to-terminal (format "%s tig blame %s" (tig-cd-git-root) (buffer-file-name)))
   )
+
+(defun stree ()
+  "opens SourceTree"
+  (interactive)
+  (shell-command "stree"))

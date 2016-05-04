@@ -17,9 +17,17 @@
 
 (defun conda-env-update() (interactive)(shell-command "conda env update"))
 
+(setq jedi:tooltip-method '(popup))
+;; (setq jedi:tooltip-method nil)
+(setq jedi:complete-on-dot t)
+(setq jedi:get-in-function-call-timeout 5000)
+(setq jedi:get-in-function-call-delay 500)
+
 ;;;;;;;;;;;;; hooks ;;;;;;;;;;;;;;;;
 (add-hook 'python-mode-hook
           (function (lambda ()
+                      (jedi:setup)
+                      (add-to-list 'company-backends 'company-jedi)
                       (setq flycheck-disabled-checkers '(
                                                          ;; python-flake8
                                                          ))
