@@ -50,7 +50,7 @@ pk() {
 }
 
 alias ag='ag --noheading --hidden --smart-case'
-alias agl='ag -l'
+alias agl='au -l'
 
 # ignore noisy files
 agig() {
