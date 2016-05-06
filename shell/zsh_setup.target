@@ -13,7 +13,7 @@ setopt clobber
 setopt ignoreeof
 
 # http://stackoverflow.com/a/11200998/1163042
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 autoload -U colors && colors
 
