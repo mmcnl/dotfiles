@@ -15,6 +15,7 @@ values."
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory nil)
+     spacemacs-helm
      csv
      dash
      emacs-lisp
@@ -28,6 +29,7 @@ values."
      matt
      org
      osx
+     pdf-tools
      (python :variables python-test-runner 'pytest)
      ruby
      (spell-checking :variables spell-checking-enable-by-default nil)
@@ -95,7 +97,7 @@ values."
    dotspacemacs-active-transparency 100
    dotspacemacs-inactive-transparency 100
    dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'current
@@ -106,6 +108,7 @@ values."
    dotspacemacs-check-for-update nil
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    dotspacemacs-ex-substitute-global t
+   dotspacemacs-retain-visual-state-on-shift nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -122,11 +125,6 @@ user code."
 
   ;; this needs to be here to trigger spacemaces to add to ruby-mode-hook
   (setq ruby-version-manager 'chruby)
-
-  ;; define these as noops to prevent packages from adding useless menu items
-  (defun easy-menu-do-define (symbol maps doc menu))
-  (defun easy-menu-change (path name items &optional before map))
-  (defun easy-menu-add-item (map path item &optional before))
   )
 
 (defun dotspacemacs/user-config ()

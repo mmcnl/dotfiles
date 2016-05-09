@@ -1,4 +1,7 @@
 (with-eval-after-load 'flycheck
+  ;; disable tooltips
+  (flycheck-pos-tip-mode -1)
+
   ;; disable by default; re-enable in prog-mode-hook
   (global-flycheck-mode -1)
 
