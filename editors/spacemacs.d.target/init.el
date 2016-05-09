@@ -130,9 +130,5 @@ user code."
 
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
-  (message "loading config files from matt layer...")
-  ;; load these after all other spacemacs layers have loaded
-  (mapc 'load (file-expand-wildcards "~/.emacs.d/private/matt/deferred/*.el"))
-  ;; remove compile window
-  (delete-other-windows)
+  (matt-load-deferred-config-files)
   )
