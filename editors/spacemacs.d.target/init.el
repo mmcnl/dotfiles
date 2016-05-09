@@ -57,6 +57,7 @@ values."
                                     spray
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
+                                    spaceline
                                     )
    dotspacemacs-delete-orphan-packages nil
    ))
