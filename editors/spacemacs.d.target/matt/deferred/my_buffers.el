@@ -37,10 +37,20 @@ You should bind this function to Ctrl-Tab or something."
 
 (defun mybuffers-special-buffer-p (buffer)
   "Returns t if BUFFER is one of the special buffers, `nil' otherwise.
-A special buffer is one whose name starts with an asterisk. And `TAGS'."
+A special buffer is one whose name starts with an asterisk. And a
+few others listed here."
   (let ((name (buffer-name buffer)))
-    (or (string-match "^ ?\\*" name)
-        (equal "TAGS" name)
+    (and (not (whitelist-buffer-p buffer))
+         (or (string-match "^ ?\\*" name)
+             (string-match "ein:mlf-fontification" name)
+             (equal "TAGS" name)
+             ))))
+
+(defun whitelist-buffer-p (buffer)
+  "Returns t if BUFFER is one of the whitelisted buffers, `nil' otherwise."
+  (let ((name (buffer-name buffer)))
+    (or (string-match "ein:notebooklist 88" name)
+        (string-match "ein: 88" name)
         )))
 
 (defun mybuffers-normal-buffer-p (buffer)
