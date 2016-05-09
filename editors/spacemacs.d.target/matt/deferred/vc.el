@@ -80,6 +80,13 @@
   (text-scale-set -1)
   )
 
+;; fancy git icon
+(defadvice vc-mode-line (after strip-backend () activate)
+  (when (stringp vc-mode)
+    (let ((gitlogo (replace-regexp-in-string "^ Git." "Ⓖ " vc-mode)))
+      (setq vc-mode gitlogo))))
+
+
 ;;;;;;;;;;;;;;; functions ;;;;;;;;;;;;;;;;
 (defun git-add-all-commit() (interactive)(save-some-buffers t)(shell-command "git add --all")(magit-commit-popup))
 (defun git-fetch() (interactive)(shell-command "git fetch --verbose"))
