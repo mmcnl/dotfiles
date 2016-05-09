@@ -6,7 +6,9 @@ filetype plugin indent on
 set history=2000
 set updatetime=500
 set autoread " reload files changed outside of Vim
-set hidden
+set hidden " allow buffers to persist when unloaded
+set relativenumber
+set confirm " prompt to save files
 
 """"""""""""""""""""""""""""""""""""""""""""" status line
 " always show
@@ -71,17 +73,15 @@ set listchars=tab:▸\ ,trail:·,extends:▸
 nnoremap <leader>j= mzgg=G`z
 
 """"""""""""""""""""""""""""""""""""""""""""" quickly add blank lines
+" mimic unimpaired...
 " add blank line above
-nnoremap <CR> O<ESC>
-" mimic unimpaired; add blank lines below
+nnoremap [<Space> O<ESC>
+" add blank lines below
 nnoremap ]<Space> mmo<ESC>`m
 
-""""""""""""""""""""""""""""""""""""""""""""" numbering
-set relativenumber
-set confirm
-
 """"""""""""""""""""""""""""""""""""""""""""" abbreviations
-abbr pry;   require 'pry'; binding.pry; true
+abbr pry   require 'pry'; binding.pry; true
+abbr ipdb  from ipdb import set_trace; set_trace()
 
 """"""""""""""""""""""""""""""""""""""""""""" escape
 " inspired by https://github.com/syl20bnr/evil-escape
