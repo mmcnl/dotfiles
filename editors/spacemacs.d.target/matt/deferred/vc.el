@@ -84,8 +84,7 @@
 (defadvice vc-mode-line (after strip-backend () activate)
   (when (stringp vc-mode)
     (let ((gitlogo (replace-regexp-in-string "^ Git." "Ⓖ " vc-mode)))
-      (setq vc-mode gitlogo))))
-
+      (setq vc-mode (replace-regexp-in-string " master" "" gitlogo)))))
 
 ;;;;;;;;;;;;;;; functions ;;;;;;;;;;;;;;;;
 (defun git-add-all-commit() (interactive)(save-some-buffers t)(shell-command "git add --all")(magit-commit-popup))
