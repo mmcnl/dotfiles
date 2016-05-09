@@ -46,8 +46,10 @@ values."
                                       company-jedi
                                       dired-single
                                       google-this
+                                      flycheck-mypy
                                       undohist
                                       vimrc-mode
+                                      powerline
                                       )
    dotspacemacs-excluded-packages '(
                                     evil-search-highlight-persist

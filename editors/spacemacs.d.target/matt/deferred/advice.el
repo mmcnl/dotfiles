@@ -13,3 +13,14 @@
   "Save buffer first."
   (save-buffer)
   )
+
+(defadvice spacemacs/python-execute-file (before save-buffer activate)
+  "Save buffer first."
+  (save-buffer)
+  )
+
+(defadvice ein:pager--open-with-text (after scale-text activate)
+  "Scale text"
+  (text-scale-set -1)
+  (visual-line-mode)
+  )

@@ -58,7 +58,6 @@
 ;; Start completion when inserting a dot.
 (setq ein:complete-on-dot t)
 (setq ein:use-auto-complete-superpack t)
-
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (add-hook 'ein:notebook-multilang-mode-hook
           (function (lambda ()
@@ -66,3 +65,5 @@
                       (auto-complete-mode)
                       (define-key ac-completing-map (kbd "C-l") 'ac-expand)
                       )) t)
+(spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+  "s" 'ein:console-open )
