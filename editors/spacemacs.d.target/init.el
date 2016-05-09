@@ -51,7 +51,6 @@ values."
                                       flycheck-mypy
                                       undohist
                                       vimrc-mode
-                                      powerline
                                       )
    dotspacemacs-excluded-packages '(
                                     evil-search-highlight-persist
@@ -59,7 +58,6 @@ values."
                                     spray
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
-                                    spaceline
                                     )
    dotspacemacs-delete-orphan-packages nil
    ))
