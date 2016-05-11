@@ -1,6 +1,8 @@
 (with-eval-after-load 'spaceline
-
+  ;; https://github.com/TheBB/spaceline#powerline-separators
   (setq powerline-default-separator 'bar)
+  (spaceline-compile)
+
   (setq spaceline-evil-state-p t)
   (setq spaceline-workspace-number-p nil)
   (setq spaceline-window-number-p t)
@@ -31,17 +33,17 @@
   (add-hook 'find-file-hook 'my-mode-line-count-lines)
   (add-hook 'after-save-hook 'my-mode-line-count-lines)
   (add-hook 'after-revert-hook 'my-mode-line-count-lines)
-  (add-hook 'dired-after-readin-hook 'my-mode-line-count-lines)
+  ;; (add-hook 'dired-after-readin-hook 'my-mode-line-count-lines)
 
   (spaceline-define-segment line-column
     "The current line and column numbers."
     (concat "%2c %4l" my-mode-line-buffer-line-count))
 
   ;; strip the <> from the Evil state at left edge of modeline
-  (spaceline-define-segment evil-state
-    "The current evil state.  Requires `evil-mode' to be enabled."
-    (replace-regexp-in-string "[<>]" "" (s-trim (evil-state-property evil-state :tag t)))
-    :when (bound-and-true-p evil-local-mode))
+  ;; (spaceline-define-segment evil-state
+  ;;   "The current evil state.  Requires `evil-mode' to be enabled."
+  ;;   (replace-regexp-in-string "[<>]" "" (s-trim (evil-state-property evil-state :tag t)))
+  ;;   :when (bound-and-true-p evil-local-mode))
 
   ;; prevent the Helm title from being highlighted
   (defface my-spaceline-highlight-face
