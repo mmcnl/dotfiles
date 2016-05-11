@@ -43,7 +43,7 @@
                            (t (cons (propertize disp 'face 'helm-ff-file)
                                     abs))))))
 
-(require 'helm-projectile)
+(with-eval-after-load 'helm-projectile
 
 (defvar helm-source-projectile-recently-modified-files
   (helm-build-sync-source "Recently Modified in Project"
@@ -60,6 +60,7 @@
                                          helm-source-recentf
                                          helm-source-buffer-not-found)
                          "Custom find file: " t)
+)
 
 (defun custom-find-files ()
   (interactive)

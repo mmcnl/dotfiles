@@ -1,29 +1,29 @@
-(require 'neotree)
-(setq neo-theme 'arrow)
-(setq-default neo-window-width 30)
+(with-eval-after-load 'neotree
+  (setq neo-theme 'arrow)
+  (setq-default neo-window-width 30)
 
-(setq-default neo-show-hidden-files t)
-(add-to-list 'neo-hidden-regexp-list "TAGS$")
-(add-to-list 'neo-hidden-regexp-list "__pycache__")
+  (setq-default neo-show-hidden-files t)
+  (add-to-list 'neo-hidden-regexp-list "TAGS$")
+  (add-to-list 'neo-hidden-regexp-list "__pycache__")
 
-;; patched to allow everything but .DS_Store
-;; this must be run after neotree loads in order to monkeypatch
-(defun neo-util--walk-dir (path)
-  "Return the subdirectories and subfiles of the PATH."
-  (let* ((full-path (neo-path--file-truename path)))
-    (condition-case nil
-        (directory-files
-         path 'full "^\\([^.]\\|\\.[^D.][^S]\\).*")
-      ('file-error
-       (message "Walk directory %S failed." path)
-       nil))))
+  ;; patched to allow everything but .DS_Store
+  ;; this must be run after neotree loads in order to monkeypatch
+  (defun neo-util--walk-dir (path)
+    "Return the subdirectories and subfiles of the PATH."
+    (let* ((full-path (neo-path--file-truename path)))
+      (condition-case nil
+          (directory-files
+           path 'full "^\\([^.]\\|\\.[^D.][^S]\\).*")
+        ('file-error
+         (message "Walk directory %S failed." path)
+         nil))))
 
-(evilified-state-evilify neotree-mode neotree-mode-map
-  (kbd "-") 'custom-neotree-enter-horizontal-split-hide
-  (kbd "|") 'custom-neotree-enter-vertical-split-hide
-  (kbd "RET") 'custom-neotree-enter-hide
-  (kbd "TAB") 'custom-neotree-peek)
-
+  (evilified-state-evilify neotree-mode neotree-mode-map
+    (kbd "-") 'custom-neotree-enter-horizontal-split-hide
+    (kbd "|") 'custom-neotree-enter-vertical-split-hide
+    (kbd "RET") 'custom-neotree-enter-hide
+    (kbd "TAB") 'custom-neotree-peek)
+  )
 (evil-leader/set-key "fk" 'neotree-find-maybe-in-project)
 
 (defun neotree-find-maybe-in-project ()
