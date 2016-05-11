@@ -1,5 +1,9 @@
 ;; -*- mode: emacs-lisp -*-
 
+;; (add-to-list 'load-path "/Users/matt/dev/benchmark-init-el/")
+;; (require 'benchmark-init-loaddefs)
+;; (benchmark-init/activate)
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -128,4 +132,5 @@ user code."
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
   (matt-load-deferred-config-files)
+  ;; (benchmark-init/show-durations-tabulated)
   )
