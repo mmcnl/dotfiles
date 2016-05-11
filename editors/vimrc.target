@@ -15,7 +15,8 @@ set confirm " prompt to save files
 set laststatus=2
 " abbreviate status line messages; don't show intro or swp file warnings
 set shortmess+=atIA
-let &statusline='%<[%{&ft}]  %F  %m  %=%2c %3l/%L   %{strftime("%l:%M")} '
+" let &statusline='%<[%{&ft}]  %F  %m  %=%2c %3l/%L   %{strftime("%l:%M")} '
+let &statusline='%<[%{&ft}]  %F  %m  %=%2c %3l/%L '
 
 " change the status line based on mode
 au InsertEnter * hi statusline ctermfg=blue
@@ -98,15 +99,18 @@ set timeoutlen=500
 " switch to previous buffer
 nnoremap <leader><tab> <C-^>
 " buffer list
-" nnoremap <leader>bb :buffers<CR>:buffer<Space>
-" " close current buffer
+nnoremap <leader>bb :buffers<CR>:b<space>
+" close current buffer
 nnoremap <leader>bd :bdelete<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""" quitting
 nnoremap <leader>qs :xa<CR> " save all and quit
 nnoremap <leader>qq :qa<CR> " quit, ask if save needed
 nnoremap <leader>qQ :qa!<CR> " quit without saving
+
+""""""""""""""""""""""""""""""""""""""""""""" files
 nnoremap <leader>ff :e<Space>
+nnoremap <leader>fj :Explore<CR>
 nnoremap <leader>fs :w<CR> " save file
 
 """"""""""""""""""""""""""""""""""""""""""""" misc toggles
@@ -117,6 +121,7 @@ nnoremap <leader>tl :set wrap!<CR>
 set splitbelow
 set splitright
 nnoremap <leader>wo :only<CR>
+nnoremap <leader>wm :only<CR>
 nnoremap <leader>wd :close<CR>
 nnoremap <leader>ws :split<CR>
 nnoremap <leader>wv :vsplit<CR>
