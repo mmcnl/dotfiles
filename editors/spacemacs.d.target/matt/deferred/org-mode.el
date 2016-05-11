@@ -1,7 +1,7 @@
 (setq org-startup-indented 1)
 (with-eval-after-load 'org
   (make-face 'org-mode-mellow-default)
-  (set-face-attribute 'org-mode-mellow-default nil :foreground "#5A4369")
+  (set-face-attribute 'org-mode-mellow-default nil :foreground "#6A6F7C")
 
   (add-hook 'org-mode-hook
             (function (lambda ()

@@ -75,6 +75,7 @@
     (org-level-3 :foreground "#906CA2")
     (org-level-4 :foreground "#6A6F7C")
     (org-level-5 :foreground "#5A4369")
+    ;; see also org-mode-mellow-default in org-mode.el
     (powerline-active1 :inherit font-lock-comment-face :italic nil :box (:color "#3E4450"))
     (powerline-active2 :inherit powerline-active1 :background nil  :box (:color "#3E4450"))
     )
