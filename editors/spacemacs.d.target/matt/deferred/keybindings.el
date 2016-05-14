@@ -1,13 +1,3 @@
-(with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd ":") 'helm-M-x)
-  ;; don't spawn a new buffer every entering a directory
-  (define-key dired-mode-map [return] 'dired-single-buffer)
-  ;; let "-" go up a directory level
-  (define-key dired-mode-map "-"
-    (function
-     (lambda nil (interactive) (dired-single-buffer ".."))))
-  )
-
 (global-set-key [(super s)] 'exit-insert-and-save-buffer-always)
 
 (define-key evil-normal-state-map (kbd "!") 'shell-command)

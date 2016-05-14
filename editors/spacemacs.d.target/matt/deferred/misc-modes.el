@@ -53,7 +53,6 @@
                       (setq web-mode-code-indent-offset 2)
                       )) t)
 
-
 (setq ein:notebook-kill-buffer-ask nil)
 ;; Start completion when inserting a dot.
 (setq ein:complete-on-dot t)
@@ -67,3 +66,16 @@
                       )) t)
 (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
   "s" 'ein:console-open )
+
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd ":") 'helm-M-x)
+  ;; don't spawn a new buffer every entering a directory
+  (define-key dired-mode-map [return] 'dired-single-buffer)
+  ;; let "-" go up a directory level
+  (define-key dired-mode-map "-"
+    (function
+     (lambda nil (interactive) (dired-single-buffer ".."))))
+  )
+
+(spacemacs/set-leader-keys-for-major-mode 'json-mode
+  "xx" 'json-pretty-print-buffer )
