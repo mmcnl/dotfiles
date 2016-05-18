@@ -1,6 +1,8 @@
 (spacemacs|diminish which-key-mode)
 (spacemacs|diminish hi-lock-mode)
 (spacemacs|diminish smartparens-mode)
+(spacemacs|diminish dired-omit-mode)
+(spacemacs|diminish yas-minor-mode)
 
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
