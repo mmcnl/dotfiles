@@ -13,3 +13,4 @@
   )
 
 (add-to-list 'hippie-expand-try-functions-list 'try-expand-dabbrev-visible)
+(define-key evil-insert-state-map (kbd "C-l") 'hippie-expand)

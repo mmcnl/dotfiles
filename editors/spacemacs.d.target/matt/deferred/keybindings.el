@@ -27,7 +27,6 @@
   "pm" 'helm-projectile-find-recently-modified
   "sr" 'custom-evil-search-replace
   "tl" 'visual-line-mode
-  "tn" 'linum-mode
   "tt" 'matt-cycle-themes
   "xL" 'lorem-ipsum-insert-paragraphs
   "xW" 'whitespace-cleanup-buffer

@@ -1,6 +1,6 @@
 (setq ruby-insert-encoding-magic-comment nil)
 
-(spacemacs|diminish rubocop-mode "" " RuboCop")
+(spacemacs|diminish rubocop-mode)
 
 (add-to-list 'auto-mode-alist '("\\pryrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Berksfile\\'" . ruby-mode))
@@ -29,5 +29,5 @@
                       )) t)
 
 (evil-leader/set-key-for-mode 'ruby-mode "e" 'xmpfilter)
-(evil-leader/set-key-for-mode 'ruby-mode "B" 'ruby-beautify-region-or-buffer)
+(evil-leader/set-key-for-mode 'ruby-mode "=" 'ruby-beautify-region-or-buffer)
 (evil-leader/set-key-for-mode 'ruby-mode "xx" 'ruby-autocorrect-file)

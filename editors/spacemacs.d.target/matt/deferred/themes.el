@@ -14,8 +14,8 @@
   (custom-set-faces
    '(helm-header-line-left-margin ((t (:weight bold))))
    '(link ((t (:weight normal :foreground nil))))
-   '(linum ((t (:inherit default :foreground "#888" :height 0.75))))
-   '(linum-relative-current-face ((t (:inherit linum))))
+   '(linum ((t (:inherit default :foreground "#888" :height 0.65))))
+   '(nlinum-relative-current-face ((t (:inherit linum))))
    '(show-paren-match ((t (:foreground "yellow" :background "dim gray"))))
 
    '(font-lock-comment-face ((t ( :slant italic))))
@@ -98,12 +98,12 @@
 (spacemacs/load-theme 'atom-one-dark)
 (matt-customize-themes)
 
-(with-eval-after-load 'linum-relative
+(with-eval-after-load 'nlinum-relative
   (setq-default
-   linum-relative-current-symbol "-"
-   linum-format "%2s"
-   linum-relative-format "%2s "
-   linum-delay t)
+   nlinum-relative-current-symbol " "
+   nlinum-format "%2s"
+   nlinum-relative-format "%2s "
+   )
   )
 
 (setq hl-paren-colors '("SpringGreen3"

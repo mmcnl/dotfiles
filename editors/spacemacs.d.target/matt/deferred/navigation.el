@@ -11,7 +11,6 @@
 (define-key evil-normal-state-map "\C-a" 'back-to-indentation)
 (define-key evil-insert-state-map "\C-a" 'back-to-indentation)
 (define-key evil-insert-state-map "\C-e" 'end-of-line)
-(define-key evil-normal-state-map "\C-e" 'end-of-line)
 
 (define-key evil-normal-state-map (kbd "gj") 'evil-next-line)
 (define-key evil-normal-state-map (kbd "gk") 'evil-previous-line)

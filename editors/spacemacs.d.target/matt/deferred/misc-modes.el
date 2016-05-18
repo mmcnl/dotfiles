@@ -1,11 +1,21 @@
+(spacemacs|diminish which-key-mode)
+(spacemacs|diminish hi-lock-mode)
+(spacemacs|diminish smartparens-mode)
+
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
   (flyspell-mode-off)
-  (linum-mode)
-  (linum-relative-on)
+  (nlinum-mode)
+  (nlinum-relative-on)
   )
 
 (add-hook 'prog-mode-hook 'prog-mode-common-setup)
+
+(add-hook 'help-mode-hook
+          (function (lambda ()
+                      (text-scale-set -1)
+                      (visual-line-mode)
+                      )) t)
 
 (add-hook 'diff-mode-hook
           (function (lambda ()
@@ -60,7 +70,6 @@
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (add-hook 'ein:notebook-multilang-mode-hook
           (function (lambda ()
-                      (visual-line-mode)
                       (auto-complete-mode)
                       (define-key ac-completing-map (kbd "C-l") 'ac-expand)
                       )) t)

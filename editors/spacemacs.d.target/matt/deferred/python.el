@@ -2,9 +2,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.*\\.pyi\\'" . python-mode))
 
-;; prevent warnings when bulk killing buffers
-(setq-default  anaconda-mode-process-fail-hook nil)
-
 ;;;;;;;;;; comint ;;;;;;;;;;;
 (setq python-shell-interpreter "ipython")
 ;; check back later revisit https://github.com/gregsexton/ob-ipython/issues/28
@@ -19,13 +16,27 @@
 
 (defun conda-env-update() (interactive)(shell-command "conda env update"))
 
+;;;;;;;;;; anaconda ;;;;;;;;;;;
+;; prevent warnings when bulk killing buffers
+(setq-default  anaconda-mode-process-fail-hook nil)
+
 ;;;;;;;;;;;;; hooks ;;;;;;;;;;;;;;;;
 (add-hook 'python-mode-hook
           (function (lambda ()
+                      (setq flycheck-disabled-checkers '(
+                                                         python-pylint
+                                                         ))
                       (spacemacs/toggle-flycheck-python-mypy-off)
                       )) t)
+
 (add-hook 'inferior-python-mode-hook
           (function (lambda ()
+                      (visual-line-mode)
+                      )) t)
+
+(add-hook 'anaconda-mode-view-mode-hook
+          (function (lambda ()
+                      (text-scale-set -1)
                       (visual-line-mode)
                       )) t)
 

@@ -13,6 +13,7 @@ values."
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layers
    '(
+     php
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'cycle
@@ -57,11 +58,12 @@ values."
                                       vimrc-mode
                                       )
    dotspacemacs-excluded-packages '(
+                                    adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     evil-search-highlight-persist
+                                    inf-ruby
+                                    magit-gitflow
                                     robe
                                     spray
-                                    adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
-                                    inf-ruby
                                     )
    dotspacemacs-delete-orphan-packages nil
    ))
