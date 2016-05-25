@@ -7,8 +7,8 @@
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
   (flyspell-mode-off)
-  (nlinum-mode)
-  (nlinum-relative-on)
+  (linum-mode)
+  (linum-relative-on)
   )
 
 (add-hook 'prog-mode-hook 'prog-mode-common-setup)
