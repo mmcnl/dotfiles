@@ -5,15 +5,12 @@
 ;; (benchmark-init/activate)
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
-values."
   (setq-default
    dotspacemacs-elpa-https nil
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layers
    '(
-     php
+     ;; php
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'cycle
@@ -34,13 +31,13 @@ values."
      matt
      org
      osx
-     pdf-tools
+     ;; pdf-tools
      (python :variables python-test-runner 'pytest)
      ruby
      (spell-checking :variables spell-checking-enable-by-default nil)
      sql
      syntax-checking
-     terraform
+     ;; terraform
      (theming :variables
               theming-headings-inherit-from-default 'all
               theming-headings-same-size 'all
@@ -50,12 +47,12 @@ values."
      )
    dotspacemacs-additional-packages '(
                                       atom-one-dark-theme
-                                      company-jedi
                                       dired-single
                                       google-this
-                                      flycheck-mypy
                                       undohist
                                       vimrc-mode
+                                      ;; company-jedi
+                                      ;; flycheck-mypy
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
@@ -85,7 +82,7 @@ values."
    dotspacemacs-command-key ""
    dotspacemacs-remap-Y-to-y$ t
    dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 3
+   dotspacemacs-max-rollback-slots 5
    dotspacemacs-use-ido nil
    dotspacemacs-helm-resize nil
    dotspacemacs-helm-no-header nil
@@ -110,15 +107,13 @@ values."
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup 'changed
    dotspacemacs-check-for-update nil
-   ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    dotspacemacs-ex-substitute-global t
    dotspacemacs-retain-visual-state-on-shift nil
    ))
 
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
+  "called immediately after `dotspacemacs/init'."
+
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html
   (setq custom-file "/tmp/emacs_customizations")
 

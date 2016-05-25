@@ -48,19 +48,22 @@
 
 ;;;;;;;;;;;;;;; flycheck ;;;;;;;
 
-(require 'flycheck-mypy)
 
 ;; after flake8 add pylint
 (flycheck-add-next-checker 'python-flake8 'python-pylint)
 
-;; after pylint run mypy if pylint reports no errors or warnings
-(flycheck-add-next-checker 'python-pylint `(info . python-mypy))
+(with-eval-after-load 'flycheck-mypy
+  ;; after pylint run mypy if pylint reports no errors or warnings
+  (flycheck-add-next-checker 'python-pylint `(info . python-mypy))
 
-(setq flycheck-python-mypy-args "--disallow-untyped-calls")
+  (setq flycheck-python-mypy-args "--disallow-untyped-calls")
+  )
 
 (spacemacs|add-toggle flycheck-python-mypy
   :status (not (member 'python-mypy flycheck-disabled-checkers))
-  :on (progn (setq flycheck-disabled-checkers (remq 'python-mypy flycheck-disabled-checkers)))
+  :on (progn
+        (require 'flycheck-mypy)
+        (setq flycheck-disabled-checkers (remq 'python-mypy flycheck-disabled-checkers)))
   :off (progn (add-to-list 'flycheck-disabled-checkers 'python-mypy))
   :documentation "Check python files for proper typing using mypy"
   :evil-leader-for-mode (python-mode . "m"))
