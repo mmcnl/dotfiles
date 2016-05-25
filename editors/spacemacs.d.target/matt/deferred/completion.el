@@ -10,6 +10,7 @@
   (setq company-dabbrev-code-ignore-case t)
 
   (define-key company-active-map (kbd "C-w") 'backward-delete-word)
+  (define-key company-active-map (kbd "C-h") 'backward-delete-char)
   )
 
 (add-to-list 'hippie-expand-try-functions-list 'try-expand-dabbrev-visible)
