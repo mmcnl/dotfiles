@@ -4,6 +4,7 @@
 (define-key evil-visual-state-map (kbd "!") 'shell-command)
 (define-key evil-normal-state-map (kbd ":") 'helm-M-x)
 (define-key evil-visual-state-map (kbd ":") 'helm-M-x)
+(define-key evil-motion-state-map (kbd ":") 'helm-M-x)
 
 (evil-leader/set-key
   "/" 'spacemacs/helm-project-smart-do-search
