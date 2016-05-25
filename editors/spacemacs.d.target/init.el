@@ -17,7 +17,7 @@
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory nil)
-     spacemacs-helm
+     helm
      csv
      dash
      emacs-lisp
@@ -34,6 +34,7 @@
      ;; pdf-tools
      (python :variables python-test-runner 'pytest)
      ruby
+     ruby-on-rails
      (spell-checking :variables spell-checking-enable-by-default nil)
      sql
      syntax-checking
