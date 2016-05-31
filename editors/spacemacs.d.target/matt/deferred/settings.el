@@ -4,7 +4,6 @@
 (smartparens-mode t)
 (setq-default truncate-lines t)
 (spacemacs/toggle-visual-line-navigation-on)
-
 (setq whitespace-style (quote
                         (face tabs trailing
                               space-before-tab

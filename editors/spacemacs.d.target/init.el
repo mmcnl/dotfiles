@@ -6,7 +6,6 @@
 
 (defun dotspacemacs/layers ()
   (setq-default
-   dotspacemacs-elpa-https nil
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layers
    '(
@@ -21,10 +20,10 @@
      csv
      dash
      emacs-lisp
-     fasd
+     ;; fasd
      (git :variables git-magit-status-fullscreen t)
      github
-     html
+     ;; html
      ipython-notebook
      javascript
      markdown
@@ -50,6 +49,7 @@
                                       atom-one-dark-theme
                                       dired-single
                                       google-this
+                                      simpleclip
                                       undohist
                                       vimrc-mode
                                       ;; company-jedi
@@ -99,7 +99,7 @@
    dotspacemacs-active-transparency 100
    dotspacemacs-inactive-transparency 100
    dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-smooth-scrolling t
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'current
