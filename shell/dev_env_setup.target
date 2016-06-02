@@ -6,6 +6,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/miniconda3/bin:$PATH"
 export WORKON_HOME="/opt/miniconda3/envs"
 
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--exact"
+alias fzh='ag --nofilename . ~/.zsh_logs | fzf'
+
 ############ eval'd helper functions ############
 
 # for z, f, and other nice helpers - https://github.com/clvv/fasd

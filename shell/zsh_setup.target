@@ -45,10 +45,31 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
 fpath+="$HOME/.zsh-completions/conda-zsh-completion"
 fpath+="$HOME/.zsh-completions/pip-completion/"
 
+############ fzf ############
+
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# TODO: check for a better solution
+# override to include history timestamps
+fzf-history-widget() {
+    local selected num
+    setopt localoptions noglobsubst
+    # add fc -i option
+    selected=( $(fc -i -l 1 | $(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r ${=FZF_CTRL_R_OPTS} -q "${LBUFFER//$/\\$}") )
+    if [ -n "$selected" ]; then
+        num=$selected[1]
+        if [ -n "$num" ]; then
+            zle vi-fetch-history -n $num
+        fi
+    fi
+    zle redisplay
+}
+
 ############ zsh prompt ############
 
 # inspired by https://spin.atomicobject.com/2016/05/28/log-bash-history/
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d_%H:%M:%S") $(pwd) $(fc -ln -1)" >> ~/.logs/zhistory-$(date "+%Y-%m-%d").log; fi'
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d_%H:%M:%S") $(pwd) $(fc -ln -1)" >> ~/.zsh_logs/zhistory-$(date "+%Y-%m-%d").log; fi'
 
 precmd() {
     eval "$PROMPT_COMMAND"
