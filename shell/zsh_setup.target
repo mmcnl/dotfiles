@@ -43,7 +43,12 @@ fpath+="$HOME/.zsh-completions/conda-zsh-completion"
 fpath+="$HOME/.zsh-completions/pip-completion/"
 
 ############ zsh prompt ############
+
+# inspired by https://spin.atomicobject.com/2016/05/28/log-bash-history/
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d_%H:%M:%S") $(pwd) $(fc -ln -1)" >> ~/.logs/zhistory-$(date "+%Y-%m-%d").log; fi'
+
 precmd() {
+    eval "$PROMPT_COMMAND"
     # work around trailing newlines being swallowed by command substitution
     # http://stackoverflow.com/a/15184414/1163042
     # add newline only if non-null
