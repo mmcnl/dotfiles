@@ -12,6 +12,9 @@ setopt clobber
 # http://zsh.sourceforge.net/Intro/intro_16.html
 setopt ignoreeof
 
+# allow duplicates for better historical searching
+setopt no_hist_ignore_dups
+
 # http://stackoverflow.com/a/11200998/1163042
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
