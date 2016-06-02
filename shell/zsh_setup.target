@@ -12,8 +12,9 @@ setopt clobber
 # http://zsh.sourceforge.net/Intro/intro_16.html
 setopt ignoreeof
 
-# allow duplicates for better historical searching
-setopt no_hist_ignore_dups
+# keep history to reasonable size for quick loading
+# historical are saved in ~/.zlogs/
+export HISTSIZE=3000
 
 # http://stackoverflow.com/a/11200998/1163042
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
@@ -69,7 +70,7 @@ fzf-history-widget() {
 ############ zsh prompt ############
 
 # inspired by https://spin.atomicobject.com/2016/05/28/log-bash-history/
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d_%H:%M:%S") $(pwd) $(fc -ln -1)" >> ~/.zsh_logs/zhistory-$(date "+%Y-%m-%d").log; fi'
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d %H:%M:%S") $(pwd) $(fc -ln -1)" >> ~/.zlogs/zhistory-$(date "+%Y-%m-%d").log; fi'
 
 precmd() {
     eval "$PROMPT_COMMAND"

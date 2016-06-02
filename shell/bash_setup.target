@@ -2,8 +2,8 @@
 
 # ignore duplicate and empty lines
 export HISTCONTROL=ignoreboth
-# save lots of bash_history
-export HISTSIZE=10000
+# save a reasonable amount of bash_history
+export HISTSIZE=3000
 # save history from simultaneous shells
 shopt -s histappend
 # save multiline cmds
