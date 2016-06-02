@@ -90,3 +90,4 @@
 
 (spacemacs/set-leader-keys-for-major-mode 'json-mode
   "xx" 'json-pretty-print-buffer )
+

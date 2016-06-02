@@ -9,7 +9,6 @@
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layers
    '(
-     ;; php
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'cycle
@@ -17,27 +16,25 @@
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory nil)
      helm
+     html
      csv
      dash
      emacs-lisp
-     ;; fasd
      (git :variables git-magit-status-fullscreen t)
      github
-     ;; html
+     html
      ipython-notebook
      javascript
      markdown
      matt
      org
      osx
-     ;; pdf-tools
      (python :variables python-test-runner 'pytest)
      ruby
      ruby-on-rails
      (spell-checking :variables spell-checking-enable-by-default nil)
      sql
      syntax-checking
-     ;; terraform
      (theming :variables
               theming-headings-inherit-from-default 'all
               theming-headings-same-size 'all
@@ -52,8 +49,7 @@
                                       simpleclip
                                       undohist
                                       vimrc-mode
-                                      ;; company-jedi
-                                      ;; flycheck-mypy
+                                      flycheck-mypy
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
@@ -63,7 +59,7 @@
                                     robe
                                     spray
                                     )
-   dotspacemacs-delete-orphan-packages nil
+   dotspacemacs-download-packages 'used-but-keep-unused
    ))
 (defun dotspacemacs/init ()
   (setq-default
@@ -110,6 +106,7 @@
    dotspacemacs-check-for-update nil
    dotspacemacs-ex-substitute-global t
    dotspacemacs-retain-visual-state-on-shift nil
+   dotspacemacs-folding-method 'origami
    ))
 
 (defun dotspacemacs/user-init ()
@@ -130,5 +127,6 @@
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
   (matt-load-deferred-config-files)
+  (delete-other-windows)
   ;; (benchmark-init/show-durations-tabulated)
   )

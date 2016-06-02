@@ -146,3 +146,13 @@ confirmation"
 (require 'dired-x)
 (setq-default dired-omit-files-p t) ; Buffer-local variable
 (setq dired-omit-files "^\\.+$\\|^\\.DS_Store")
+
+;; http://superuser.com/questions/603421/how-to-remove-smart-quotes-in-copy-paste
+(defun replace-smart-quotes (beg end)
+  "Replace 'smart quotes' in buffer or region with ascii quotes."
+  (interactive "r")
+  (format-replace-strings '(("\x201C" . "\"")
+                            ("\x201D" . "\"")
+                            ("\x2018" . "'")
+                            ("\x2019" . "'"))
+                          nil beg end))

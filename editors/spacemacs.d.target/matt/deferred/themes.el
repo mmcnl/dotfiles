@@ -21,7 +21,7 @@
    '(font-lock-comment-face ((t ( :slant italic))))
    '(font-lock-comment-delimiter-face ((t ( :slant italic))))
    '(font-lock-doc-face ((t ( :slant italic))))
-   '(font-lock-keyword-face ((t ( :weight bold))))
+   ;; '(font-lock-keyword-face ((t ( :weight bold))))
    '(font-lock-function-name-face ((t ( :weight bold))))
    '(font-lock-constant-face ((t ( :weight normal))))
 

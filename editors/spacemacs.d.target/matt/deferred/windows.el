@@ -3,6 +3,14 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
+(with-eval-after-load 'popwin
+  (popwin-mode 1)
+  (push '("*Flycheck errors*" :dedicated t :position bottom :stick
+          t :noselect t :height 0.1) popwin:special-display-config)
+  (push '("*compilation*" :dedicated t :position right :stick
+          t :noselect t :width 0.4) popwin:special-display-config)
+  )
+
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
                    (abbreviate-file-name (buffer-file-name))
