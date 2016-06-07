@@ -8,7 +8,9 @@
 (setq python-shell-completion-native-enable nil)
 
 ;;;;;;;;; virtual environments ;;;;;;;;
-(pyvenv-mode 1)
+(with-eval-after-load 'pyvenv
+  (pyvenv-mode 1)
+  )
 (setq pyvenv-tracking-ask-before-change t)
 
 ;; https://github.com/purcell/exec-path-from-shell#usage
