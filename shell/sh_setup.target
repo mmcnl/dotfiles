@@ -22,7 +22,7 @@ git() {
 
 update_etags() {
     echo "updating tags..."
-    git ls-files | grep -E '\.rb|yml|py$' | xargs ctags -e --languages=ruby,yaml,python
+    git ls-files | grep -E '\.(rb|yml|py)$' | xargs ctags -e --languages=ruby,yaml,python
 }
 
 time_since_last_commit() {
