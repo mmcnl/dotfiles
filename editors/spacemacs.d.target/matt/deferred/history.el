@@ -13,6 +13,9 @@
 (savehist-mode 1)
 (add-to-list 'savehist-additional-variables 'kill-ring)
 
+;; https://github.com/syl20bnr/spacemacs/issues/6203#issuecomment-223558416
+(setq evil-in-single-undo t)
+
 (use-package undohist
   :init
   (setq undohist-directory (expand-file-name "undo-history" spacemacs-cache-directory))
