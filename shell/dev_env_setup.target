@@ -8,7 +8,7 @@ export WORKON_HOME="/opt/miniconda3/envs"
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--exact"
+export FZF_DEFAULT_OPTS='--exact --multi --ansi --no-mouse'
 alias fzh='ag --nofilename . ~/.zlogs | fzf --no-sort'
 
 ############ eval'd helper functions ############
