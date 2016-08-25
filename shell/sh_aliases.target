@@ -43,7 +43,8 @@ alias htop="sudo htop"
 alias iftop='sudo iftop'
 alias kl="KITCHEN_LOCAL_YAML=.kitchen.local.yml KITCHEN_YAML=.kitchen.vagrant.yml bundle exec kitchen"
 alias kr="bundle exec kitchen"
-alias py='ptipython'
+alias py='python'
+alias pti='ptipython'
 alias rm=rm
 alias sel=selecta
 alias t='tree -a -F -AC -I "tmp|.DS_Store|.git|.gitkeep|.keep"'

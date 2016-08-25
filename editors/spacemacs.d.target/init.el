@@ -29,9 +29,9 @@
      matt
      org
      osx
-     (python :variables python-test-runner 'pytest)
+     (python :variables python-test-runner '(pytest nose))
      ruby
-     ruby-on-rails
+     ;; ruby-on-rails
      (spell-checking :variables spell-checking-enable-by-default nil)
      sql
      syntax-checking
@@ -53,7 +53,7 @@
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
-                                    evil-search-highlight-persist
+                                    ;; evil-search-highlight-persist
                                     inf-ruby
                                     magit-gitflow
                                     robe
@@ -87,7 +87,6 @@
    dotspacemacs-enable-paste-transient-state t
    dotspacemacs-show-transient-state-color-guide nil
    dotspacemacs-which-key-delay 0.4
-   dotspacemacs-which-key-position 'bottom
    dotspacemacs-loading-progress-bar nil
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native t
@@ -126,7 +125,7 @@
 
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
-  (matt-load-deferred-config-files)
+  (ignore-errors (matt-load-deferred-config-files))
   (delete-other-windows)
   ;; (benchmark-init/show-durations-tabulated)
   )

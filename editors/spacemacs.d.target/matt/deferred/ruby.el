@@ -9,8 +9,7 @@
 
 (add-hook 'ruby-mode-hook
           (function (lambda ()
-                      (modify-syntax-entry ?_ "w" ruby-mode-syntax-table)
-                      (modify-syntax-entry ?: "." ruby-mode-syntax-table)
+                      (message "running ruby-mode-hook")
                       ;; http://stackoverflow.com/questions/8473131/set-the-evil-shift-width-to-the-buffer-local-indentation-in-emacs
                       (setq evil-shift-width ruby-indent-level)
                       (setq flycheck-disabled-checkers '(
@@ -26,6 +25,8 @@
                                                 company-yasnippet
                                                 company-keywords
                                                 )))
+                      (modify-syntax-entry ?_ "w" ruby-mode-syntax-table)
+                      (modify-syntax-entry ?: "." ruby-mode-syntax-table)
                       )) t)
 
 (evil-leader/set-key-for-mode 'ruby-mode "e" 'xmpfilter)

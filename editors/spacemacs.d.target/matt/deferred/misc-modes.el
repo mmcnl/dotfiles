@@ -8,7 +8,7 @@
   (flycheck-mode 1)
   (flyspell-mode-off)
   (linum-mode)
-  (linum-relative-on)
+  ;; (linum-relative-on)
   )
 
 (add-hook 'prog-mode-hook 'prog-mode-common-setup)
@@ -58,17 +58,32 @@
                                                          ))
                       )) t)
 
+(add-to-list 'auto-mode-alist '("\\.jst.str\\'" . web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.jin\\'" . web-mode))
 (add-hook 'web-mode-hook
           (function (lambda ()
                       (setq web-mode-markup-indent-offset 2)
                       (setq web-mode-css-indent-offset 2)
                       (setq web-mode-code-indent-offset 2)
+                      (setq web-mode-enable-engine-detection t)
+                      (setq web-mode-engines-alist
+                            '(("jinja"    . "\\.jin\\'")
+                              ("blade"  . "\\.blade\\."))
+                            )
                       )) t)
 
+(setq ein:notebook-enable-undo 'full)
 (setq ein:notebook-kill-buffer-ask nil)
 ;; Start completion when inserting a dot.
 (setq ein:complete-on-dot t)
 (setq ein:use-auto-complete-superpack t)
+;; (run-with-timer 0 (* 30 60) 'ein:notebook-save-notebook-command)
+(defun save-ein-notebook()
+  (when (eq major-mode 'ein:notebook-multilang-mode)
+    (ein:notebook-save-notebook-command)))
+
+(run-with-idle-timer 20 t 'save-ein-notebook)
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (add-hook 'ein:notebook-multilang-mode-hook
           (function (lambda ()
@@ -77,6 +92,12 @@
                       )) t)
 (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
   "s" 'ein:console-open )
+(spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+  "a" 'ein:pytools-request-help )
+(spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+  (kbd "CS-l") 'ein:pytools-request-help )
+(spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+  "Fj" 'ein:notebook-scratchsheet-open )
 
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd ":") 'helm-M-x)

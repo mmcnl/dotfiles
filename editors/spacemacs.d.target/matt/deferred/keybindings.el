@@ -23,6 +23,7 @@
   "fp" 'find-previous-file
   "fs" 'exit-insert-and-save-buffer-always
   "fy" 'copy-file-name-to-clipboard
+  "gd" 'magit-diff-working-tree
   "ha" 'helm-apropos
   "pK" 'projectile-kill-other-buffers
   "pm" 'helm-projectile-find-recently-modified

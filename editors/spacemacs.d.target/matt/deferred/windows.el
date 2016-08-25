@@ -16,9 +16,7 @@
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
-(setq which-key-popup-type 'minibuffer)
 (setq which-key-allow-evil-operators nil)
-(setq which-key-side-window-max-width 100)
 
 (evil-leader/set-key
   "wS" 'split-window-below
