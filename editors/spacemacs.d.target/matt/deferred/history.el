@@ -3,8 +3,11 @@
   (add-to-list 'recentf-exclude "TAGS$")
   (add-to-list 'recentf-exclude "undo-tree")
 
-  ;; run when idle for 5 minutes
-  (setq recentf-auto-cleanup 600)
+  ;; run every 20 minutes
+  (run-with-timer 0 (* 20 60) 'recentf-cleanup)
+
+  ;; run when idle for 2 minutes
+  (setq recentf-auto-cleanup 120)
   )
 ;;;;;;;;;;;;;;;;;;; kill ring ;;;;;;;;;
 (setq kill-ring-max 500)
