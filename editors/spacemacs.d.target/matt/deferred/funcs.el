@@ -156,3 +156,6 @@ confirmation"
                             ("\x2018" . "'")
                             ("\x2019" . "'"))
                           nil beg end))
+
+(defun whitespace-cleanup-buffer() (interactive)(ws-butler-clean-region (point-min)(point-max)))
+(defun new-empty-buffer() (interactive)(spacemacs/new-empty-buffer)(text-mode))

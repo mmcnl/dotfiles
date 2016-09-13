@@ -86,8 +86,6 @@
 (defun git-fetch() (interactive)(shell-command "git fetch --verbose"))
 (defun git-short-status() (interactive)(shell-command "git short-status | column -t"))
 (defun git-push() (interactive)(shell-command "git push --verbose"))
-(defun whitespace-cleanup-buffer() (interactive)(ws-butler-clean-region (point-min)(point-max)))
-(defun new-empty-buffer() (interactive)(spacemacs/new-empty-buffer)(text-mode))
 
 (defun send-to-terminal(command)
   (interactive)
