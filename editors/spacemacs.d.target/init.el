@@ -31,7 +31,6 @@
      osx
      (python :variables python-test-runner '(pytest nose))
      ruby
-     ;; ruby-on-rails
      (spell-checking :variables spell-checking-enable-by-default nil)
      sql
      syntax-checking
@@ -53,7 +52,6 @@
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
-                                    ;; evil-search-highlight-persist
                                     inf-ruby
                                     magit-gitflow
                                     robe
@@ -125,7 +123,8 @@
 
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
-  (ignore-errors (matt-load-deferred-config-files))
+  ;; (ignore-errors (matt-load-deferred-config-files))
+  (matt-load-deferred-config-files)
   (delete-other-windows)
   ;; (benchmark-init/show-durations-tabulated)
   )

@@ -20,3 +20,5 @@
 
 ;; Set to t to show the count of keys shown vs. total keys in the mode line.
 (setq which-key-show-remaining-keys t)
+
+(setq-default global-evil-search-highlight-persist nil)

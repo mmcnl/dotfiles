@@ -32,7 +32,7 @@
 (add-hook 'text-mode-hook
           (function (lambda ()
                       (visual-line-mode 1)
-                      (flyspell-mode)
+                      ;; (flyspell-mode)
 
                       ;; needed to enable completion in git commit buffer
                       (company-mode)
@@ -40,7 +40,6 @@
                       (set (make-local-variable 'company-backends)
                            '((
                               company-dabbrev
-                              company-ispell
                               )))
                       )) t)
 
@@ -61,6 +60,9 @@
 (add-to-list 'auto-mode-alist '("\\.jst.str\\'" . web-mode))
 
 (add-to-list 'auto-mode-alist '("\\.jin\\'" . web-mode))
+
+(add-hook 'emmet-mode-hook (lambda () (define-key emmet-mode-keymap (kbd "C-j") 'electric-newline-and-maybe-indent)))
+
 (add-hook 'web-mode-hook
           (function (lambda ()
                       (setq web-mode-markup-indent-offset 2)

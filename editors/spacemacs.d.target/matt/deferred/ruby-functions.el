@@ -1,18 +1,16 @@
-(defadvice avy-goto-word-or-subword-1 (before update-syntax-before activate)
-  "treat underscores as punctuation"
-  (when (derived-mode-p 'ruby-mode)
-    (modify-syntax-entry ?_ "." ruby-mode-syntax-table)
-    )
-  )
-(defadvice avy-goto-word-or-subword-1 (after update-syntax-after activate)
-  "treat underscores as parts of words"
-  )
+(setq compilation-finish-function
+      (lambda (buf str)
+        (if (null (string-match ".*exited abnormally.*" str))
+            (progn
+              (message (buffer-string)
+                       (delete-windows-on (current-buffer))
+                       )))))
 
 (defun ruby-autocorrect-file ()
   "Tidy ruby file"
   (interactive)
-  (save-buffer)
   (spacemacs/indent-region-or-buffer)
+  (save-buffer)
   (rubocop-autocorrect-current-file)
   )
 

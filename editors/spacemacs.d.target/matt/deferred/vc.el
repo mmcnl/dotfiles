@@ -33,15 +33,16 @@
 (evil-leader/set-key
   "as" 'stree
   "gB" 'tig-blame-current-file
-  "gl" 'magit-log-all
   "gP" 'git-push
   "gS" 'git-short-status
   "gU" 'vc-revert
+  "gX" 'spacemacs/vcs-revert-hunk
   "ga" 'git-add-all-commit
+  "gd" 'magit-diff-working-tree
   "gf" 'git-fetch
+  "gl" 'magit-log-all
   "gs" 'magit-status
   "gv" 'vc-diff
-  "gX" 'version-control/revert-hunk
   )
 ;;;;;;;;;;;;;;;; advice ;;;;;;;;;;;;;;;;;;;
 

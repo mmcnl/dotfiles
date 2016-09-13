@@ -3,6 +3,7 @@
   (setq-default neo-window-width 30)
 
   (setq-default neo-show-hidden-files t)
+  (setq-default neo-banner-message nil)
   (add-to-list 'neo-hidden-regexp-list "TAGS$")
   (add-to-list 'neo-hidden-regexp-list "__pycache__")
 

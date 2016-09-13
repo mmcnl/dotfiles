@@ -9,11 +9,6 @@
   (deactivate-mark)
   )
 
-(defadvice rubocop-autocorrect-current-file (before save-correcting activate)
-  "Save buffer first."
-  (save-buffer)
-  )
-
 (defadvice spacemacs/python-execute-file (before save-buffer activate)
   "Save buffer first."
   (save-buffer)
