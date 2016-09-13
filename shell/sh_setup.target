@@ -3,7 +3,7 @@
 # functions shared between zsh and bash
 
 git() {
-    /usr/bin/env git "$@"
+    /usr/bin/env hub "$@"
     estatus="$?"
     [[ $estatus = 0 ]] || return $estatus
 

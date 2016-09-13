@@ -41,6 +41,7 @@
   "gd" 'magit-diff-working-tree
   "gf" 'git-fetch
   "gl" 'magit-log-all
+  "gL" 'magit-log-buffer-file
   "gs" 'magit-status
   "gv" 'vc-diff
   )
