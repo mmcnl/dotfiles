@@ -8,9 +8,10 @@
 (setq python-shell-completion-native-enable nil)
 
 ;;;;;;;;; virtual environments ;;;;;;;;
-(with-eval-after-load 'pyvenv
-  (pyvenv-mode 1)
-  )
+(with-eval-after-load 'python
+  (with-eval-after-load 'pyvenv
+    (pyvenv-mode 1)
+    )
 (setq pyvenv-tracking-ask-before-change t)
 
 ;; https://github.com/purcell/exec-path-from-shell#usage
@@ -69,3 +70,5 @@
   :off (progn (add-to-list 'flycheck-disabled-checkers 'python-mypy))
   :documentation "Check python files for proper typing using mypy"
   :evil-leader-for-mode (python-mode . "m"))
+
+)
