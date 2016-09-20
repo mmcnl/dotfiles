@@ -123,8 +123,12 @@
 
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
-  ;; (ignore-errors (matt-load-deferred-config-files))
+
+  ;; to disable custom config, comment out the line below
   (matt-load-deferred-config-files)
+
+  ;; hide compilation buffer
   (delete-other-windows)
+
   ;; (benchmark-init/show-durations-tabulated)
   )
