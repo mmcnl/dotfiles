@@ -54,6 +54,7 @@
 
 (helm-projectile-command "custom-find" '(
                                          ;; helm-source-projectile-recently-modified-files
+                                         helm-source-buffers-list
                                          helm-source-projectile-recentf-list
                                          helm-source-projectile-files-list
                                          helm-source-recentf

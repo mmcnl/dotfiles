@@ -3,13 +3,20 @@
       '("\\.git$" "\\.hg$" "\\.svn$" "TAGS$" "\\._darcs$" "\\.la$" "\\.o$" "undo-tree" "~$"
         "\\.so$" "\\.a$" "\\.elc$" "\\.fas$" "\\.fasl$" "\\.pyc$" "\\.pyo$"))
 
-(setq helm-skip-boring-buffers t)
-(setq helm-boring-buffer-regexp-list (quote ("TAGS$" "\#" "\\*[Hh]elm" "\\ \\*")))
+(setq helm-boring-buffer-regexp-list
+      (quote
+       (  "\\Minibuf.+\\*"
+          "\\` "
+          "TAGS$"
+          "\\*[Hh]elm.*\\*"
+          )))
+
+;; https://github.com/syohex/emacs-helm-ag#helm-ag-ignore-buffer-patternsdefault-nil
+(setq-default helm-ag-ignore-buffer-patterns helm-boring-buffer-regexp-list)
 
 (setq helm-autoresize-min-height 60
       helm-autoresize-max-height 60
       recentf-max-saved-items 500
-      helm-ag-base-command "ag --hidden --nocolor --nogroup --smart-case"
       helm-ff-candidate-number-limit 300
       )
 
@@ -19,6 +26,11 @@
   (define-key helm-map (kbd "C-h") 'backward-delete-char)
   (define-key helm-map (kbd "C-d") 'helm-next-page)
   (define-key helm-map (kbd "C-u") 'helm-previous-page)
+  )
+
+(with-eval-after-load 'helm-ag
+  (setq-default helm-ag-base-command "ag --hidden --nocolor --nogroup --smart-case")
+  (setq helm-ag-command-option "")
   )
 
 ;; override spacemacs mapping for C-h to navigate up one level

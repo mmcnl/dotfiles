@@ -16,6 +16,15 @@
     :evil-leader "tmT")
   (display-time-mode 1)
 
+  (defun buffer-and-one-dir (dir)
+    (string-match "\\([^/]+/[^/]+$\\)" dir)
+    (match-string 1 dir))
+
+  (spaceline-define-segment buffer-id
+    "Name of buffer including one directory"
+    (concat "   " (if (buffer-file-name) (buffer-and-one-dir (buffer-file-name)) (buffer-name) ) "   ")
+    )
+
   ;; extracted from http://stackoverflow.com/a/8191130
   (defvar modeline-buffer-line-count "")
   (make-variable-buffer-local 'modeline-buffer-line-count)
@@ -28,7 +37,8 @@
   ;; add line count of buffer to default segment
   (spaceline-define-segment line-column
     "current_column  current_line/total_lines"
-    (concat "%2c %4l" modeline-buffer-line-count))
+    (concat "%2c %4l" modeline-buffer-line-count)
+    )
 
   ;; don't show "Git" and only show branch if not master
   (defadvice vc-mode-line (after strip-backend () activate)
