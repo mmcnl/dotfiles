@@ -23,16 +23,16 @@
      (git :variables git-magit-status-fullscreen t)
      github
      html
-     ipython-notebook
+     ;; ipython-notebook
      javascript
-     markdown
+     ;; markdown
      matt
      org
      osx
-     (python :variables python-test-runner '(pytest nose))
+     ;; (python :variables python-test-runner '(pytest nose))
      ruby
      (spell-checking :variables spell-checking-enable-by-default nil)
-     sql
+     ;; sql
      syntax-checking
      (theming :variables
               theming-headings-inherit-from-default 'all
@@ -47,8 +47,8 @@
                                       google-this
                                       simpleclip
                                       undohist
-                                      vimrc-mode
-                                      flycheck-mypy
+                                      ;; vimrc-mode
+                                      ;; flycheck-mypy
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
