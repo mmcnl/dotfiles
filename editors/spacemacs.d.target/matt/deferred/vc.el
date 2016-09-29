@@ -34,15 +34,14 @@
   "as" 'stree
   "gB" 'tig-blame-current-file
   "gP" 'git-push
-  "gS" 'git-short-status
+  ;; "gS" 'git-short-status
   "gU" 'vc-revert
   "gX" 'spacemacs/vcs-revert-hunk
   "ga" 'git-add-all-commit
   "gd" 'magit-diff-working-tree
   "gf" 'git-fetch
-  "gl" 'magit-log-all
+  ;; "gl" 'magit-log-all
   "gL" 'magit-log-buffer-file
-  "gs" 'magit-status
   "gv" 'vc-diff
   )
 ;;;;;;;;;;;;;;;; advice ;;;;;;;;;;;;;;;;;;;
