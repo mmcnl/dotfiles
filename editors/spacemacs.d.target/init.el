@@ -43,7 +43,7 @@
      )
    dotspacemacs-additional-packages '(
                                       atom-one-dark-theme
-                                      dired-single
+                                      ;; dired-single
                                       google-this
                                       ;; simpleclip
                                       undohist
@@ -57,53 +57,53 @@
                                     robe
                                     spray
                                     )
-   dotspacemacs-download-packages 'used-but-keep-unused
    ))
 (defun dotspacemacs/init ()
   (setq-default
-   dotspacemacs-elpa-https nil
+   dotspacemacs-active-transparency 100
+   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-check-for-update nil
+   dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-command-key ""
+   dotspacemacs-default-font '("Source Code Pro" :size 15)
+   dotspacemacs-default-package-repository nil
+   dotspacemacs-delete-orphan-packages nil
    dotspacemacs-editing-style 'vim
-   dotspacemacs-verbose-loading nil
+   dotspacemacs-elpa-https nil
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-enable-paste-transient-state t
+   dotspacemacs-ex-substitute-global t
+   dotspacemacs-folding-method 'origami
+   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-use-non-native t
+   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-position 'bottom
+   dotspacemacs-helm-resize nil
+   dotspacemacs-highlight-delimiters 'current
+   dotspacemacs-inactive-transparency 100
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-maximized-at-startup t
+   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-persistent-server nil
+   dotspacemacs-remap-Y-to-y$ t
+   dotspacemacs-retain-visual-state-on-shift nil
+   dotspacemacs-search-tools '("ag")
+   dotspacemacs-show-transient-state-color-guide nil
+   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smooth-scrolling t
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
    dotspacemacs-startup-recent-list-size 0
    dotspacemacs-themes '(atom-one-dark solarized-light)
-   dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro" :size 15)
-   dotspacemacs-leader-key "SPC"
-   dotspacemacs-emacs-leader-key "M-m"
-   dotspacemacs-major-mode-leader-key ","
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   dotspacemacs-command-key ""
-   dotspacemacs-remap-Y-to-y$ t
-   dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 5
    dotspacemacs-use-ido nil
-   dotspacemacs-helm-resize nil
-   dotspacemacs-helm-no-header nil
-   dotspacemacs-helm-position 'bottom
-   dotspacemacs-enable-paste-transient-state t
-   dotspacemacs-show-transient-state-color-guide nil
+   dotspacemacs-verbose-loading nil
    dotspacemacs-which-key-delay 0.4
-   dotspacemacs-loading-progress-bar nil
-   dotspacemacs-fullscreen-at-startup nil
-   dotspacemacs-fullscreen-use-non-native t
-   dotspacemacs-maximized-at-startup t
-   dotspacemacs-active-transparency 100
-   dotspacemacs-inactive-transparency 100
-   dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-smooth-scrolling t
-   dotspacemacs-smartparens-strict-mode nil
-   dotspacemacs-smart-closing-parenthesis nil
-   dotspacemacs-highlight-delimiters 'current
-   dotspacemacs-persistent-server nil
-   dotspacemacs-search-tools '("ag")
-   dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup 'changed
-   dotspacemacs-check-for-update nil
-   dotspacemacs-ex-substitute-global t
-   dotspacemacs-retain-visual-state-on-shift nil
-   dotspacemacs-folding-method 'origami
    ))
 
 (defun dotspacemacs/user-init ()
