@@ -1,11 +1,12 @@
 ;;;;;;;;;; copy/paste ;;;;;;;;;;
-(with-eval-after-load 'simpleclip
-  (simpleclip-mode t)
-  )
-(global-set-key [(super a)] 'mark-whole-buffer)
-(global-set-key [(super v)] 'simpleclip-paste)
-(global-set-key [(super c)] 'simpleclip-copy)
-(global-set-key [(super x)] 'simpleclip-cut)
+;; (with-eval-after-load 'simpleclip
+;;   (simpleclip-mode t)
+;;   (global-set-key [(super v)] 'simpleclip-paste)
+;;   (global-set-key [(super c)] 'simpleclip-copy)
+;;   (global-set-key [(super x)] 'simpleclip-cut)
+;;   )
+;; (global-set-key [(super a)] 'mark-whole-buffer)
+(require 'pbcopy)
 
 ;;;;;;;;;; escape ;;;;;;;;;;;
 (global-set-key (kbd "C-[ C-[") 'evil-escape)

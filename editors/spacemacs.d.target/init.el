@@ -45,7 +45,7 @@
                                       atom-one-dark-theme
                                       dired-single
                                       google-this
-                                      simpleclip
+                                      ;; simpleclip
                                       undohist
                                       ;; vimrc-mode
                                       ;; flycheck-mypy

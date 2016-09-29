@@ -23,7 +23,7 @@
                     (buffer-file-name))))
     (when filename
       (kill-new filename)
-      (simpleclip-set-contents filename)
+      (pbcopy-select-text filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
 (defun custom-evil-search-replace ()
