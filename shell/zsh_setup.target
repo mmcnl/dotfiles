@@ -21,6 +21,17 @@ export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 autoload -U colors && colors
 
+# https://zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
+# fixes eg pasting in URLs to youtube-dl
+if [[ $TERM == dumb ]]; then
+    # turn off ZLE bracketed paste in dumb term
+    unset zle_bracketed_paste
+else
+    # otherwise turn on ZLE bracketed-paste-magic
+    autoload -Uz bracketed-paste-magic
+    zle -N bracketed-paste bracketed-paste-magic
+fi
+
 # don't complain about vars defined by zsh plugins
 # shellcheck disable=SC2154
 export NO_COLOR="%{$reset_color%}"

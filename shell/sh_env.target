@@ -11,5 +11,9 @@ export PATH="$HOME/bin:$PATH"
 
 export NEWLINE=$'\n'
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
 # load private env vars and config if this non vc'd file exists
 [ -f "$HOME/.personal_env" ] && source "$HOME/.personal_env"
