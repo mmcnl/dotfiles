@@ -9,6 +9,7 @@
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layers
    '(
+     markdown
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'cycle
@@ -45,17 +46,19 @@
                                       atom-one-dark-theme
                                       ;; dired-single
                                       google-this
-                                      ;; simpleclip
+                                      simpleclip
                                       undohist
                                       ;; vimrc-mode
                                       ;; flycheck-mypy
                                       )
    dotspacemacs-excluded-packages '(
+                                    persp-mode ;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254072953
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
                                     magit-gitflow
                                     robe
                                     spray
+                                    pbcopy
                                     )
    ))
 (defun dotspacemacs/init ()
@@ -86,7 +89,7 @@
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-max-rollback-slots 5
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-persistent-server nil
    dotspacemacs-remap-Y-to-y$ t
@@ -130,5 +133,13 @@
   ;; hide compilation buffer
   (delete-other-windows)
 
+  (spacemacs/toggle-maximize-frame-on)
+
   ;; (benchmark-init/show-durations-tabulated)
   )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+)

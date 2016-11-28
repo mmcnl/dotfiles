@@ -22,6 +22,11 @@
                         (whitespace-mode -1)
                         (spacemacs/toggle-aggressive-indent-off)
 
+                        (evil-define-key 'normal evil-org-mode-map
+                          "O" 'org-insert-heading-then-insert
+                          "o" 'org-insert-heading-after-then-insert
+                          (kbd "RET") 'insert-and-indent-line-above
+                          )
                         (define-key org-mode-map [(control tab)] 'mybuffers-switch)
                         (setq ispell-look-p nil)
                         ;; (setq company-ispell-dictionary (file-truename "~/.english-words.txt"))
@@ -31,10 +36,8 @@
                         ;;         )))
                         )) t)
 
-  (evil-define-key 'normal evil-org-mode-map
-    "O" 'evil-open-above
-    (kbd "RET") 'insert-and-indent-line-above
-    )
+  (defun org-insert-heading-then-insert() (interactive)(beginning-of-line)(org-insert-heading)(evil-insert-state))
+  (defun org-insert-heading-after-then-insert() (interactive)(end-of-line)(org-insert-heading)(org-metaright)(evil-insert-state))
   ;; (evil-define-key 'insert evil-org-mode-map
   ;;   (kbd "RET") 'org-meta-return
   ;;   )

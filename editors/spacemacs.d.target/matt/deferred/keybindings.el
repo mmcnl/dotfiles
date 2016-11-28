@@ -6,6 +6,8 @@
 (define-key evil-visual-state-map (kbd ":") 'helm-M-x)
 (define-key evil-motion-state-map (kbd ":") 'helm-M-x)
 
+(define-key evil-insert-state-map (kbd "C-y") 'company-yasnippet)
+
 (evil-leader/set-key
   "/" 'spacemacs/helm-project-smart-do-search
   ":" 'evil-ex

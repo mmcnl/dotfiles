@@ -30,6 +30,7 @@
 
 (with-eval-after-load 'helm-ag
   (setq-default helm-ag-base-command "ag --hidden --nocolor --nogroup --smart-case")
+  ;; (setq-default helm-ag-base-command "rg --vimgrep --no-heading --smart-case")
   (setq helm-ag-command-option "")
   )
 

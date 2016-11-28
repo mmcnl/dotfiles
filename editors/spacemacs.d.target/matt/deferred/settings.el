@@ -22,3 +22,7 @@
 (setq which-key-show-remaining-keys t)
 
 (global-evil-search-highlight-persist -1)
+
+;; https://github.com/syl20bnr/spacemacs/blob/master/doc/FAQ.org#why-is-spacemacs-hanging-on-startup
+(setq tramp-ssh-controlmaster-options
+      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")

@@ -4,6 +4,7 @@
   (spaceline-toggle-workspace-number-off)
   (spaceline-toggle-buffer-position-off)
   (spaceline-toggle-buffer-encoding-abbrev-off)
+  (spaceline-toggle-purpose-off)
 
   ;; add optional time display
   (setq display-time-load-average-threshold 4.0)

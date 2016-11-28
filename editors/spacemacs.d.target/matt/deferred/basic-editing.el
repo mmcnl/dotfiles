@@ -1,12 +1,13 @@
 ;;;;;;;;;; copy/paste ;;;;;;;;;;
-;; (with-eval-after-load 'simpleclip
-;;   (simpleclip-mode t)
-;;   (global-set-key [(super v)] 'simpleclip-paste)
-;;   (global-set-key [(super c)] 'simpleclip-copy)
-;;   (global-set-key [(super x)] 'simpleclip-cut)
-;;   )
-;; (global-set-key [(super a)] 'mark-whole-buffer)
-(require 'pbcopy)
+
+;; note: exluding pbcopy from osx layer and using this in its place
+(simpleclip-mode 1)
+(global-set-key [(super v)] 'simpleclip-paste)
+(global-set-key [(super c)] 'simpleclip-copy)
+(global-set-key [(super x)] 'simpleclip-cut)
+
+;; prevent yanked text from polluting system clipboard history
+(setq select-enable-clipboard nil)
 
 ;;;;;;;;;; escape ;;;;;;;;;;;
 (global-set-key (kbd "C-[ C-[") 'evil-escape)
@@ -20,7 +21,6 @@
 (define-key evil-insert-state-map "\C-k" 'kill-line)
 (define-key evil-insert-state-map "\C-u" 'kill-start-of-line)
 (define-key evil-insert-state-map (kbd "C-w") 'backward-delete-word)
-(define-key evil-insert-state-map (kbd "C-y") 'company-yasnippet)
 ;; for helm and other buffers
 (bind-key* "C-w" 'backward-delete-word)
 

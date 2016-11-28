@@ -14,6 +14,14 @@
   (rubocop-autocorrect-current-file)
   )
 
+(defun strip_tags ()
+  "Replace the current region (or the whole buffer, if none) with the output
+of php's strip_tags"
+  (interactive)
+  (let ((beg (if (region-active-p) (region-beginning) (point-min)))
+        (end (if (region-active-p) (region-end) (point-max))))
+    (shell-command-on-region beg end "php -r 'echo strip_tags(file_get_contents(\"php://stdin\"));'" nil 'replace)))
+
 (defun xmpfilter ()
   "Replace the current region (or the whole buffer, if none) with the output
 of xmpfilter"

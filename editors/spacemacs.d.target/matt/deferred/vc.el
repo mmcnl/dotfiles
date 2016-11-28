@@ -58,14 +58,12 @@
 
 (defadvice git-link--new (after set-clipboard (arg) activate)
   "add to system clibpoard"
-  (pbcopy-select-text (current-kill 0))
-  ;; (simpleclip-set-contents (current-kill 0))
+  (simpleclip-set-contents (current-kill 0))
   )
 
 (defadvice git-timemachine-kill-revision (after set-clipboard activate)
   "add to system clibpoard"
-  (pbcopy-select-text (current-kill 0))
-  ;; (simpleclip-set-contents (current-kill 0))
+  (simpleclip-set-contents (current-kill 0))
   )
 
 ;; use short commit hash

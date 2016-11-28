@@ -73,6 +73,12 @@
                             '(("jinja"    . "\\.jin\\'")
                               ("blade"  . "\\.blade\\."))
                             )
+                      (set (make-local-variable
+                            'company-backends) '((
+                                                  company-web-html
+                                                  company-css
+                                                  company-dabbrev
+                                                  )))
                       )) t)
 
 (setq ein:notebook-enable-undo 'full)
