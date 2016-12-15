@@ -76,8 +76,8 @@ nnoremap <leader>j= mzgg=G`z
 """"""""""""""""""""""""""""""""""""""""""""" quickly add blank lines
 " mimic unimpaired...
 " add blank line above
-nnoremap [<Space> O<ESC>
-" add blank lines below
+nnoremap [<Space> mmI<CR><ESC>
+" add blank line below
 nnoremap ]<Space> mmo<ESC>`m
 
 """"""""""""""""""""""""""""""""""""""""""""" abbreviations
@@ -110,8 +110,22 @@ nnoremap <leader>qQ :qa!<CR> " quit without saving
 
 """"""""""""""""""""""""""""""""""""""""""""" files
 nnoremap <leader>ff :e<Space>
-nnoremap <leader>fj :Explore<CR>
 nnoremap <leader>fs :w<CR> " save file
+
+""""""""""""""""""""""""""""""""""""""""""""" netrw
+let g:netrw_liststyle=0
+let g:netrw_banner = 0
+nnoremap <leader>fj :Explore<CR>
+nnoremap <leader>fk :Explore<CR>
+
+" http://stackoverflow.com/a/29457190/1163042
+autocmd VimEnter * com! -nargs=* -bar -bang -count=0 -complete=dir  Explore execute "call netrw#Explore(<count>,0,0+<bang>0,<q-args>)" . ' | call SearchNetrw(' . string(expand('%:t')) . ')'
+
+function! SearchNetrw(fname)
+    if ! search('\V\^' . a:fname . '\$')
+        call search('^' . substitute(a:fname, '\w\zs.*', '', '') . '.*\/\@<!$')
+    endif
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""" misc toggles
 nnoremap <leader>tn :set relativenumber!<CR>
@@ -191,4 +205,3 @@ endfunction
 nnoremap <leader>; :call ToggleComment()<cr>
 vnoremap <leader>; :call ToggleComment()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
