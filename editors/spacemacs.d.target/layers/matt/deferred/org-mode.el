@@ -37,7 +37,7 @@
                         )) t)
 
   (defun org-insert-heading-then-insert() (interactive)(beginning-of-line)(org-insert-heading)(evil-insert-state))
-  (defun org-insert-heading-after-then-insert() (interactive)(end-of-line)(org-insert-heading)(org-metaright)(evil-insert-state))
+  (defun org-insert-heading-after-then-insert() (interactive)(end-of-line)(org-insert-heading)(evil-insert-state))
   ;; (evil-define-key 'insert evil-org-mode-map
   ;;   (kbd "RET") 'org-meta-return
   ;;   )
