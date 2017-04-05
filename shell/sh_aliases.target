@@ -1,5 +1,8 @@
 # -*- mode: shell-script -*-
 
+alias ra="spring rails"
+alias rs="spring rspec"
+alias rk="spring rake"
 alias be="bundle exec"
 alias dfh="df -h"
 alias gaa="git add --all"

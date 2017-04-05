@@ -16,6 +16,10 @@ setopt ignoreeof
 # historical are saved in ~/.zlogs/
 export HISTSIZE=3000
 
+# http://zsh.sourceforge.net/Doc/Release/Options.html
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+
 # http://stackoverflow.com/a/11200998/1163042
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
@@ -52,11 +56,6 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
 # warn if custom directory is not set up
 [ -d "$HOME/.zsh-completions" ] || echo "$0: $HOME/.zsh-completions not available"
 
-# to enable, execute: $ compinit
-
-fpath+="$HOME/.zsh-completions/conda-zsh-completion"
-fpath+="$HOME/.zsh-completions/pip-completion/"
-
 ############ fzf ############
 
 # https://github.com/junegunn/fzf
@@ -68,11 +67,11 @@ fzf-history-widget() {
     local selected num
     setopt localoptions noglobsubst
     # add fc -i option
-    selected=( $(fc -i -l 1 | $(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r ${=FZF_CTRL_R_OPTS} -q "${LBUFFER//$/\\$}") )
+    selected=( $(fc -i -l 1 | $(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r "${=FZF_CTRL_R_OPTS}" -q "${LBUFFER//$/\\$}") )
     if [ -n "$selected" ]; then
         num=$selected[1]
         if [ -n "$num" ]; then
-            zle vi-fetch-history -n $num
+            zle vi-fetch-history -n "$num"
         fi
     fi
     zle redisplay

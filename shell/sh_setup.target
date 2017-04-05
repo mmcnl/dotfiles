@@ -49,9 +49,13 @@ pk() {
     kill -9 "$(ps aux | ag -v '%CPU' | ag -v '%CPU' | selecta | awk '{print $2 }')"
 }
 
-alias ag='ag --noheading --hidden --smart-case'
+alias  ag='ag --noheading --hidden --smart-case'
 alias agl='au -l'
 
+# ag -g - find files by filename
+agg() {
+    ag --depth 15 -g "${@:-.}" | agig
+}
 # ignore noisy files
 agig() {
     ag -v '\.git/|\.DS_Store|tmp/cache'
@@ -62,40 +66,36 @@ au() {
     ag --unrestricted "$@"
 }
 
-# use grep to compress blank lines in output
-agv() {
-    ag -v "$@" | grep --color=none .
-}
+# # use grep to compress blank lines in output
+# agv() {
+#     ag -v "$@" | grep --color=none .
+# }
 
 # fasd
 alias ef='f -e emacsclient_no_wait'
-efs() {
-    emacsclient_no_wait "$(fasd -fl | selecta -s "${@:- }")"
-}
-zs() {
-    cd "$(fasd -dl | selecta -s "${@:- }")" || exit
-}
+# efs() {
+#     emacsclient_no_wait "$(fasd -fl | selecta -s "${@:- }")"
+# }
+# zs() {
+#     cd "$(fasd -dl | selecta -s "${@:- }")" || exit
+# }
 
-# ag -g - find files by filename
-agg() {
-    ag --unrestricted --depth 15 -g "${@:-.}" | agig
-}
-as() {
-    agg . | selecta -s "${@:- }"
-}
-ea() {
-    emacsclient_no_wait "$(as "$@")"
-}
+# as() {
+#     agg . | selecta -s "${@:- }"
+# }
+# ea() {
+#     emacsclient_no_wait "$(as "$@")"
+# }
 
-# open file matching text in emacs
-eg() {
-    ~/bin/launch_emacs.rb "$(ag "$@" | selecta -s "${@:- }" --height=full )"
-}
+# # open file matching text in emacs
+# eg() {
+#     ~/bin/launch_emacs.rb "$(ag "$@" | selecta -s "${@:- }" --height=full )"
+# }
 
 # recent files
 r() {
-    ag --depth 8 -g . | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -30
+    ag --depth 4 -g . | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -20
 }
-er() {
-    emacsclient_no_wait "$(r | selecta -s "${@:- }")"
-}
+# er() {
+#     emacsclient_no_wait "$(r | selecta -s "${@:- }")"
+# }

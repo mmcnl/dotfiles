@@ -6,10 +6,14 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/miniconda3/bin:$PATH"
 export WORKON_HOME="/opt/miniconda3/envs"
 
+alias fzh='ag --nofilename . ~/.zlogs | fzf --tac --no-sort'
+export FZF_DEFAULT_OPTS='--border --exact --height 40% --algo=v1 --no-mouse --color bw'
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--exact --multi --ansi --no-mouse'
-alias fzh='ag --nofilename . ~/.zlogs | fzf --no-sort'
+
+# export FZF_DEFAULT_OPTS='--exact --multi --ansi --no-mouse'
+# export FZF_DEFAULT_OPTS='--border --exact --height 40% --algo=v1 --no-mouse --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
+# export FZF_CTRL_R_OPTS='--algo=v1 --no-mouse'
 
 ############ eval'd helper functions ############
 
@@ -22,8 +26,17 @@ if [[ -x "/usr/local/share/chruby" ]]; then
     source "/usr/local/share/chruby/auto.sh"
 fi
 
+# installed via 'brew install awscli'
+source /usr/local/bin/aws_zsh_completer.sh
+
+# PYTHON
+##################################################
 # source any .env file upon cd'ing
 # https://github.com/kennethreitz/autoenv
-if [[ -x "/usr/local/opt/autoenv/activate.sh" ]]; then
-    source /usr/local/opt/autoenv/activate.sh
-fi
+# if [[ -x "/usr/local/opt/autoenv/activate.sh" ]]; then
+#     source /usr/local/opt/autoenv/activate.sh
+# fi
+#
+# # to enable these additional completions, execute $ compinit
+# fpath+="$HOME/.zsh-completions/conda-zsh-completion"
+# fpath+="$HOME/.zsh-completions/pip-completion/"
