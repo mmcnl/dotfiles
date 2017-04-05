@@ -56,7 +56,23 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
 # warn if custom directory is not set up
 [ -d "$HOME/.zsh-completions" ] || echo "$0: $HOME/.zsh-completions not available"
 
+if [[ -x "/usr/local/bin/aws_zsh_completer.sh" ]]; then
+    # installed via 'brew install awscli'
+    source /usr/local/bin/aws_zsh_completer.sh
+fi
+
+# # to enable these additional completions, execute $ compinit
+# fpath+="$HOME/.zsh-completions/conda-zsh-completion"
+# fpath+="$HOME/.zsh-completions/pip-completion/"
+
 ############ fzf ############
+
+if [[ -x "/usr/local/bin/fzf" ]]; then
+    alias fzh='ag --nofilename . ~/.zlogs | fzf --tac --no-sort'
+    export FZF_DEFAULT_OPTS='--border --exact --height 40% --algo=v1 --no-mouse --color bw'
+    export FZF_DEFAULT_COMMAND='ag -g ""'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
