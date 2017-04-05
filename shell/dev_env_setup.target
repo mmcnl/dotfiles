@@ -6,6 +6,10 @@ if [[ -d "/usr/local/heroku/bin" ]]; then
     export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
+if command -v yarn > /dev/null 2>&1; then
+    export PATH="$PATH:$(yarn global bin)"
+fi
+
 ############ eval'd helper functions ############
 
 # for z, f, and other nice helpers - https://github.com/clvv/fasd
@@ -23,25 +27,23 @@ if [[ -d "/opt/miniconda3" ]]; then
     export WORKON_HOME="/opt/miniconda3/envs"
 fi
 
-if [[ -x "/usr/local/bin/hub" ]]; then
-    git() {
-        /usr/bin/env hub "$@"
-        estatus="$?"
-        [[ $estatus = 0 ]] || return $estatus
+git() {
+    /usr/bin/env git "$@"
+    estatus="$?"
+    [[ $estatus = 0 ]] || return $estatus
 
-        if [ -e tags ]
-        then
-            for opt in "$@"; do
-                case "$opt" in
-                    ci | commit | rebase | merge | pull)
-                        update_etags
-                        break
-                        ;;
-                esac
-            done
-        fi
-    }
-fi
+    if [ -e tags ]
+    then
+        for opt in "$@"; do
+            case "$opt" in
+                ci | commit | rebase | merge | pull)
+                    update_etags
+                    break
+                    ;;
+            esac
+        done
+    fi
+}
 
 ##################################################
 # source any .env file upon cd'ing
