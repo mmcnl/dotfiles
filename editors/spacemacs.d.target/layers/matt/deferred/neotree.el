@@ -22,6 +22,7 @@
   (evilified-state-evilify neotree-mode neotree-mode-map
     (kbd "-") 'custom-neotree-enter-horizontal-split-hide
     (kbd "|") 'custom-neotree-enter-vertical-split-hide
+    (kbd "ESC") 'neotree-hide ;; try to prevent getting stuck in defining-kbd-macro
     (kbd "RET") 'custom-neotree-enter-hide
     (kbd "TAB") 'custom-neotree-peek)
   )
@@ -57,5 +58,5 @@
 (defun custom-neotree-peek ()
   (interactive)
   (neotree-enter)
-  (select-window-0)
+  (winum-select-window-0)
   )

@@ -29,6 +29,12 @@
 (define-key evil-normal-state-map (kbd "C-p") 'my-move-text-up )
 (define-key evil-normal-state-map (kbd "C-n") 'my-move-text-down )
 
+;; http://stackoverflow.com/a/22418983
+;; create "il"/"al" (inside/around) line text objects:
+(define-and-bind-text-object "l" "^\\s-*" "\\s-*$")
+;; create "ie"/"ae" (inside/around) entire buffer text objects:
+(define-and-bind-text-object "e" "\\`\\s-*" "\\s-*\\'")
+
 ;;;;; duplicating things ;;;;;;;;;;;
 ;; clear Spacemacs SPC y command binding to allow using
 ;; SPC y as a prefix space

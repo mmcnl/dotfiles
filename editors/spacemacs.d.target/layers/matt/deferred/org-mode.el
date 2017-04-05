@@ -3,20 +3,21 @@
 ;;   (interactive)
 ;;   (buffer-face-mode))
 
-(with-eval-after-load 'org
+(defun my-org-setup ()
+  (interactive)
   (setq-default org-startup-indented 1)
   ;; https://github.com/syl20bnr/spacemacs/issues/5474#issuecomment-195973923
   (setq org-planning-line-re "")
 
   (make-face 'org-mode-mellow-default)
-  (set-face-attribute 'org-mode-mellow-default nil :family "DejaVu Sans" :height 220 :foreground "#6A6F7C")
+  (set-face-attribute 'org-mode-mellow-default nil :family "DejaVu" :height 220 :foreground "#6A6F7C")
 
   (setq ispell-really-hunspell t)
   (spacemacs|diminish buffer-face-mode)
   (add-hook 'org-mode-hook
             (function (lambda ()
                         (buffer-face-mode)
-                        (buffer-face-set 'org-mode-mellow-default)
+                        ;; (buffer-face-set 'org-mode-mellow-default)
                         (flycheck-mode -1)
                         (flyspell-mode -1)
                         (whitespace-mode -1)
@@ -25,7 +26,10 @@
                         (evil-define-key 'normal evil-org-mode-map
                           "O" 'org-insert-heading-then-insert
                           "o" 'org-insert-heading-after-then-insert
-                          (kbd "RET") 'insert-and-indent-line-above
+                          (kbd "C-p") 'org-metaup
+                          (kbd "C-n") 'org-metadown
+                          ;; (kbd "RET") 'insert-and-indent-line-above
+                          (kbd "RET") 'org-meta-return
                           )
                         (define-key org-mode-map [(control tab)] 'mybuffers-switch)
                         (setq ispell-look-p nil)
@@ -47,5 +51,10 @@
     )
 
   )
+
+(with-eval-after-load 'org
+  (my-org-setup)
+  )
+
 (global-set-key (kbd "C-0") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))
 ;; (global-set-key (kbd "C-9") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))

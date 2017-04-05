@@ -11,7 +11,7 @@ import seaborn as sns; sns.set()
 
 pd.options.display.width = 300
 " nil 0)
-    ("pry" "require 'pry'; binding.pry ; true; " nil 0)
+    ("pryy" "require 'pry'; binding.pry if true; 0; " nil 0)
     ("ftr" ", focus: true" nil 0)
     ("saveand" "save_and_open_page" nil 0)
     ("ipd" "from ipdb import set_trace; set_trace()  # NOQA" nil 0)

@@ -71,9 +71,9 @@
     (neo-dir-link-face :foreground "#888")
     (org-hide :foreground "#282C34") ;; match background color to hide stars
     (org-level-1 :foreground "#D19A66")
-    (org-level-2 :foreground "#BB5D66")
-    (org-level-3 :foreground "#906CA2")
+    (org-level-3 :foreground "#BB5D66")
     (org-level-4 :foreground "#6A6F7C")
+    (org-level-2 :foreground "#906CA2")
     (org-level-5 :foreground "#5A4369")
     ;; see also org-mode-mellow-default in org-mode.el
     (powerline-active1 :inherit font-lock-comment-face :italic nil :box (:color "#3E4450"))

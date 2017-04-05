@@ -1,3 +1,14 @@
+(defmacro define-and-bind-text-object (key start-regex end-regex)
+  (let ((inner-name (make-symbol "inner-name"))
+        (outer-name (make-symbol "outer-name")))
+    `(progn
+       (evil-define-text-object ,inner-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count nil))
+       (evil-define-text-object ,outer-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count t))
+       (define-key evil-inner-text-objects-map ,key (quote ,inner-name))
+       (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
+
 (defun new-tmp-buffer ()
   (interactive)
   (switch-to-buffer-other-frame "*scratch*")
@@ -159,3 +170,18 @@ confirmation"
 
 (defun whitespace-cleanup-buffer() (interactive)(ws-butler-clean-region (point-min)(point-max)))
 (defun new-empty-buffer() (interactive)(spacemacs/new-empty-buffer)(text-mode))
+
+;; http://emacs.stackexchange.com/a/12164
+(defun find-next-file (&optional backward)
+  "Find the next file (by name) in the current directory.
+With prefix arg, find the previous file."
+  (interactive "P")
+  (when buffer-file-name
+    (let* ((file (expand-file-name buffer-file-name))
+           (files (cl-remove-if (lambda (file) (cl-first (file-attributes file)))
+                                (sort (directory-files (file-name-directory file) t nil t) 'string<)))
+           (pos (mod (+ (cl-position file files :test 'equal) (if backward -1 1))
+                     (length files))))
+      (find-file (nth pos files)))))
+
+(defun find-previous-file () (interactive) (find-next-file t))

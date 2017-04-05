@@ -6,7 +6,7 @@
 (define-key evil-visual-state-map (kbd ":") 'helm-M-x)
 (define-key evil-motion-state-map (kbd ":") 'helm-M-x)
 
-(define-key evil-insert-state-map (kbd "C-y") 'company-yasnippet)
+(define-key evil-insert-state-map (kbd "C-y") 'yas-expand)
 
 (evil-leader/set-key
   "/" 'spacemacs/helm-project-smart-do-search
@@ -19,7 +19,8 @@
   "ce" 'clear-previous-comint-buffer
   "dd" 'dash-at-point
   "dg" 'google-this-noconfirm
-  "ee" 'eval-expression
+  "en" 'flycheck-next-error
+  "ep" 'flycheck-previous-error
   "ff" 'custom-find-files
   "fn" 'find-next-file
   "fp" 'find-previous-file

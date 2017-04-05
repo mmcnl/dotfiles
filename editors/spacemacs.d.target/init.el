@@ -9,50 +9,41 @@
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-configuration-layers
    '(
-     markdown
-     (auto-completion :variables
-                      auto-completion-return-key-behavior nil
-                      auto-completion-tab-key-behavior 'cycle
-                      auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t
-                      auto-completion-private-snippets-directory nil)
+     ;; ipython-notebook
+     ;; markdown
+     ;; sql
+     ;; (python :variables python-test-runner '(pytest nose))
+     csv
+     (auto-completion :variables auto-completion-return-key-behavior nil auto-completion-tab-key-behavior 'cycle auto-completion-enable-sort-by-usage t auto-completion-enable-snippets-in-popup t auto-completion-private-snippets-directory nil)
      helm
      html
-     csv
      dash
      emacs-lisp
      (git :variables git-magit-status-fullscreen t)
      github
      html
-     ;; ipython-notebook
      javascript
-     ;; markdown
      matt
      org
      osx
-     ;; (python :variables python-test-runner '(pytest nose))
      ruby
      (spell-checking :variables spell-checking-enable-by-default nil)
-     ;; sql
      syntax-checking
-     (theming :variables
-              theming-headings-inherit-from-default 'all
-              theming-headings-same-size 'all
-              theming-headings-bold 'all)
+     (theming :variables theming-headings-inherit-from-default 'all theming-headings-same-size 'all theming-headings-bold 'all)
      version-control
      yaml
      )
    dotspacemacs-additional-packages '(
+                                      ;; vimrc-mode
+                                      ;; flycheck-mypy
                                       atom-one-dark-theme
-                                      ;; dired-single
                                       google-this
                                       simpleclip
                                       undohist
-                                      ;; vimrc-mode
-                                      ;; flycheck-mypy
+                                      vue-mode
                                       )
    dotspacemacs-excluded-packages '(
-                                    persp-mode ;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254072953
+                                    ;; persp-mode ;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254072953
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
                                     magit-gitflow
@@ -80,7 +71,7 @@
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native t
    dotspacemacs-helm-no-header nil
-   dotspacemacs-helm-position 'bottom
+   dotspacemacs-helm-position 'top
    dotspacemacs-helm-resize nil
    dotspacemacs-highlight-delimiters 'current
    dotspacemacs-inactive-transparency 100
@@ -102,7 +93,8 @@
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
    dotspacemacs-startup-recent-list-size 0
-   dotspacemacs-themes '(atom-one-dark solarized-light)
+   dotspacemacs-themes '((atom-one-dark :location (recipe :fetcher github :repo "jonathanchu/atom-one-dark-theme"))
+                         solarized-light)
    dotspacemacs-use-ido nil
    dotspacemacs-verbose-loading nil
    dotspacemacs-which-key-delay 0.4
@@ -129,9 +121,6 @@
 
   ;; to disable custom config, comment out the line below
   (matt-load-deferred-config-files)
-
-  ;; hide compilation buffer
-  (delete-other-windows)
 
   (spacemacs/toggle-maximize-frame-on)
 

@@ -9,6 +9,12 @@
   (deactivate-mark)
   )
 
+(defadvice simpleclip-copy (after deselect-after activate)
+  "deselect-after"
+  (deactivate-mark)
+  (message "copied to clipboard")
+  )
+
 (defadvice spacemacs/python-execute-file (before save-buffer activate)
   "Save buffer first."
   (save-buffer)

@@ -20,7 +20,7 @@
 ;;
 (defun projectile-recently-modified-files ()
   "Return a list of recently modified files in the current project"
-  (split-string (shell-command-to-string "MY_ROOT=$(git rev-parse --show-toplevel 2>/dev/null); if [ \"${MY_ROOT}\" != \"\" ]; then cd \"${MY_ROOT}\"; fi; ag -l --nocolor . | head -10000 | xargs stat -c %y\ %n | sort -r | head -100 | cut -c 36-| xargs realpath "))
+  (split-string (shell-command-to-string "recent_files_in_project"))
   )
 
 (defun my-helm-projectile-findutils-transformer (candidates _source)
@@ -54,9 +54,9 @@
 
 (helm-projectile-command "custom-find" '(
                                          ;; helm-source-projectile-recently-modified-files
-                                         helm-source-projectile-buffers-list
-                                         helm-source-buffers-list
                                          helm-source-projectile-recentf-list
+                                         helm-source-buffers-list
+                                         helm-source-projectile-buffers-list
                                          helm-source-projectile-files-list
                                          helm-source-recentf
                                          helm-source-buffer-not-found)
