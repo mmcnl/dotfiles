@@ -2,24 +2,6 @@
 
 # functions shared between zsh and bash
 
-git() {
-    /usr/bin/env hub "$@"
-    estatus="$?"
-    [[ $estatus = 0 ]] || return $estatus
-
-    if [ -e tags ]
-    then
-        for opt in "$@"; do
-            case "$opt" in
-                ci | commit | rebase | merge | pull)
-                    update_etags
-                    break
-                    ;;
-            esac
-        done
-    fi
-}
-
 update_etags() {
     echo "updating tags..."
     git ls-files | grep -E '\.(rb|yml|py)$' | xargs ctags -e --languages=ruby,yaml,python

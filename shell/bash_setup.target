@@ -29,11 +29,17 @@ if which brew > /dev/null; then
 fi
 
 bash_prompt() {
+    # Turn the prompt symbol red if the user is root
+    if [ $(id -u) -eq 0 ]; then
+        USER_PRIV="$RED#$NO_COLOR"
+    else
+        USER_PRIV='$'
+    fi
     # work around trailing newlines being swallowed by command substitution
     # http://stackoverflow.com/a/15184414/1163042
     # add newline only if non-null
     gp=$(git_prompt)
     [[ -n $gp ]] && gp=$gp$'\n'
-    echo "${NEWLINE}$gp\u@\h $GREEN\w$NO_COLOR $ "
+    echo "${NEWLINE}$gp\u@\h $GREEN\w$NO_COLOR $USER_PRIV "
 }
 PROMPT_COMMAND='history -a; PS1="$(bash_prompt)"'
