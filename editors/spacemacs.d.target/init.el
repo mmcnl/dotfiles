@@ -40,7 +40,7 @@
                                       google-this
                                       simpleclip
                                       undohist
-                                      vue-mode
+                                      ;; vue-mode
                                       )
    dotspacemacs-excluded-packages '(
                                     ;; persp-mode ;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254072953
