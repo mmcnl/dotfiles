@@ -72,3 +72,30 @@
   :evil-leader-for-mode (python-mode . "m"))
 
 )
+
+;; PYTHON
+;; (setq ein:notebook-enable-undo 'full)
+;; (setq ein:notebook-kill-buffer-ask nil)
+;; ;; Start completion when inserting a dot.
+;; (setq ein:complete-on-dot t)
+;; (setq ein:use-auto-complete-superpack t)
+;; ;; (run-with-timer 0 (* 30 60) 'ein:notebook-save-notebook-command)
+;; (defun save-ein-notebook()
+;;   (when (eq major-mode 'ein:notebook-multilang-mode)
+;;     (ein:notebook-save-notebook-command)))
+
+;; (run-with-idle-timer 20 t 'save-ein-notebook)
+;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+;; (add-hook 'ein:notebook-multilang-mode-hook
+;;           (function (lambda ()
+;;                       (auto-complete-mode)
+;;                       (define-key ac-completing-map (kbd "C-l") 'ac-expand)
+;;                       )) t)
+;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+;;   "s" 'ein:console-open )
+;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+;;   "a" 'ein:pytools-request-help )
+;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+;;   (kbd "CS-l") 'ein:pytools-request-help )
+;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
+;;   "Fj" 'ein:notebook-scratchsheet-open )

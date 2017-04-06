@@ -1,6 +1,8 @@
 {
   "mode": "-*- mode: json -*-",
 
+  "plugins": ["transform-react-jsx-source"],
+
   "presets": [
     "react"
   ]

@@ -58,63 +58,7 @@
                                                          ))
                       )) t)
 
-(add-to-list 'auto-mode-alist '("\\.jst.str\\'" . web-mode))
-
-;; (add-to-list 'auto-mode-alist '("\\.jin\\'" . web-mode))
-
 (add-hook 'emmet-mode-hook (lambda () (define-key emmet-mode-keymap (kbd "C-j") 'electric-newline-and-maybe-indent)))
-
-(add-hook 'web-mode-hook
-          (function (lambda ()
-                      (setq web-mode-markup-indent-offset 2)
-                      (setq web-mode-css-indent-offset 2)
-                      (setq web-mode-code-indent-offset 2)
-                      (setq web-mode-enable-engine-detection t)
-                      ;; (setq web-mode-engines-alist
-                      ;;       '(("jinja"    . "\\.jin\\'")
-                      ;;         ("blade"  . "\\.blade\\."))
-                      ;;       )
-                      (set (make-local-variable
-                            'company-backends) '((
-                                                  company-web-html
-                                                  company-css
-                                                  company-dabbrev
-                                                  )))
-                      )) t)
-
-;; for better jsx syntax-highlighting in web-mode
-;; - courtesy of Patrick @halbtuerke
-;; (defadvice web-mode-highlight-part (around tweak-jsx activate)
-;;   (if (equal web-mode-content-type "jsx")
-;;       (let ((web-mode-enable-part-face nil))
-;;         ad-do-it)
-;;     ad-do-it))
-
-;; (setq ein:notebook-enable-undo 'full)
-;; (setq ein:notebook-kill-buffer-ask nil)
-;; ;; Start completion when inserting a dot.
-;; (setq ein:complete-on-dot t)
-;; (setq ein:use-auto-complete-superpack t)
-;; ;; (run-with-timer 0 (* 30 60) 'ein:notebook-save-notebook-command)
-;; (defun save-ein-notebook()
-;;   (when (eq major-mode 'ein:notebook-multilang-mode)
-;;     (ein:notebook-save-notebook-command)))
-
-;; (run-with-idle-timer 20 t 'save-ein-notebook)
-;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-;; (add-hook 'ein:notebook-multilang-mode-hook
-;;           (function (lambda ()
-;;                       (auto-complete-mode)
-;;                       (define-key ac-completing-map (kbd "C-l") 'ac-expand)
-;;                       )) t)
-;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
-;;   "s" 'ein:console-open )
-;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
-;;   "a" 'ein:pytools-request-help )
-;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
-;;   (kbd "CS-l") 'ein:pytools-request-help )
-;; (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-multilang-mode
-;;   "Fj" 'ein:notebook-scratchsheet-open )
 
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd ":") 'helm-M-x)
