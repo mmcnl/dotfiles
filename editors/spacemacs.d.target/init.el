@@ -39,6 +39,7 @@
                                       ;; flycheck-mypy
                                       atom-one-dark-theme
                                       google-this
+                                      rjsx-mode
                                       simpleclip
                                       undohist
                                       ;; vue-mode

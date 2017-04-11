@@ -4,7 +4,7 @@
 ;;       '(("jinja"    . "\\.jin\\'")
 ;;         ("blade"  . "\\.blade\\."))
 ;;       )
-(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))       ;; JS + JSX
+;; (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))       ;; JS + JSX
 (add-hook 'web-mode-hook
           (lambda ()
             (message "customizing web-mode")
