@@ -27,6 +27,12 @@ git_prompt () {
     echo "[$(time_since_last_commit) $git_branch $git_rev] $NO_COLOR"
 }
 
+virtualenv_prompt() {
+    v=$(basename "$VIRTUAL_ENV")
+    if [[ -z $v ]]; then return 0; fi
+    echo "$BLUE [$v] $NO_COLOR"
+}
+
 pk() {
     kill -9 "$(ps aux | ag -v '%CPU' | ag -v '%CPU' | selecta | awk '{print $2 }')"
 }
