@@ -7,6 +7,7 @@
 (defun dotspacemacs/layers ()
   (setq-default
    dotspacemacs-distribution 'spacemacs
+   dotspacemacs-enable-lazy-installation nil
    dotspacemacs-configuration-layers
    '(
      ;; ipython-notebook
@@ -73,9 +74,11 @@
    dotspacemacs-helm-no-header nil
    dotspacemacs-helm-position 'top
    dotspacemacs-helm-resize nil
+   dotspacemacs-helm-use-fuzzy 'always
    dotspacemacs-highlight-delimiters 'current
    dotspacemacs-inactive-transparency 100
    dotspacemacs-leader-key "SPC"
+   dotspacemacs-line-numbers t
    dotspacemacs-loading-progress-bar nil
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-major-mode-leader-key ","
@@ -85,14 +88,13 @@
    dotspacemacs-persistent-server nil
    dotspacemacs-remap-Y-to-y$ t
    dotspacemacs-retain-visual-state-on-shift nil
-   dotspacemacs-search-tools '("ag")
+   dotspacemacs-search-tools '("rg" "ag")
    dotspacemacs-show-transient-state-color-guide nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smooth-scrolling t
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
-   dotspacemacs-startup-recent-list-size 0
    dotspacemacs-themes '((atom-one-dark :location (recipe :fetcher github :repo "jonathanchu/atom-one-dark-theme"))
                          solarized-light)
    dotspacemacs-use-ido nil

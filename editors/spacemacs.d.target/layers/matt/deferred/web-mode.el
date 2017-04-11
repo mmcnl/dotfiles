@@ -23,3 +23,7 @@
             ;;                             )))
             )
           )
+
+;; use to reset mode
+(spacemacs/set-leader-keys-for-major-mode 'web-mode
+  "," 'web-mode )
