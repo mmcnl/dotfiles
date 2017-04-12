@@ -1,10 +1,6 @@
 # -*- mode: shell-script -*-
 
-alias ra="spring rails"
-alias rs="spring rspec"
-alias rk="spring rake"
-alias be="bundle exec"
-alias dfh="df -h"
+# git
 alias gaa="git add --all"
 alias gacm='gaa && git ci -m'
 alias gap="git add -p"
@@ -22,36 +18,20 @@ alias gl="git l"
 alias gla="git la"
 alias gll="git log --summary --stat"
 alias glp="git log -p --since='1 month ago'"
-alias gp="gp"
-alias gr="git ra"
-alias gs="git status"
-alias gss="git short-status"
-alias ls='ls --group-directories-first --color=auto'
-alias las='ls -A'
-alias l='ls -l'
-alias ll='ls -l'
-alias la='ls -lA'
+
+# ls
 alias l.='ls -l -d .*'
+alias l='ls -l'
+alias la='ls -lA'
+alias las='ls -A'
 alias lh='ls -l -lh'
+alias ll='ls -l'
+alias lr='ls -lA -R'
+alias ls='ls --group-directories-first --color=auto'
 alias lt='ls -l -ltr'
 alias lz='ls -l --sort=size -r'
-alias rg='rg --no-heading --hidden'
+
+# cd
 alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
-alias wdiff="diff --color-words"
-
-# extra
-alias e='emacsclient_no_wait'
-alias htop="sudo htop"
-alias iftop='sudo iftop'
-alias kl="KITCHEN_LOCAL_YAML=.kitchen.local.yml KITCHEN_YAML=.kitchen.vagrant.yml bundle exec kitchen"
-alias kr="bundle exec kitchen"
-alias py='python'
-alias pti='ptipython'
-alias rm=rm
-alias sel=selecta
-alias t='tree -a -F -AC -I "tmp|.DS_Store|.git|.gitkeep|.keep"'
-alias top=top
-alias tp='top -ocpu -Otime'
-alias wget_page='wget --timestamping  -p -k --adjust-extension --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21" --no-directories --load-cookies=cookies.txt'

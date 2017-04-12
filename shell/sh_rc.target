@@ -12,5 +12,10 @@ export VISUAL=$EDITOR
 source "$HOME/.sh_aliases"
 source "$HOME/.sh_setup"
 
+# load local config if file exists
+if [[ -e "$HOME/.sh_setup_local" ]]; then
+    source "$HOME/.sh_setup_local"
+fi
+
 # load additional config only if requested via ENV var
 [ -n "$DEV_ENV_SETUP" ] && source "$HOME/.dev_env_setup"
