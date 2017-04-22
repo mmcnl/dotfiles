@@ -79,7 +79,7 @@
    dotspacemacs-highlight-delimiters 'current
    dotspacemacs-inactive-transparency 100
    dotspacemacs-leader-key "SPC"
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
    dotspacemacs-loading-progress-bar nil
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-major-mode-leader-key ","
@@ -96,7 +96,10 @@
    dotspacemacs-smooth-scrolling t
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
-   dotspacemacs-themes '((atom-one-dark :location (recipe :fetcher github :repo "jonathanchu/atom-one-dark-theme"))
+
+   ;; dotspacemacs-themes '((atom-one-dark :location (recipe :fetcher github :repo "jonathanchu/atom-one-dark-theme"))
+   ;;                       solarized-light)
+   dotspacemacs-themes '(atom-one-dark
                          solarized-light)
    dotspacemacs-use-ido nil
    dotspacemacs-verbose-loading nil

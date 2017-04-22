@@ -1,8 +1,11 @@
 {
-  "mode": "-*- mode: json -*-",
-
-  "plugins": ["transform-react-jsx-source"],
-
+  "plugins": [
+    "transform-react-jsx-source",
+    "transform-class-properties"
+  ],
+  "rules": {
+    "class-property/rule-name": 2
+  },
   "presets": [
     "react"
   ]

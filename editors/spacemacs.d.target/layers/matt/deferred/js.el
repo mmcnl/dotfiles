@@ -1,5 +1,5 @@
 (with-eval-after-load 'flycheck
-  (spacemacs/add-flycheck-hook 'rjsx-mode)
+  (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
   ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
   ;; disable json-jsonlist checking for json files
   (setq-default flycheck-disabled-checkers
@@ -48,13 +48,21 @@
 (spacemacs/set-leader-keys-for-major-mode 'json-mode
   "xx" 'json-pretty-print-buffer )
 
-;; replaced with prettier.js
-;; (spacemacs/set-leader-keys-for-major-mode 'web-mode
-;;   "xx" 'eslint-fix-file-and-revert )
+(spacemacs/set-leader-keys-for-major-mode 'js2-mode
+  "xx" 'eslint-fix-file-and-revert )
+
+(spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
+  "xx" 'eslint-fix-file-and-revert )
 
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.react.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\index.android.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\index.ios.js\\'" . rjsx-mode))
+;; https://www.emacswiki.org/emacs/MagicModeAList#magic-mode-alist
 (add-to-list 'magic-mode-alist '("/\\*\\* @jsx React\\.DOM \\*/" . rjsx-mode))
-(add-to-list 'magic-mode-alist '("import\s+[^\s]+\s+from\s+['\"]react['\"]" . rjsx-mode))
+(add-to-list 'magic-mode-alist '("import\s+.*from\s+['\"]react['\"]" . rjsx-mode))
+
+(add-hook 'rjsx-mode-hook
+          (lambda ()
+            (emmet-mode)
+            ))
