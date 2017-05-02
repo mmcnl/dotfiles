@@ -16,6 +16,7 @@
   ;; http://stackoverflow.com/questions/8473131/set-the-evil-shift-width-to-the-buffer-local-indentation-in-emacs
   (setq evil-shift-width ruby-indent-level)
   (setq flycheck-disabled-checkers '(
+                                     ruby-reek
                                      ruby-rubocop
                                      chef-foodcritic
                                      ))
