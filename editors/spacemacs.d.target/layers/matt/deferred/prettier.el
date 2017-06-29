@@ -194,11 +194,11 @@ function."
 (setq prettier-target-mode "rjsx-mode")
 (setq prettier-args (list "--no-semi"))
 
-;; http://stackoverflow.com/questions/6138029/how-to-add-a-hook-to-only-run-in-a-particular-mode
-(add-hook 'rjsx-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'prettier-before-save nil 'make-it-local)))
+;; ;; http://stackoverflow.com/questions/6138029/how-to-add-a-hook-to-only-run-in-a-particular-mode
+;; (add-hook 'rjsx-mode-hook
+;;           (lambda ()
+;;             (add-hook 'before-save-hook 'prettier-before-save nil 'make-it-local)))
 
-(add-hook 'js2-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'prettier-before-save nil 'make-it-local)))
+;; (add-hook 'js2-mode-hook
+;;           (lambda ()
+;;             (add-hook 'before-save-hook 'prettier-before-save nil 'make-it-local)))
