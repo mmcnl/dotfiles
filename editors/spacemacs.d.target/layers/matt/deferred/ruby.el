@@ -20,6 +20,7 @@
                                      ruby-rubocop
                                      chef-foodcritic
                                      ))
+  (chruby-use-corresponding)
   (setq company-dabbrev-code-other-buffers 'all)
   (make-local-variable 'company-backends)
   (setq company-backends '((
