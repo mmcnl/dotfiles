@@ -14,6 +14,10 @@
   (rubocop-autocorrect-current-file)
   )
 
+
+;; override to remove annoying highlighting
+(defun spacemacs/ruby-maybe-highlight-debugger-keywords ())
+
 (defun strip_tags ()
   "Replace the current region (or the whole buffer, if none) with the output
 of php's strip_tags"
