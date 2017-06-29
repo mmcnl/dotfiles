@@ -129,6 +129,7 @@
   (matt-load-deferred-config-files)
 
   (spacemacs/toggle-maximize-frame-on)
+  (my-org-setup)
 
   ;; (benchmark-init/show-durations-tabulated)
   )

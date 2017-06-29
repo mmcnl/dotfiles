@@ -52,9 +52,5 @@
 
   )
 
-(with-eval-after-load 'org
-  (my-org-setup)
-  )
-
 (global-set-key (kbd "C-0") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))
 ;; (global-set-key (kbd "C-9") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))
