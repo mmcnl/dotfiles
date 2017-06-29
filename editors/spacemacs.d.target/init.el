@@ -89,7 +89,7 @@
    dotspacemacs-persistent-server nil
    dotspacemacs-remap-Y-to-y$ t
    dotspacemacs-retain-visual-state-on-shift nil
-   dotspacemacs-search-tools '("ag")
+   dotspacemacs-search-tools '("rg")
    dotspacemacs-show-transient-state-color-guide nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-smartparens-strict-mode nil
