@@ -16,6 +16,7 @@ export GREEN="\[\033[0;32m\]"
 export RED="\[\033[0;31m\]"
 export BLUE="\[\033[0;34m\]"
 export CYAN="\[\033[0;36m\]"
+export YELLOWBLUE="\[\033[1;33;44m\]"
 
 # handle completion on ubuntu or other linux
 if [ -f '/etc/bash_completion' ]; then
@@ -40,6 +41,6 @@ bash_prompt() {
     # add newline only if non-null
     gp=$(git_prompt)
     [[ -n $gp ]] && gp=$gp$'\n'
-    echo "${NEWLINE}$gp\u@\h $GREEN\w$NO_COLOR $USER_PRIV "
+    echo "${NEWLINE}$gp$YELLOWBLUE\u@\h$NO_COLOR $GREEN\w$NO_COLOR $USER_PRIV "
 }
 PROMPT_COMMAND='history -a; PS1="$(bash_prompt)"'
