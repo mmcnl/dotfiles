@@ -26,9 +26,9 @@
   "wv" 'split-window-right-and-focus
   )
 
-(global-set-key [(super n)] 'new-tmp-buffer)
+(global-set-key [(hyper n)] 'new-tmp-buffer)
 
-(global-set-key [(super w)] (lambda () (interactive) (delete-frame)))
+(global-set-key [(hyper w)] (lambda () (interactive) (delete-frame)))
 
 ;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254120878
 (setq-default persp-auto-save-opt 0)

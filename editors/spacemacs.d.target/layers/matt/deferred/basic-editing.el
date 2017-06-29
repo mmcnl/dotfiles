@@ -2,9 +2,9 @@
 
 ;; note: exluding pbcopy from osx layer and using this in its place
 (simpleclip-mode 1)
-(global-set-key [(super v)] 'simpleclip-paste)
-(global-set-key [(super c)] 'simpleclip-copy)
-(global-set-key [(super x)] 'simpleclip-cut)
+(global-set-key [(hyper v)] 'simpleclip-paste)
+(global-set-key [(hyper c)] 'simpleclip-copy)
+(global-set-key [(hyper x)] 'simpleclip-cut)
 
 ;; prevent yanked text from polluting system clipboard history
 (setq select-enable-clipboard nil)
