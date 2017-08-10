@@ -7,7 +7,7 @@
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
   (flyspell-mode-off)
-  ;; (linum-mode)
+  (linum-mode)
   ;; (linum-relative-on)
   (company-mode 1)
   )
