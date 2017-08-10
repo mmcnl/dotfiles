@@ -14,7 +14,7 @@ setopt ignoreeof
 
 # keep history to reasonable size for quick loading
 # historical are saved in ~/.zlogs/
-export HISTSIZE=3000
+export HISTSIZE=5000
 
 # http://zsh.sourceforge.net/Doc/Release/Options.html
 setopt HIST_IGNORE_DUPS
