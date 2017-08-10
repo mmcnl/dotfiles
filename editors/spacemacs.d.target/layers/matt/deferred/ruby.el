@@ -1,6 +1,7 @@
 (setq ruby-insert-encoding-magic-comment nil)
 
 (spacemacs|diminish rubocop-mode)
+(spacemacs|diminish ruby-refactor-mode)
 
 (add-to-list 'auto-mode-alist '("\\pryrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Berksfile\\'" . ruby-mode))
