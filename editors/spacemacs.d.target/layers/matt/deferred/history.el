@@ -23,4 +23,8 @@
   :init
   (setq undohist-directory (expand-file-name "undo-history" spacemacs-cache-directory))
   :config
-  (undohist-initialize))
+  (undohist-initialize)
+  (setq undohist-ignored-files
+        (append '("COMMIT_EDITMSG" "NOTES_EDITMSG" "MERGE_MSG" "TAG_EDITMSG")
+                undohist-ignored-files))
+  )
