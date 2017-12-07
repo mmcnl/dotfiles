@@ -82,7 +82,7 @@ alias ef='f -e emacsclient_no_wait'
 
 # recent files
 r() {
-    ag --depth 4 -g . | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -20
+    ag --depth 2 -g . | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -20
 }
 # er() {
 #     emacsclient_no_wait "$(r | selecta -s "${@:- }")"
