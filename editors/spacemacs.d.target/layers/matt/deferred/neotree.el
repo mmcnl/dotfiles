@@ -58,5 +58,5 @@
 (defun custom-neotree-peek ()
   (interactive)
   (neotree-enter)
-  (winum-select-window-0)
+  (winum-select-window-1)
   )

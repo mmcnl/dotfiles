@@ -1,7 +1,7 @@
 ;; prefer vertical splits for opening files
 ;; http://stackoverflow.com/a/7998271
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
+(setq-default split-height-threshold nil)
+(setq-default split-width-threshold 0)
 
 (with-eval-after-load 'popwin
   (popwin-mode 1)

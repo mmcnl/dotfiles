@@ -1,7 +1,7 @@
 (setq global-company-mode t)
 
 (with-eval-after-load 'company
-  (setq company-idle-delay 0.3)
+  (setq company-idle-delay 0.15)
   (setq company-minimum-prefix-length 2)
   (setq company-tooltip-limit 20)
 
@@ -21,6 +21,7 @@
   (define-key company-active-map (kbd "C-h") 'backward-delete-char)
   )
 
+(yas-minor-mode -1)
 (add-to-list 'hippie-expand-try-functions-list 'try-expand-dabbrev-visible)
 (define-key evil-insert-state-map (kbd "C-l") 'hippie-expand)
 

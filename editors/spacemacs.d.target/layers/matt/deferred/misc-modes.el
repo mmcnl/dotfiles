@@ -7,12 +7,20 @@
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
   (flyspell-mode-off)
-  (linum-mode)
+  (linum-mode -1)
   ;; (linum-relative-on)
   (company-mode 1)
+
   )
 
 (add-hook 'prog-mode-hook 'prog-mode-common-setup)
+
+(add-hook 'css-mode-hook
+          (function (lambda ()
+                      ;; prevent . and # from being included when searching project by symbol
+                      (modify-syntax-entry ?. "." css-mode-syntax-table)
+                      (modify-syntax-entry ?# "." css-mode-syntax-table)
+                      )) t)
 
 (add-hook 'help-mode-hook
           (function (lambda ()
@@ -20,9 +28,15 @@
                       (visual-line-mode)
                       )) t)
 
+
 (add-hook 'diff-mode-hook
           (function (lambda ()
+                      (evilified-state-evilify diff-mode diff-mode-map
+                        "q" 'kill-buffer-and-window
+                        )
                       (whitespace-mode -1)
+                      (evil-window-move-far-right)
+                      (diff-ignore-whitespace-hunk)
                       )) t)
 
 (add-hook 'sh-mode-hook

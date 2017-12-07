@@ -20,7 +20,7 @@
      html
      dash
      emacs-lisp
-     (git :variables git-magit-status-fullscreen t)
+     git
      github
      html
      javascript
@@ -49,6 +49,7 @@
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
                                     magit-gitflow
+                                    flyspell
                                     robe
                                     spray
                                     pbcopy
@@ -111,7 +112,7 @@
   "called immediately after `dotspacemacs/init'."
 
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html
-  (setq custom-file "/tmp/emacs_customizations")
+  (setq custom-file "~/.emacs_customizations")
 
   (setq-default solarized-use-less-bold t)
 

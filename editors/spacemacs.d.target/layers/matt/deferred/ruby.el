@@ -18,7 +18,7 @@
   (setq evil-shift-width ruby-indent-level)
   (setq flycheck-disabled-checkers '(
                                      ruby-reek
-                                     ruby-rubocop
+                                     ;; ruby-rubocop
                                      chef-foodcritic
                                      ))
   (chruby-use-corresponding)

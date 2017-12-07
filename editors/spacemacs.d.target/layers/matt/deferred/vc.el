@@ -1,5 +1,9 @@
 ;;;;;;;;;;; variables ;;;;;;;;;;;;;;
 
+(setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+
+(setq magit-diff-refine-hunk nil)
+
 ;; http://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
 
@@ -72,7 +76,7 @@
 
 (defadvice vc-diff (after smaller-text activate)
   "wrap vc-diff"
-  (text-scale-set -1)
+  (text-scale-set -2)
   )
 
 (defadvice spacemacs/magit-diff-head (after collapse-diffs activate)
@@ -86,6 +90,11 @@
 (defun git-fetch() (interactive)(shell-command "git fetch --verbose"))
 (defun git-short-status() (interactive)(shell-command "git short-status | column -t"))
 (defun git-push() (interactive)(shell-command "git push --verbose"))
+
+(defun my-vc-diff(command)
+  (interactive)
+  (shell-command (format "osascript -e 'tell application \"iTerm\"' -e 'tell current window' -e 'set newTab to (create tab with default profile)' -e 'tell newTab' -e 'activate current session' -e 'tell current session' -e 'write text \"%s\"' -e 'end tell' -e 'end tell' -e 'end tell' -e 'end tell'" command))
+  )
 
 (defun send-to-terminal(command)
   (interactive)
