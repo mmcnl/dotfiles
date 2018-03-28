@@ -24,7 +24,8 @@
     (kbd "|") 'custom-neotree-enter-vertical-split-hide
     (kbd "ESC") 'neotree-hide ;; try to prevent getting stuck in defining-kbd-macro
     (kbd "RET") 'custom-neotree-enter-hide
-    (kbd "TAB") 'custom-neotree-peek)
+    ;; (kbd "TAB") 'custom-neotree-peek)
+    (kbd "TAB") 'neotree-quick-look)
   )
 (evil-leader/set-key "fk" 'neotree-find-maybe-in-project)
 
