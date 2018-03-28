@@ -51,6 +51,7 @@
                                     magit-gitflow
                                     flyspell
                                     robe
+                                    spacemacs-dark
                                     spray
                                     pbcopy
                                     )
