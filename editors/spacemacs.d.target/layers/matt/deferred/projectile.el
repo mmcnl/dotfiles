@@ -54,12 +54,13 @@
 
 (helm-projectile-command "custom-find" '(
                                          ;; helm-source-projectile-recently-modified-files
+                                         ;; helm-source-projectile-buffers-list
                                          helm-source-projectile-recentf-list
-                                         helm-source-buffers-list
-                                         helm-source-projectile-buffers-list
-                                         helm-source-projectile-files-list
                                          helm-source-recentf
-                                         helm-source-buffer-not-found)
+                                         ;; helm-source-buffers-list
+                                         helm-source-projectile-files-list
+                                         ;; helm-source-buffer-not-found
+                                         )
                          "Custom find file: " t)
 
 (defun custom-find-files ()

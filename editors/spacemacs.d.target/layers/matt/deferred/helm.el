@@ -27,6 +27,10 @@
   (define-key helm-map (kbd "C-h") 'backward-delete-char)
   (define-key helm-map (kbd "C-d") 'helm-next-page)
   (define-key helm-map (kbd "C-u") 'helm-previous-page)
+
+  ;; https://github.com/emacs-helm/helm/issues/1892
+  (require 'helm-for-files)
+
   )
 
 (with-eval-after-load 'helm-ag

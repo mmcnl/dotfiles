@@ -9,6 +9,11 @@
   (deactivate-mark)
   )
 
+(defadvice evil-force-normal-state (after escape-clear-highlight activate)
+  "clear highlights after escape"
+  (spacemacs/evil-search-clear-highlight)
+  )
+
 (defadvice simpleclip-copy (after deselect-after activate)
   "deselect-after"
   (deactivate-mark)

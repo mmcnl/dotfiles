@@ -38,6 +38,7 @@
                                       ;; vimrc-mode
                                       ;; flycheck-mypy
                                       atom-one-dark-theme
+                                      coffee-mode
                                       google-this
                                       rjsx-mode
                                       simpleclip
@@ -87,8 +88,9 @@
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-max-rollback-slots 5
    dotspacemacs-maximized-at-startup nil
+   dotspacemacs-mode-line-theme 'spacemacs
    dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server nil ;; started by server-start below
    dotspacemacs-remap-Y-to-y$ t
    dotspacemacs-retain-visual-state-on-shift nil
    dotspacemacs-search-tools '("rg")
@@ -108,7 +110,7 @@
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-whitespace-cleanup 'changed
    ))
-
+;;
 (defun dotspacemacs/user-init ()
   "called immediately after `dotspacemacs/init'."
 
@@ -132,6 +134,8 @@
 
   (spacemacs/toggle-maximize-frame-on)
   (my-org-setup)
+
+  (server-start)
 
   ;; (benchmark-init/show-durations-tabulated)
   )
