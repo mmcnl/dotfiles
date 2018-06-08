@@ -1,4 +1,7 @@
+;; set command key (⌘) combinations (mapped to hyper)
 (global-set-key [(hyper s)] 'exit-insert-and-save-buffer-always)
+(global-set-key [(hyper h)] 'ns-do-hide-emacs)
+(global-set-key [(hyper meta h)] 'ns-do-hide-others)
 
 (define-key evil-normal-state-map (kbd "!") 'shell-command)
 (define-key evil-visual-state-map (kbd "!") 'shell-command)
