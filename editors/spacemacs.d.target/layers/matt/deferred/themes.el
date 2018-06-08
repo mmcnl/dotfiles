@@ -6,9 +6,9 @@
     (org-indent-mode)
     )
   (spacemacs/cycle-spacemacs-theme)
-  (matt-customize-themes)
   )
 
+(add-hook 'spacemacs-post-theme-change-hook 'matt-customize-themes)
 (defun matt-customize-themes()
   ;; mods common to all themes -- add theme specific mods at end of this file
   (custom-set-faces
@@ -25,12 +25,12 @@
    '(font-lock-function-name-face ((t ( :weight bold))))
    '(font-lock-constant-face ((t ( :weight normal))))
 
-   '(mode-line-active ((t (:inherit powerline-active2 :background nil))))
-   '(mode-line-inactive ((t (:inherit mode-line-inactive :background nil))))
-   '(mode-line-buffer-id ((t (:inherit mode-line-inactive :background nil :weight normal))))
-   '(mode-line-buffer-size ((t (:inherit font-lock-comment-face :italic nil ))))
-   '(powerline-inactive1 ((t (:inherit font-lock-comment-face :italic nil :box t))))
-   '(powerline-inactive2 ((t (:inherit powerline-inactive1 :box t))))
+   '(mode-line ((t (:inherit powerline-active0 :foreground "#8996A6"))))
+   '(mode-line-inactive ((t (:inherit powerline-inactive0))))
+   '(powerline-active1 ((t (:inherit mode-line))))
+   '(powerline-active2 ((t (:inherit mode-line))))
+   '(powerline-inactive1 ((t (:inherit mode-line-inactive))))
+   '(powerline-inactive2 ((t (:inherit mode-line-inactive))))
 
    '(magit-diff-base ((t ( :background nil))))
    '(magit-diff-base-highlight ((t ( :background nil))))
@@ -66,7 +66,6 @@
     (magit-diff-file-heading-selection :inherit magit-diff-file-heading)
     (magit-diff-removed :inherit default :foreground "#E16262" :background "#2F343D")
     (magit-diff-removed-highlight :inherit magit-diff-removed)
-    (mode-line :inherit powerline-active1 :foreground nil :weight normal :box (:color "#3E4450"))
     (neo-file-link-face :foreground "#8D9EB3" :height 0.85)
     (neo-dir-link-face :foreground "#888")
     (org-hide :foreground "#282C34") ;; match background color to hide stars
@@ -76,10 +75,7 @@
     (org-level-2 :foreground "#906CA2")
     (org-level-5 :foreground "#5A4369")
     ;; see also org-mode-mellow-default in org-mode.el
-    (powerline-active1 :inherit font-lock-comment-face :italic nil :box (:color "#3E4450"))
-    (powerline-active2 :inherit powerline-active1 :background nil  :box (:color "#3E4450"))
     )
-
    (solarized-light
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     (diff-refine-added :inherit magit-diff-added :foreground "#859900" )
@@ -94,9 +90,6 @@
     )
    )
  )
-;; work around custom themes not being applied at Emacs startup
-(spacemacs/load-theme 'atom-one-dark)
-(matt-customize-themes)
 
 (with-eval-after-load 'linum-relative
   (setq-default

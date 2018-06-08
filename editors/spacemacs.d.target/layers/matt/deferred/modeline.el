@@ -3,6 +3,7 @@
   ;; disable some default segments
   (spaceline-toggle-workspace-number-off)
   (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-hud-off)
   (spaceline-toggle-buffer-encoding-abbrev-off)
   (spaceline-toggle-purpose-off)
 

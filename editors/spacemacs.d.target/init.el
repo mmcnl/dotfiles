@@ -37,7 +37,6 @@
    dotspacemacs-additional-packages '(
                                       ;; vimrc-mode
                                       ;; flycheck-mypy
-                                      atom-one-dark-theme
                                       coffee-mode
                                       google-this
                                       rjsx-mode
@@ -101,10 +100,12 @@
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
 
-   ;; dotspacemacs-themes '((atom-one-dark :location (recipe :fetcher github :repo "jonathanchu/atom-one-dark-theme"))
-   ;;                       solarized-light)
-   dotspacemacs-themes '(atom-one-dark
-                         solarized-light)
+   ;; need to have solarized-light first because things break if custom fetcher
+   ;; is first... probably an elisp syntax issue
+   dotspacemacs-themes '(
+                         solarized-light
+                         (atom-one-dark :location (recipe :fetcher github :repo "mmcnl/atom-one-dark-theme"))
+                         )
    dotspacemacs-use-ido nil
    dotspacemacs-verbose-loading nil
    dotspacemacs-which-key-delay 0.4
@@ -136,6 +137,9 @@
   (my-org-setup)
 
   (server-start)
+
+  ;; switch from solarized-light to atom-one-dark
+  (spacemacs/cycle-spacemacs-theme)
 
   ;; (benchmark-init/show-durations-tabulated)
   )
