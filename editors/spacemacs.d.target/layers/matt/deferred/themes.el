@@ -25,8 +25,8 @@
    '(font-lock-function-name-face ((t ( :weight bold))))
    '(font-lock-constant-face ((t ( :weight normal))))
 
-   '(mode-line ((t (:inherit powerline-active0 :foreground "#8996A6"))))
-   '(mode-line-inactive ((t (:inherit powerline-inactive0))))
+   '(mode-line ((t (:inherit powerline-active0 :foreground "#5C636F"))))
+   '(mode-line-inactive ((t (:inherit powerline-active0 :foreground "#333"))))
    '(powerline-active1 ((t (:inherit mode-line))))
    '(powerline-active2 ((t (:inherit mode-line))))
    '(powerline-inactive1 ((t (:inherit mode-line-inactive))))
