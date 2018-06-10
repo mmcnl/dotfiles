@@ -1,4 +1,5 @@
 (with-eval-after-load 'neotree
+  (setq neo-vc-integration nil)
   (setq neo-theme 'arrow)
   (setq-default neo-window-width 30)
 

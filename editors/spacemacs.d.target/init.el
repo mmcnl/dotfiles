@@ -62,7 +62,7 @@
    dotspacemacs-check-for-update nil
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ""
-   dotspacemacs-default-font '("Fira Code" :size 19)
+   dotspacemacs-default-font '("Fira Code" :size 17)
    dotspacemacs-default-package-repository nil
    dotspacemacs-delete-orphan-packages nil
    dotspacemacs-editing-style 'vim

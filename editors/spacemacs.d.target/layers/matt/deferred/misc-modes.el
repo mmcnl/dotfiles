@@ -7,7 +7,7 @@
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
   (flyspell-mode-off)
-  (display-line-numbers-mode -1)
+  (display-line-numbers-mode t)
   (company-mode 1)
   )
 
