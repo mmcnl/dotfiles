@@ -22,6 +22,11 @@
       )
 
 (with-eval-after-load 'helm
+  ;; https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
+  (add-hook 'helm-major-mode-hook
+            (lambda ()
+              (setq auto-composition-mode nil)))
+
   (helm-autoresize-mode 1)
   (define-key helm-map (kbd "C-w") 'backward-delete-word)
   (define-key helm-map (kbd "C-h") 'backward-delete-char)
