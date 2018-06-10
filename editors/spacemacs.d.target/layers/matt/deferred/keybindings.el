@@ -1,5 +1,7 @@
 ;; set command key (⌘) combinations (mapped to hyper)
 (global-set-key [(hyper s)] 'exit-insert-and-save-buffer-always)
+(global-set-key [(hyper n)] 'new-tmp-buffer)
+(global-set-key [(hyper w)] (lambda () (interactive) (delete-frame)))
 (global-set-key [(hyper h)] 'ns-do-hide-emacs)
 (global-set-key [(hyper meta h)] 'ns-do-hide-others)
 

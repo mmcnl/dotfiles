@@ -45,13 +45,12 @@
                                       ;; vue-mode
                                       )
    dotspacemacs-excluded-packages '(
-                                    ;; persp-mode ;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254072953
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
                                     magit-gitflow
                                     flyspell
+                                    persp-mode
                                     robe
-                                    spacemacs-dark
                                     spray
                                     pbcopy
                                     )
@@ -63,7 +62,7 @@
    dotspacemacs-check-for-update nil
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-command-key ""
-   dotspacemacs-default-font '("Source Code Pro" :size 15)
+   dotspacemacs-default-font '("Source Code Pro" :size 16)
    dotspacemacs-default-package-repository nil
    dotspacemacs-delete-orphan-packages nil
    dotspacemacs-editing-style 'vim
@@ -100,17 +99,17 @@
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists nil
 
-   ;; need to have solarized-light first because things break if custom fetcher
-   ;; is first... probably an elisp syntax issue
    dotspacemacs-themes '(
+                         atom-one-dark
                          solarized-light
-                         (atom-one-dark :location (recipe :fetcher github :repo "mmcnl/atom-one-dark-theme"))
                          )
    dotspacemacs-use-ido nil
    dotspacemacs-verbose-loading nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-whitespace-cleanup 'changed
-   ))
+   )
+  (add-to-list 'dotspacemacs-themes 'solarized-light t) ;; add to end of list
+  )
 ;;
 (defun dotspacemacs/user-init ()
   "called immediately after `dotspacemacs/init'."
@@ -132,15 +131,6 @@
 
   ;; to disable custom config, comment out the line below
   (matt-load-deferred-config-files)
-
-  (spacemacs/toggle-maximize-frame-on)
-  (my-org-setup)
-
-  (server-start)
-
-  ;; switch from solarized-light to atom-one-dark
-  (spacemacs/cycle-spacemacs-theme)
-
   ;; (benchmark-init/show-durations-tabulated)
   )
 (defun dotspacemacs/emacs-custom-settings ()
@@ -148,4 +138,4 @@
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-)
+  )

@@ -7,10 +7,8 @@
 (defun prog-mode-common-setup ()
   (flycheck-mode 1)
   (flyspell-mode-off)
-  (linum-mode -1)
-  ;; (linum-relative-on)
+  (display-line-numbers-mode -1)
   (company-mode 1)
-
   )
 
 (add-hook 'prog-mode-hook 'prog-mode-common-setup)

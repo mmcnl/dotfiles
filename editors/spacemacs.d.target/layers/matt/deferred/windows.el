@@ -1,5 +1,9 @@
-;; prefer vertical splits for opening files
-;; http://stackoverflow.com/a/7998271
+;; prefer "vertical" splits for other buffers
+;; +-------+--------+
+;; |       |        |
+;; +-------+--------+
+(setq-default helm-window-prefer-horizontal-split t)
+(setq-default helm-split-window-default-side 'right)
 (setq-default split-height-threshold nil)
 (setq-default split-width-threshold 0)
 
@@ -26,9 +30,5 @@
   "wv" 'split-window-right-and-focus
   )
 
-(global-set-key [(hyper n)] 'new-tmp-buffer)
-
-(global-set-key [(hyper w)] (lambda () (interactive) (delete-frame)))
-
-;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254120878
-(setq-default persp-auto-save-opt 0)
+;; https://github.com/syl20bnr/spacemacs/issues/7409#issuecomment-254118250
+;; (setq persp-auto-save-opt 0)

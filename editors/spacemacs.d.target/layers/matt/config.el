@@ -3,4 +3,9 @@
 
   ;; load these after all other spacemacs layers have loaded
   (mapc 'load (file-expand-wildcards "~/.spacemacs.d/layers/matt/deferred/*.el"))
+
+  (spacemacs/toggle-maximize-frame-on)
+  (my-org-setup)
+  (server-start)
+  (matt-customize-themes) ;; apply initial theme fixes
   )

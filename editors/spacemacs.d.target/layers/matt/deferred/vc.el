@@ -76,7 +76,7 @@
 
 (defadvice vc-diff (after smaller-text activate)
   "wrap vc-diff"
-  (text-scale-set -2)
+  (text-scale-set -1)
   )
 
 (defadvice spacemacs/magit-diff-head (after collapse-diffs activate)
