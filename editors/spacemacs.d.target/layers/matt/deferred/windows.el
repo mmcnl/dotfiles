@@ -7,6 +7,12 @@
 (setq-default split-height-threshold nil)
 (setq-default split-width-threshold 0)
 
+;; https://twitter.com/iLemming/status/973932170354950145
+(dolist (buf (list " *Minibuf-0*" " *Minibuf-1*" " *Echo Area 0*" " *Echo Area 1*"))
+  (when (get-buffer buf)
+    (with-current-buffer buf
+      (setq-local face-remapping-alist '((default (:height 0.8)))))))
+
 (with-eval-after-load 'popwin
   (popwin-mode 1)
   (push '("*Flycheck errors*" :dedicated t :position bottom :stick
