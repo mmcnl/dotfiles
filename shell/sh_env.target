@@ -1,6 +1,6 @@
 # -*- mode: shell-script -*-
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:$PATH"
 
 # add paths from lowest to highest precedence
 if [ -d '/usr/local/opt/coreutils' ]; then
