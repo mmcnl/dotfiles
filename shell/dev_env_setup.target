@@ -21,6 +21,13 @@ if [[ -x "/usr/local/share/chruby" ]]; then
     source "/usr/local/share/chruby/auto.sh"
 fi
 
+# to support remote server envs
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH=$HOME/.rbenv/bin:$PATH;
+  export RBENV_ROOT=$HOME/.rbenv;
+  eval "$(rbenv init -)";
+fi
+
 # PYTHON
 if [[ -d "/opt/miniconda3" ]]; then
     export PATH="/opt/miniconda3/bin:$PATH"
