@@ -9,6 +9,10 @@
   (spacemacs/toggle-maximize-frame-on)
   (delete-other-windows)
 
-  ;; for unknown reason, this needs to be delayed in order to fully function
-  (run-at-time "5 sec" nil #'matt-setup-modeline)
+  (defun matt-finish-loading-config ()
+    (matt-setup-modeline)
+    (message "Done")
+    )
+  ;; for unknown reasons, modeline setup needs to be delayed
+  (run-at-time "2 sec" nil #'matt-finish-loading-config)
   )
