@@ -11,7 +11,7 @@
 
   (defun matt-finish-loading-config ()
     (matt-setup-modeline)
-    (message "Done")
+    (message "")
     )
   ;; for unknown reasons, modeline setup needs to be delayed
   (run-at-time "2 sec" nil #'matt-finish-loading-config)
