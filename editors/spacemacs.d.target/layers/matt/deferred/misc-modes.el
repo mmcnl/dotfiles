@@ -63,7 +63,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (function (lambda ()
-                      (aggressive-indent-mode 1)
+                      ;; (aggressive-indent-mode 1) ;; seems to be freezing emacs 6/14/18
                       (flycheck-mode -1)
                       (setq flycheck-disabled-checkers '(
                                                          emacs-lisp-checkdoc
