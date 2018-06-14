@@ -81,7 +81,7 @@
    dotspacemacs-inactive-transparency 100
    dotspacemacs-leader-key "SPC"
    dotspacemacs-line-numbers nil
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-max-rollback-slots 5
