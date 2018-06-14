@@ -1,4 +1,4 @@
-(with-eval-after-load 'spaceline
+(defun matt-setup-modeline ()
   (setq powerline-default-separator nil)
   ;; disable some default segments
   (spaceline-toggle-workspace-number-off)
@@ -62,5 +62,5 @@
 
   (setq spaceline-byte-compile t)
   (spaceline-compile)
+  ;; see also themes.el for more spaceline customizations
   )
-;; see also themes.el for more spaceline customizations
