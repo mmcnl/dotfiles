@@ -38,6 +38,7 @@
                                       ;; vimrc-mode
                                       ;; flycheck-mypy
                                       coffee-mode
+                                      dockerfile-mode
                                       google-this
                                       rjsx-mode
                                       simpleclip

@@ -38,12 +38,6 @@
 
   )
 
-(with-eval-after-load 'helm-ag
-  ;; (setq-default helm-ag-base-command "ag --hidden --nocolor --nogroup --smart-case --ignore *.min.js")
-  (setq-default helm-ag-base-command "rg --vimgrep --no-heading --smart-case")
-  (setq helm-ag-command-option "")
-  )
-
 ;; override spacemacs mapping for C-h to navigate up one level
 (with-eval-after-load 'helm-files
   (dolist (keymap (list helm-find-files-map helm-read-file-map))
