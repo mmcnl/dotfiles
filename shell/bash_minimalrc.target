@@ -1,0 +1,50 @@
+# -*- mode: shell-script -*-
+
+# git
+alias gs="git status"
+
+# ls
+alias l.='ls -l -d .*'
+alias l='ls -l'
+alias la='ls -lA'
+alias las='ls -A'
+alias lh='ls -l -lh'
+alias ll='ls -l'
+alias lr='ls -lA -R'
+alias ls='ls --group-directories-first --color=auto'
+alias lt='ls -l -ltr'
+alias lz='ls -l --sort=size -r'
+
+# cd
+alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+
+# ignore duplicate and empty lines
+export HISTCONTROL=ignoreboth
+# save a reasonable amount of bash_history
+export HISTSIZE=3000
+# save history from simultaneous shells
+shopt -s histappend
+# save multiline cmds
+shopt -s cmdhist
+# ignore small spelling errors
+shopt -s cdspell
+
+export NO_COLOR="\[\033[0m\]"
+export GREEN="\[\033[0;32m\]"
+export RED="\[\033[0;31m\]"
+export BLUE="\[\033[0;34m\]"
+export CYAN="\[\033[0;36m\]"
+export YELLOWBLUE="\[\033[1;33;44m\]"
+
+bash_prompt() {
+    # Turn the prompt symbol red if the user is root
+    if [ $(id -u) -eq 0 ]; then
+        USER_PRIV="$RED#$NO_COLOR"
+    else
+        USER_PRIV='$'
+    fi
+    echo "${NEWLINE}$YELLOWBLUE\u@\h$NO_COLOR $GREEN\w$NO_COLOR $USER_PRIV "
+}
+PROMPT_COMMAND='history -a; PS1="$(bash_prompt)"'
