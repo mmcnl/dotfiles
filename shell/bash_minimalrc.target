@@ -1,5 +1,8 @@
 # -*- mode: shell-script -*-
 
+date
+echo
+
 # git
 alias gs="git status"
 
