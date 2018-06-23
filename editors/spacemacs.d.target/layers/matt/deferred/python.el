@@ -15,7 +15,8 @@
 (setq pyvenv-tracking-ask-before-change t)
 
 ;; https://github.com/purcell/exec-path-from-shell#usage
-(exec-path-from-shell-copy-env "WORKON_HOME")
+;; FIXME: this function no longer exists
+;; (exec-path-from-shell-copy-env "WORKON_HOME")
 
 (defun conda-env-update() (interactive)(shell-command "conda env update"))
 

@@ -22,10 +22,11 @@
     (custom-set-faces
      '(org-hide    ((t (:foreground "#282C34")))) ;; match background color to hide stars
      '(org-level-1 ((t (:foreground "#D19A66"))))
+     '(org-level-2 ((t (:foreground "#906CA2"))))
      '(org-level-3 ((t (:foreground "#BB5D66"))))
      '(org-level-4 ((t (:foreground "#6A6F7C"))))
-     '(org-level-2 ((t (:foreground "#906CA2"))))
      '(org-level-5 ((t (:foreground "#5A4369"))))
+     '(org-level-6 ((t (:foreground "#5C636F"))))
 
      '(mode-line           ((t (:height 0.95 :inherit powerline-active0 :foreground "#5C636F"))))
      '(mode-line-inactive  ((t (:height 0.95 :inherit powerline-inactive0 :background "#282C34"))))
@@ -76,6 +77,7 @@
 
 ;; (spacemacs/toggle-vi-tilde-fringe-off)
 
+;; https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")

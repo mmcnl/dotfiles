@@ -123,6 +123,9 @@
   ;; stop useless warning about ENV vars being set in bashrc/zshrc
   (setq exec-path-from-shell-check-startup-files nil)
 
+  ;; a recent change led to this dir not being picked up from shell PATH
+  (add-to-list 'exec-path "/usr/local/bin")
+
   ;; this needs to be here to trigger spacemaces to add to ruby-mode-hook
   (setq ruby-version-manager 'chruby)
   )
