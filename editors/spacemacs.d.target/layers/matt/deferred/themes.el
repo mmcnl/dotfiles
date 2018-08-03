@@ -1,4 +1,5 @@
 (defun matt-customize-themes()
+  (interactive)
   ;; (when (equal major-mode 'org-mode)
   ;;   ;; fix an issue with org-hide not hiding leading stars
   ;;   (org-indent-mode)
@@ -27,6 +28,7 @@
      '(org-level-4 ((t (:foreground "#6A6F7C"))))
      '(org-level-5 ((t (:foreground "#5A4369"))))
      '(org-level-6 ((t (:foreground "#5C636F"))))
+     '(hl-line ((t (:background "#313741"))))
 
      '(mode-line           ((t (:height 0.95 :inherit powerline-active0 :foreground "#5C636F"))))
      '(mode-line-inactive  ((t (:height 0.95 :inherit powerline-inactive0 :background "#282C34"))))
@@ -55,6 +57,7 @@
      '(line-number ((t (:inherit default :foreground "#E4DDCB" :height 0.65))))
      '(line-number-current-line ((t (:inherit default :foreground "#CBC4B2" :height 0.65))))
      '(org-hide ((t :foreground "#FDF6E4"))) ;; match background color to hide stars
+     '(hl-line ((t (:background "#E4DDCB"))))
      )
     )
   )
@@ -63,6 +66,7 @@
 (defun matt-cycle-themes()
   (interactive)
   (spacemacs/cycle-spacemacs-theme)
+  (matt-customize-themes)
   )
 
 (setq hl-paren-colors '("SpringGreen3"
