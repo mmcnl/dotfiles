@@ -81,7 +81,7 @@ nnoremap [<Space> mmI<CR><ESC>
 nnoremap ]<Space> mmo<ESC>`m
 
 """"""""""""""""""""""""""""""""""""""""""""" abbreviations
-abbr pryy  binding.pry
+abbr pryy  require 'pry'; binding.pry
 abbr ipdb  from ipdb import set_trace; set_trace()
 
 """"""""""""""""""""""""""""""""""""""""""""" escape

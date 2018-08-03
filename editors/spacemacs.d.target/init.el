@@ -42,6 +42,7 @@
                                       google-this
                                       rjsx-mode
                                       simpleclip
+                                      systemd
                                       undohist
                                       ;; vue-mode
                                       )

@@ -18,8 +18,7 @@ import seaborn as sns; sns.set()
 
 pd.options.display.width = 300
 " nil 0)
-    ("pryy" "binding.pry" nil 0)
-    ("pryr" "require 'pry'; binding.pry" nil 0)
+    ("pryy" "require 'pry'; binding.pry" nil 0)
     ("ipd" "from ipdb import set_trace; set_trace()  # NOQA" nil 0)
     ))
 (setq save-abbrevs nil)
