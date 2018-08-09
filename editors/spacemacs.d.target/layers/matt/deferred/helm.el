@@ -36,6 +36,10 @@
   ;; https://github.com/emacs-helm/helm/issues/1892
   (require 'helm-for-files)
 
+  ;; https://www.reddit.com/r/emacs/comments/4zrhzu/how_to_change_the_font_and_line_spacing_in_helm/d6y8822
+  (defun my/helm-fonts ()
+    (face-remap-add-relative 'default :height 0.8))
+  (add-hook 'helm-major-mode-hook #'my/helm-fonts)
   )
 
 ;; override spacemacs mapping for C-h to navigate up one level
