@@ -134,7 +134,6 @@ nnoremap <leader>tl :set wrap!<CR>
 """"""""""""""""""""""""""""""""""""""""""""" windows and splits
 set splitbelow
 set splitright
-nnoremap <leader>wo :only<CR>
 nnoremap <leader>wm :only<CR>
 nnoremap <leader>wd :close<CR>
 nnoremap <leader>ws :split<CR>
