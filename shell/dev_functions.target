@@ -1,0 +1,30 @@
+# -*- mode: shell-script -*-
+
+# shell functions for development envs
+
+update_etags() {
+    echo "updating tags..."
+    git ls-files | grep -E '\.(rb|yml|py)$' | xargs ctags -e --languages=ruby,yaml,python
+}
+
+# wrap git to keep ctags updated when making commits
+git() {
+    /usr/bin/env git "$@"
+    estatus="$?"
+    [[ $estatus = 0 ]] || return $estatus
+
+    if [ -e tags ]; then
+        for opt in "$@"; do
+            case "$opt" in
+                ci | commit | rebase | merge | pull | push)
+                    update_etags
+                    break
+                    ;;
+            esac
+        done
+    fi
+}
+
+pk() {
+    kill -9 "$(ps aux | rg -v '%CPU' | fzf | awk '{print $2 }')"
+}

@@ -23,10 +23,20 @@ if [ -f '/etc/bash_completion' ]; then
     source "/etc/bash_completion"
 fi
 
+# load fzf bindings from homebrew installation
+if test -f /usr/local/opt/fzf/shell/key-bindings.zsh; then
+    source "/usr/local/opt/fzf/shell/key-bindings.bash"
+fi
+
 # enable bash zsh completions added by brew formulae; no need to do this for zsh
 #   as the zprezto completion module handles it
-if which brew > /dev/null; then
-    source "$(brew --prefix)/etc/bash_completion"
+if type brew > /dev/null; then
+    brew_bash_completions="$(brew --prefix)/etc/bash_completion"
+    if [ -f "$brew_bash_completions" ]; then
+        source "$brew_bash_completions"
+    else
+        echo "$0: brew bash completion missing at ${brew_bash_completions}!"
+    fi
 fi
 
 bash_prompt() {
@@ -41,6 +51,7 @@ bash_prompt() {
     # add newline only if non-null
     gp=$(git_prompt)
     [[ -n $gp ]] && gp=$gp$'\n'
-    echo "${NEWLINE}$gp$YELLOWBLUE\u@\h$NO_COLOR $GREEN\w$NO_COLOR $USER_PRIV "
+    # echo "${NEWLINE}$gp$YELLOWBLUE\u@\h$NO_COLOR $GREEN\w$NO_COLOR $USER_PRIV "
+    echo "${NEWLINE}$gp$GREEN\w$NO_COLOR $USER_PRIV "
 }
 PROMPT_COMMAND='history -a; PS1="$(bash_prompt)"'

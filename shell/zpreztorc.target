@@ -9,15 +9,8 @@ zstyle ':prezto:load' pmodule \
        'environment' \
        'terminal' \
        'history' \
-       'completion' \
        'syntax-highlighting' \
-
-# Set syntax highlighters.
-# By default, only the main highlighter is enabled.
-zstyle ':prezto:module:syntax-highlighting' highlighters \
-  'main' \
-  'brackets' \
-  'pattern' \
+       'completion'
 
 # Auto set the tab and window titles.
 zstyle ':prezto:module:terminal' auto-title 'yes'

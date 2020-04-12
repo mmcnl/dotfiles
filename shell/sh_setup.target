@@ -1,11 +1,9 @@
 # -*- mode: shell-script -*-
 
-# functions shared between zsh and bash
+# setup code shared between zsh and bash
 
-update_etags() {
-    echo "updating tags..."
-    git ls-files | grep -E '\.(rb|yml|py)$' | xargs ctags -e --languages=ruby,yaml,python
-}
+# https://github.com/clvv/fasd
+if type fasd > /dev/null; then eval "$(fasd --init auto)"; fi
 
 time_since_last_commit() {
     ref=$(git symbolic-ref HEAD 2> /dev/null 2>&1) || return
@@ -32,58 +30,3 @@ virtualenv_prompt() {
     if [[ -z $v ]]; then return 0; fi
     echo "$BLUE [$v] $NO_COLOR"
 }
-
-pk() {
-    kill -9 "$(ps aux | ag -v '%CPU' | ag -v '%CPU' | selecta | awk '{print $2 }')"
-}
-
-alias  ag='ag --noheading --hidden --smart-case'
-alias agl='au -l'
-
-# ag -g - find files by filename
-agg() {
-    ag --depth 15 -g "${@:-.}" | agig
-}
-# ignore noisy files
-agig() {
-    ag -v '\.git/|\.DS_Store|tmp/cache'
-}
-
-# find all files without exception
-au() {
-    ag --unrestricted "$@"
-}
-
-# # use grep to compress blank lines in output
-# agv() {
-#     ag -v "$@" | grep --color=none .
-# }
-
-# fasd
-alias ef='f -e emacsclient_no_wait'
-# efs() {
-#     emacsclient_no_wait "$(fasd -fl | selecta -s "${@:- }")"
-# }
-# zs() {
-#     cd "$(fasd -dl | selecta -s "${@:- }")" || exit
-# }
-
-# as() {
-#     agg . | selecta -s "${@:- }"
-# }
-# ea() {
-#     emacsclient_no_wait "$(as "$@")"
-# }
-
-# # open file matching text in emacs
-# eg() {
-#     ~/bin/launch_emacs.rb "$(ag "$@" | selecta -s "${@:- }" --height=full )"
-# }
-
-# recent files
-r() {
-    ag --depth 2 -g . | xargs -I{} stat -c %y\ %n "{}" | sort -r | cut -c 36- | head -20
-}
-# er() {
-#     emacsclient_no_wait "$(r | selecta -s "${@:- }")"
-# }

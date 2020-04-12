@@ -1,43 +1,54 @@
 # -*- mode: shell-script -*-
 
+############ zsh options ############
+
 unsetopt correct
 unsetopt correct_all
 export DISABLE_CORRECTION="true"
+
+# https://unix.stackexchange.com/a/33995
+# in interactive shell, make # function like a comment
+setopt interactivecomments
 
 # don't prompt when redirecting output with >
 # http://unix.stackexchange.com/a/212135
 setopt clobber
 
-# require confirmation before closing session with C-d
-# http://zsh.sourceforge.net/Intro/intro_16.html
-setopt ignoreeof
-
-# keep history to reasonable size for quick loading
-# historical are saved in ~/.zlogs/
-export HISTSIZE=5000
-
 # http://zsh.sourceforge.net/Doc/Release/Options.html
 setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
+
+# https://zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
+# fixes eg pasting in URLs to curl
+if [[ $TERM == dumb ]]; then
+    # turn off ZLE bracketed paste in dumb term
+    unset zle_bracketed_paste
+else
+    # otherwise turn on ZLE bracketed-paste-magic
+    autoload -Uz bracketed-paste-magic
+    zle -N bracketed-paste bracketed-paste-magic
+fi
+
+############ zsh env vars ############
+
+# https://unix.stackexchange.com/questions/111718/command-history-in-zsh
+export HISTFILE="$HOME/.zhistory"
+
+# keep history to reasonable size for quick loading
+export HISTSIZE=7000
+export SAVEHIST=$HISTSIZE
 
 # http://stackoverflow.com/a/11200998/1163042
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
+############ zsh colors and highlights ############
+
+# https://stackoverflow.com/a/6159885/1163042
 autoload -U colors && colors
 
-
-unset zle_bracketed_paste
-
-# https://zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
-# fixes eg pasting in URLs to youtube-dl
-# if [[ $TERM == dumb ]]; then
-#     # turn off ZLE bracketed paste in dumb term
-#     unset zle_bracketed_paste
-# else
-#     # otherwise turn on ZLE bracketed-paste-magic
-#     autoload -Uz bracketed-paste-magic
-#     zle -N bracketed-paste bracketed-paste-magic
-# fi
+# custom syntax highlighting
+zle_highlight=(paste:fg=blue)
 
 # don't complain about vars defined by zsh plugins
 # shellcheck disable=SC2154
@@ -48,57 +59,33 @@ export GREEN="%{$fg[green]%}"
 export BLUE="%{$fg[blue]%}"
 export CYAN="%{$fg[cyan]%}"
 
-# custom syntax highlighting
-zle_highlight=(paste:fg=blue)
-# shellcheck disable=SC2154
-ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/pattern.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
-
-# set up extra completions but don't enable by default as they're slow
-# (most are set up automatically by zprezto)
-# warn if custom directory is not set up
-[ -d "$HOME/.zsh-completions" ] || echo "$0: $HOME/.zsh-completions not available"
-
-if [[ -x "/usr/local/bin/aws_zsh_completer.sh" ]]; then
-    # installed via 'brew install awscli'
-    source /usr/local/bin/aws_zsh_completer.sh
-fi
-
-# # to enable these additional completions, execute $ compinit
-# fpath+="$HOME/.zsh-completions/conda-zsh-completion"
-# fpath+="$HOME/.zsh-completions/pip-completion/"
+typeset -gA ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 
 ############ fzf ############
 
-if [[ -x "/usr/local/bin/fzf" ]]; then
-    alias fzh='ag --nofilename . ~/.zlogs | fzf --tac --no-sort'
-    export FZF_DEFAULT_OPTS='--border --exact --height 40% --algo=v1 --no-mouse --color bw'
-    export FZF_DEFAULT_COMMAND='ag -g ""'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if test -f /usr/local/opt/fzf/shell/key-bindings.zsh; then
+    alias fzh='rg --no-filename . ~/.zlogs | fzf --tac --no-sort'
+    export FZF_DEFAULT_OPTS='--border --exact --height 60% --algo=v1 --no-mouse'
+    export FZF_DEFAULT_COMMAND='fd --type f'
+
+    # load fzf bindings from homebrew installation
+    source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+    # https://github.com/junegunn/fzf/pull/1940
+    export FZF_HIST_FIND_NO_DUPS=on
+else
+    echo "$0: fzf not loaded"
 fi
-
-# https://github.com/junegunn/fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# TODO: check for a better solution
-# override to include history timestamps
-fzf-history-widget() {
-    local selected num
-    setopt localoptions noglobsubst
-    # add fc -i option
-    selected=( $(fc -i -l 1 | $(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r ${=FZF_CTRL_R_OPTS} -q "${LBUFFER//$/\\$}") )
-    if [ -n "$selected" ]; then
-        num=$selected[1]
-        if [ -n "$num" ]; then
-            zle vi-fetch-history -n "$num"
-        fi
-    fi
-    zle redisplay
-}
 
 ############ zsh prompt ############
 
+# for each command invocation, save date, current dir, and command in ~/.zlogs/
 # inspired by https://spin.atomicobject.com/2016/05/28/log-bash-history/
+[ -d "$HOME/.zlogs" ] || echo "$0: ~/.zlogs/ not present!"
 export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d %H:%M:%S") $(pwd) $(fc -ln -1)" >> ~/.zlogs/zhistory-$(date "+%Y-%m-%d").log; fi'
 
 precmd() {

@@ -6,9 +6,11 @@ source "$HOME/.sh_env"
 # exit if not in an interactive shell
 if ! [[ -o interactive ]]; then return 0; fi
 
-# Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "$HOME/.zprezto/init.zsh" ]]; then
+    # load zprezto distribution
+    source "$HOME/.zprezto/init.zsh"
+else
+    echo "$0: ~/.zprezto not present!"
 fi
 
 # shared interactive shell setup

@@ -1,0 +1,49 @@
+# -*- mode: shell-script -*-
+
+# set up vars and shell for development
+
+##### misc web development ########
+if type yarn > /dev/null 2>&1; then
+    export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
+fi
+
+# lighter weight than rbenv - https://github.com/postmodern/chruby
+if [ -x "/usr/local/share/chruby" ]; then
+    source "/usr/local/share/chruby/chruby.sh"
+    source "/usr/local/share/chruby/auto.sh"
+fi
+
+##### aliases ########
+
+# https://remysharp.com/2018/08/23/cli-improved
+# ncdu: -x = don't cross filesystem boundaries
+alias ncdu="ncdu --color dark -x"
+alias help='tldr'
+
+alias rg='rg --color always --no-heading --smart-case --max-columns 200 --max-columns-preview'
+# search all files
+alias rga='rg -uuu' # see 'man rg' for details on unrestricted flag
+
+############ python ############
+
+if [ -d "/opt/miniconda3" ]; then
+    export PATH="/opt/miniconda3/bin:$PATH"
+    export WORKON_HOME="/opt/miniconda3/envs"
+fi
+
+# homebrew python3
+if [ -d "/usr/local/opt/python/libexec/bin" ]; then
+    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+fi
+
+############ ansible ############
+
+# if [ -n "$ZSH_VERSION" ]; then
+#     # just use normal filename completion for ansible-playbook
+#     compdef -d ansible-playbook
+# fi
+
+############ helper functions ############
+
+# allow per directory configuration - https://direnv.net
+# eval "$(direnv hook zsh)" # https://direnv.net/docs/hook.html
