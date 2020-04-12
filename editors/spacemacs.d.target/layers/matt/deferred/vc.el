@@ -1,6 +1,16 @@
+;; Deleted files are still shown in projectile-find-file (#1148)
+
+;; My workaround was to replace git ls-files with fd:
+
+(setq projectile-git-command "fd . -0 --type f --hidden --color=never")
+;; and also creating ~/.fdignore:
+
+;; **/.git/
+
 ;;;;;;;;;;; variables ;;;;;;;;;;;;;;
 
 (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+(setq magit-popup-show-common-commands t)
 
 (setq magit-diff-refine-hunk nil)
 
@@ -17,7 +27,6 @@
 (setq git-link-use-commit t)
 
 (setq git-timemachine-abbreviation-length 8)
-(setq magit-diff-refine-hunk 'all)
 
 ;; https://github.com/justbur/evil-magit
 (setq evil-magit-want-horizontal-movement t)
@@ -42,11 +51,11 @@
   "gU" 'vc-revert
   "gX" 'spacemacs/vcs-revert-hunk
   "ga" 'git-add-all-commit
-  "gd" 'magit-diff-working-tree
+  "gd" 'magit-diff-buffer-file
   "gf" 'git-fetch
   ;; "gl" 'magit-log-all
   "gL" 'magit-log-buffer-file
-  "gv" 'vc-diff
+  ;; "gv" 'vc-diff
   )
 ;;;;;;;;;;;;;;;; advice ;;;;;;;;;;;;;;;;;;;
 

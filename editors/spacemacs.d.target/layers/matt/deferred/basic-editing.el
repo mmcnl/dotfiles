@@ -42,7 +42,7 @@
 
 (evil-leader/set-key
   "yp" 'duplicate-paragraph
-  "yy" 'duplicate-current-line-or-region
+  "yy" 'duplicate-current-line
   )
 
 (defun duplicate-paragraph ()
@@ -50,30 +50,46 @@
   (mark-paragraph)
   (duplicate-current-line-or-region 1))
 
-;; http://rejeep.github.io/emacs/elisp/2010/03/11/duplicate-current-line-or-region-in-emacs.html
-(defun duplicate-current-line-or-region (arg)
-  "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated. However, if
-there's a region, all lines that region covers will be duplicated."
+;; duplicate current line
+(defun duplicate-current-line (&optional n)
+  "duplicate current line, make more than 1 copy given a numeric argument"
   (interactive "p")
-  (let (beg end (origin (point)))
-    (if (and mark-active (> (point) (mark)))
-        (exchange-point-and-mark))
-    (setq beg (line-beginning-position))
-    (if mark-active
-        (exchange-point-and-mark))
-    ;; added to prevent extra line at bottom
-    (if mark-active
-        (forward-line -1)
-      )
-    (setq end (line-end-position))
-    (let ((region (buffer-substring-no-properties beg end)))
-      (dotimes (i arg)
-        (goto-char end)
-        (newline)
-        (insert region)
-        (setq end (point)))
-      (goto-char (+ origin (* (length region) arg) arg)))))
+  (save-excursion
+    (let ((nb (or n 1))
+          (current-line (thing-at-point 'line)))
+      ;; when on last line, insert a newline first
+      (when (or (= 1 (forward-line 1)) (eq (point) (point-max)))
+        (insert "\n"))
+
+      ;; now insert as many time as requested
+      (while (> n 0)
+        (insert current-line)
+        (decf n)))))
+
+;; ;; http://rejeep.github.io/emacs/elisp/2010/03/11/duplicate-current-line-or-region-in-emacs.html
+;; (defun duplicate-current-line-or-region (arg)
+;;   "Duplicates the current line or region ARG times.
+;; If there's no region, the current line will be duplicated. However, if
+;; there's a region, all lines that region covers will be duplicated."
+;;   (interactive "p")
+;;   (let (beg end (origin (point)))
+;;     (if (and mark-active (> (point) (mark)))
+;;         (exchange-point-and-mark))
+;;     (setq beg (line-beginning-position))
+;;     (if mark-active
+;;         (exchange-point-and-mark))
+;;     ;; added to prevent extra line at bottom
+;;     ;; (if mark-active
+;;     ;;     (forward-line -1)
+;;     ;;   )
+;;     (setq end (line-end-position))
+;;     (let ((region (buffer-substring-no-properties beg end)))
+;;       (dotimes (i arg)
+;;         (goto-char end)
+;;         (newline)
+;;         (insert region)
+;;         (setq end (point)))
+;;       (goto-char (+ origin (* (length region) arg) arg)))))
 
 (defun kill-start-of-line ()
   "kill from point to start of line"
@@ -131,3 +147,38 @@ there's a region, all lines that region covers will be duplicated."
   arg lines up."
   (interactive "*p")
   (move-text-internal (- arg)))
+
+
+;; https://web.archive.org/web/20160426152829/http://shenfeng.me/emacs-last-edit-location.html
+
+;;; record two different file's last change. cycle them
+(defvar feng-last-change-pos1 nil)
+(defvar feng-last-change-pos2 nil)
+
+(defun feng-swap-last-changes ()
+  (when feng-last-change-pos2
+    (let ((tmp feng-last-change-pos2))
+      (setf feng-last-change-pos2 feng-last-change-pos1
+            feng-last-change-pos1 tmp))))
+
+(defun feng-goto-last-change ()
+  (interactive)
+  (when feng-last-change-pos1
+    (let* ((buffer (find-file-noselect (car feng-last-change-pos1)))
+           (win (get-buffer-window buffer)))
+      (if win
+          (select-window win)
+        (switch-to-buffer-other-window buffer))
+      (goto-char (cdr feng-last-change-pos1))
+      (feng-swap-last-changes))))
+
+(defun feng-buffer-change-hook (beg end len)
+  (let ((bfn (buffer-file-name))
+        (file (car feng-last-change-pos1)))
+    (when bfn
+      (if (or (not file) (equal bfn file)) ;; change the same file
+          (setq feng-last-change-pos1 (cons bfn end))
+        (progn (setq feng-last-change-pos2 (cons bfn end))
+               (feng-swap-last-changes))))))
+
+(add-hook 'after-change-functions 'feng-buffer-change-hook)

@@ -4,6 +4,8 @@
   (add-to-list 'projectile-globally-ignored-files '"TAGS")
   (add-to-list 'projectile-globally-ignored-files '"undo-tree")
   (add-to-list 'projectile-globally-ignored-directories '"__pycache__")
+
+  (setq projectile-git-command "comm -23 <(git ls-files -co --exclude-standard | sort) <(git ls-files -d | sort) | tr '\\n' '\\0'")
   )
 ;; (defun projectile-idle-regenerate-tags ()
 ;;   "Regenerate the project's tags if in a project"

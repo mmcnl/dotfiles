@@ -16,7 +16,6 @@
 (evil-leader/set-key
   "/" 'spacemacs/helm-project-smart-do-search
   ":" 'evil-ex
-  "bN" 'evil-window-vnew
   "ba" 'mark-whole-buffer
   "bd" 'kill-this-buffer
   "be" 'erase-buffer
@@ -30,7 +29,6 @@
   "fn" 'find-next-file
   "fp" 'find-previous-file
   "fs" 'exit-insert-and-save-buffer-always
-  "fy" 'copy-file-name-to-clipboard
   "ha" 'helm-apropos
   "pK" 'projectile-kill-other-buffers
   "pm" 'helm-projectile-find-recently-modified
@@ -39,4 +37,12 @@
   "tt" 'matt-cycle-themes
   "xL" 'lorem-ipsum-insert-paragraphs
   "xW" 'whitespace-cleanup-buffer
+  ","  'feng-goto-last-change
   )
+;; "bN" 'evil-window-vnew
+;; https://github.com/zenozeng/yafolding.el#modify-keybindings
+(require 'yafolding)
+(yafolding-mode)
+(define-key yafolding-mode-map (kbd "<C-M-return>") nil)
+(define-key yafolding-mode-map (kbd "<C-S-return>")  'yafolding-toggle-all)
+(define-key yafolding-mode-map (kbd "<C-return>") 'yafolding-toggle-element)

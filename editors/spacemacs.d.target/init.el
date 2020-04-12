@@ -11,50 +11,62 @@
    dotspacemacs-configuration-layers
    '(
      ;; ipython-notebook
-     ;; markdown
      ;; sql
-     ;; (python :variables python-test-runner '(pytest nose))
+     (python :variables python-enable-yapf-format-on-save t)
      csv
-     (auto-completion :variables auto-completion-return-key-behavior nil auto-completion-tab-key-behavior 'cycle auto-completion-enable-sort-by-usage t auto-completion-enable-snippets-in-popup t auto-completion-private-snippets-directory nil)
+     (auto-completion :variables
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-private-snippets-directory nil)
      helm
      html
-     dash
+     (dash :variables
+           dash-autoload-common-docsets nil)
      emacs-lisp
      git
      github
      html
      javascript
+     (markdown :variables markdown-live-preview-engine 'vmd)
+     neotree
      matt
      org
      osx
+     ;; php
      ruby
-     (spell-checking :variables spell-checking-enable-by-default nil)
+     ;; (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
      (theming :variables theming-headings-inherit-from-default 'all theming-headings-same-size 'all theming-headings-bold 'all)
      version-control
      yaml
      )
    dotspacemacs-additional-packages '(
-                                      ;; vimrc-mode
+                                      ;; dockerfile-mode
                                       ;; flycheck-mypy
+                                      ;; rjsx-mode
+                                      ;; vimrc-mode
+                                      ;; vlf
+                                      ;; vue-mode
                                       coffee-mode
-                                      dockerfile-mode
+                                      flycheck-yamllint
                                       google-this
-                                      rjsx-mode
+                                      nginx-mode
                                       simpleclip
                                       systemd
                                       undohist
-                                      ;; vue-mode
+                                      yafolding
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
                                     magit-gitflow
                                     flyspell
-                                    persp-mode
-                                    robe
+                                    syntax-checking
+                                    doom-modeline ;; avoid "apply: Args out of range:" error
                                     spray
-                                    pbcopy
+                                    pbcopy ;; use simpleclip instead
                                     )
    ))
 (defun dotspacemacs/init ()
@@ -72,7 +84,7 @@
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-enable-paste-transient-state t
    dotspacemacs-ex-substitute-global t
-   dotspacemacs-folding-method 'origami
+   dotspacemacs-folding-method 'evil
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native t
    dotspacemacs-helm-no-header nil
@@ -105,6 +117,7 @@
                          atom-one-dark
                          solarized-light
                          )
+   dotspacemacs-undecorated-at-startup nil
    dotspacemacs-use-ido nil
    dotspacemacs-verbose-loading nil
    dotspacemacs-which-key-delay 0.4
@@ -112,9 +125,11 @@
    )
   (add-to-list 'dotspacemacs-themes 'solarized-light t) ;; add to end of list
   )
-;;
+
 (defun dotspacemacs/user-init ()
   "called immediately after `dotspacemacs/init'."
+
+  ;; add custom config here that needs to precede spacemacs initialization
 
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html
   (setq custom-file "~/.emacs_customizations")
@@ -134,6 +149,7 @@
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
 
+  ;; (setq debug-on-error t)
   ;; to disable custom config, comment out the line below
   (matt-load-deferred-config-files)
   ;; (benchmark-init/show-durations-tabulated)

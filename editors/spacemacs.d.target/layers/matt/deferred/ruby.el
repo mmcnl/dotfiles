@@ -8,12 +8,18 @@
 (add-to-list 'auto-mode-alist '("\\Vagrantfile.*\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\spatula\\'" . ruby-mode))
 
+(evil-leader/set-key-for-mode 'ruby-mode "{" 'ruby-toggle-block)
+(evil-leader/set-key-for-mode 'ruby-mode "'" 'ruby-toggle-string-quotes)
 (evil-leader/set-key-for-mode 'ruby-mode "e" 'xmpfilter)
 (evil-leader/set-key-for-mode 'ruby-mode "=" 'ruby-beautify-region-or-buffer)
 (evil-leader/set-key-for-mode 'ruby-mode "xx" 'ruby-autocorrect-file)
 
 (defun my-ruby-mode-hook ()
   (message "running ruby-mode-hook")
+
+  ;; (prettier-js-mode)
+  ;; (setq prettier-js-command "rbprettier")
+
   ;; http://stackoverflow.com/questions/8473131/set-the-evil-shift-width-to-the-buffer-local-indentation-in-emacs
   (setq evil-shift-width ruby-indent-level)
   (setq flycheck-disabled-checkers '(
