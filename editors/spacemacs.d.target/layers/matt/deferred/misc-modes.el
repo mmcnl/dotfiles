@@ -69,6 +69,11 @@
                                 )))
                         )) t)
 
+(add-hook 'python-mode-hook
+          (function (lambda ()
+                      (yapf-mode)
+                      )) t)
+
   (add-hook 'yaml-mode-hook
             (function (lambda ()
                         (prog-mode-common-setup)
