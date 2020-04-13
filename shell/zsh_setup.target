@@ -19,6 +19,11 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 
+# explicitly set zsh to use emacs mode -- otherwise it may automatically set zle
+# to vi mode if it detects the vi string in EDITOR var. see
+# http://zsh.sourceforge.net/Guide/zshguide04.html
+bindkey -e
+
 # https://zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
 # fixes eg pasting in URLs to curl
 if [[ $TERM == dumb ]]; then
