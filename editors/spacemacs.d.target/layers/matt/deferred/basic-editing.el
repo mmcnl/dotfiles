@@ -9,6 +9,9 @@
 ;; prevent yanked text from polluting system clipboard history
 (setq select-enable-clipboard nil)
 
+;;;;;;;;;; search ;;;;;;;;;;;
+ (setq evil-ex-search-persistent-highlight nil)
+
 ;;;;;;;;;; escape ;;;;;;;;;;;
 (global-set-key (kbd "C-[ C-[") 'evil-escape)
 (setq-default evil-escape-key-sequence "fd")
