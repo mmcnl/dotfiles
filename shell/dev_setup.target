@@ -38,10 +38,11 @@ fi
 
 ############ ansible ############
 
-# if [ -n "$ZSH_VERSION" ]; then
-#     # just use normal filename completion for ansible-playbook
-#     compdef -d ansible-playbook
-# fi
+if [ -n "$ZSH_VERSION" ]; then
+    # disable ansible-playbook completions since they prevent normal filename
+    # completions, which are actually much more useful for this command
+    compdef -d ansible-playbook
+fi
 
 ############ helper functions ############
 
