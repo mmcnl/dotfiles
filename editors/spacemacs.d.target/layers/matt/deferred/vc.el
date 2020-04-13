@@ -52,7 +52,7 @@
   "gX" 'spacemacs/vcs-revert-hunk
   "ga" 'git-add-all-commit
   "gd" 'magit-diff-buffer-file
-  "gf" 'git-fetch
+  ;; "gf" 'git-fetch
   ;; "gl" 'magit-log-all
   "gL" 'magit-log-buffer-file
   ;; "gv" 'vc-diff
