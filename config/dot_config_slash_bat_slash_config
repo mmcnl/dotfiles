@@ -1,0 +1,4 @@
+# -*- mode: conf -*-
+
+--map-syntax *conf:INI
+--theme TwoDark
