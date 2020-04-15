@@ -2,9 +2,6 @@
 
 # setup code shared between zsh and bash
 
-# https://github.com/clvv/fasd
-if type fasd > /dev/null; then eval "$(fasd --init auto)"; fi
-
 time_since_last_commit() {
     ref=$(git symbolic-ref HEAD 2> /dev/null 2>&1) || return
     git log -1 --pretty=format:"%ar" | sed 's/\([0-9]*\) \(.\).*/\1\2/'

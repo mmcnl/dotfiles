@@ -19,8 +19,14 @@ export CYAN="\[\033[0;36m\]"
 export YELLOWBLUE="\[\033[1;33;44m\]"
 
 # handle completion on ubuntu or other linux
-if [ -f '/etc/bash_completion' ]; then
-    source "/etc/bash_completion"
+[ -f '/etc/bash_completion' ] && source "/etc/bash_completion"
+
+# enable bash completions added by brew formulae
+brew_bash_completions=/usr/local/etc/bash_completion
+if test -f "$brew_bash_completions"; then
+    source "$brew_bash_completions"
+else
+    echo "$0: brew bash completion missing at ${brew_bash_completions}!"
 fi
 
 # load fzf bindings from homebrew installation
@@ -28,15 +34,12 @@ if test -f /usr/local/opt/fzf/shell/key-bindings.zsh; then
     source "/usr/local/opt/fzf/shell/key-bindings.bash"
 fi
 
-# enable bash zsh completions added by brew formulae; no need to do this for zsh
-#   as the zprezto completion module handles it
-if type brew > /dev/null; then
-    brew_bash_completions="$(brew --prefix)/etc/bash_completion"
-    if [ -f "$brew_bash_completions" ]; then
-        source "$brew_bash_completions"
-    else
-        echo "$0: brew bash completion missing at ${brew_bash_completions}!"
+if type fasd > /dev/null; then
+    fasd_cache="$HOME/.fasd-init-bash"
+    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+        fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
     fi
+    source "$fasd_cache"
 fi
 
 bash_prompt() {

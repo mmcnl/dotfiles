@@ -9,12 +9,8 @@ source "$HOME/.sh_env"
 # exit if not in an interactive shell
 if ! [[ -o interactive ]]; then return 0; fi
 
-if [[ -s "$HOME/.zprezto/init.zsh" ]]; then
-    # load zprezto distribution
-    source "$HOME/.zprezto/init.zsh"
-else
-    echo "$0: ~/.zprezto not present!"
-fi
+# load zprezto distribution
+source "$HOME/.zprezto/init.zsh" || echo "$0: ~/.zprezto not present!"
 
 # shared interactive shell setup
 source "$HOME/.sh_rc"
