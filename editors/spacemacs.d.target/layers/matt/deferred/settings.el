@@ -2,6 +2,10 @@
 (show-paren-mode 1)
 (show-smartparens-global-mode -1)
 (smartparens-mode t)
+
+;; make dired default to sorting by time https://superuser.com/a/1212406/646549
+(setq dired-listing-switches "-lt")
+
 (setq-default truncate-lines t)
 (spacemacs/toggle-visual-line-navigation-on)
 (setq whitespace-style (quote
