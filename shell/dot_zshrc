@@ -1,5 +1,8 @@
 # -*- mode: shell-script -*-
 
+# uncomment to enable profiling
+# zmodload zsh/zprof
+
 # env vars shared between bash and zsh
 source "$HOME/.sh_env"
 
@@ -18,3 +21,5 @@ source "$HOME/.sh_rc"
 
 # zsh-specific setup
 source "$HOME/.zsh_setup"
+
+# zprof
