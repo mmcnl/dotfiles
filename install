@@ -21,6 +21,10 @@ def install_dotfiles():
                                             '.').replace('_slash_', '/')
             link_path = os.path.join(home_dir, link_name)
             # os.path.exists returns False for broken symlinks
+            if os.path.islink(link_path) and not os.path.exists(link_path):
+                print("{}{} is a broken symlink. overwriting...{}".format(
+                    WARNING, link_path, RESET_COLOR))
+                _create_symlink(root, target_name, link_path)
             if os.path.exists(link_path) and not _overwrite_link(link_path):
                 continue
             _create_symlink(root, target_name, link_path)
