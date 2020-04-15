@@ -2,6 +2,7 @@
 # -*- mode: python -*-
 from __future__ import print_function
 import os
+import pathlib
 import sys
 
 OKGREEN = '\033[92m'
@@ -14,9 +15,10 @@ def install_dotfiles():
     print("installing dotfiles into", home_dir, "...\n")
     for root, dirs, files in os.walk("."):
         for target_name in (files + dirs):
-            if not target_name.endswith('.target'):
+            if not target_name.startswith('dot_'):
                 continue
-            link_name = '.' + target_name[:-len('.target')]
+            link_name = target_name.replace('dot_',
+                                            '.').replace('_slash_', '/')
             link_path = os.path.join(home_dir, link_name)
             # os.path.exists returns False for broken symlinks
             if os.path.exists(link_path) and not _overwrite_link(link_path):
@@ -42,12 +44,13 @@ def _overwrite_link(link_path):
 
 
 def _create_symlink(root, target_name, link_path):
-    target_path = os.path.join(root, target_name)
+    target_path = os.path.realpath(os.path.join(root, target_name))
     try:
         # in case an old symlink already exists
         os.unlink(link_path)
     except OSError:
         pass
+    pathlib.Path(os.path.dirname(link_path)).mkdir(parents=True, exist_ok=True)
     os.symlink(os.path.abspath(target_path), link_path)
     print("{}created symlink {} -> {} {}".format(OKGREEN, link_path,
                                                  target_path, RESET_COLOR))
