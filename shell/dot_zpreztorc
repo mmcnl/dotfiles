@@ -1,16 +1,10 @@
 # -*- mode: shell-script -*-
 
-# Color output (auto set to 'no' on dumb terminals).
-zstyle ':prezto:*:*' color 'yes'
-
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
        'environment' \
        'terminal' \
        'history' \
-       'syntax-highlighting' \
-       'completion'
-
-# Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
+       'completion' \
+       'syntax-highlighting'
