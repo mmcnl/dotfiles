@@ -1,10 +1,12 @@
 # -*- mode: conf -*-
 
 ########## define commands
-cmd help $LESS='--RAW-CONTROL-CHARS' bash -c 'lf -doc | less'
-cmd ncdu $ncdu $fx
-cmd lnav $lnav $fx
-cmd sha256sum !sha256sum $fx
+
+# set LESS to override previously set options eg --quit-if-one-screen
+cmd help      $ LESS='-R' bash -c 'lf -doc | less'
+cmd lnav      $ lnav $fx
+cmd ncdu      $ ncdu "$f"
+cmd sha256sum ! sha256sum $fx
 
 # define a custom 'trash' command to move current file or selected files to
 # trash folder
@@ -29,11 +31,10 @@ cmd trash ${{
 map <c-z> $ kill -STOP $PPID
 map <esc> :clear; unselect
 map L lnav
-# set LESS var to override other less options eg --quit-if-one-screen
-map S $LESS='--RAW-CONTROL-CHARS' bash -c 'strings $fx | less'
-map T $LESS='--RAW-CONTROL-CHARS' less +G $fx
+map S $ LESS='-R' bash -c 'strings $fx | less'
+map T $ LESS='-R' less +G $fx
 map U ncdu
-map i $LESS='--RAW-CONTROL-CHARS' bat --paging=always $fx
+map i $ LESS='-R' bat --paging=always $fx
 map q quit
 map td set dirfirst!
 map th set hidden!
@@ -43,6 +44,7 @@ map x trash
 ########## set options
 set color256
 set info size:time
+set ifs "\n"
 set nodirfirst
 set period 1 # reload view every second
 set previewer /usr/local/bin/lf-preview
