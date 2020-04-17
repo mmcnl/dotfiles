@@ -73,15 +73,14 @@ source "$fasd_cache"
 ############ fzf ############
 
 if test -f /usr/local/opt/fzf/shell/key-bindings.zsh; then
-    alias fzh='rg --no-filename . ~/.zlogs | fzf --tac --no-sort'
+    alias fzh='rg --no-filename --color=never --sort path . ~/.zlogs | fzf --tac --no-sort'
     export FZF_DEFAULT_OPTS='--border --exact --height 60% --algo=v1 --no-mouse'
     export FZF_DEFAULT_COMMAND='fd --type f'
+    # https://github.com/junegunn/fzf/pull/1940
+    export FZF_HIST_FIND_NO_DUPS=on
 
     # load fzf bindings from homebrew installation
     source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-
-    # https://github.com/junegunn/fzf/pull/1940
-    export FZF_HIST_FIND_NO_DUPS=on
 else
     echo "$0: fzf not loaded"
 fi
