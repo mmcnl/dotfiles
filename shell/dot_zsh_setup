@@ -95,6 +95,13 @@ else
     echo "$0: fzf not loaded"
 fi
 
+if type compdef > /dev/null && type ansible-playbook > /dev/null
+then
+    # disable ansible-playbook completions since they prevent normal filename
+    # completions, which are actually much more useful for this command
+    compdef -d ansible-playbook
+fi
+
 ############ zsh prompt ############
 
 # for each command invocation, save date, current dir, and command in ~/.zlogs/

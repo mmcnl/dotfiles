@@ -35,16 +35,3 @@ fi
 if [ -d "/usr/local/opt/python/libexec/bin" ]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
-
-############ ansible ############
-
-if [ -n "$ZSH_VERSION" ]; then
-    # disable ansible-playbook completions since they prevent normal filename
-    # completions, which are actually much more useful for this command
-    compdef -d ansible-playbook
-fi
-
-############ helper functions ############
-
-# allow per directory configuration - https://direnv.net
-# eval "$(direnv hook zsh)" # https://direnv.net/docs/hook.html
