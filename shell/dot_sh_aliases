@@ -23,8 +23,8 @@ alias gsa="git status --untracked-files=all"
 alias gss="git short-status"
 
 # ls
-alias l.='ls -l -d .*'
 alias l='ls -l'
+alias l.='ls -ld .*'
 alias la='ls -lA'
 alias las='ls -A'
 alias lh='ls -l -lh'
@@ -38,3 +38,6 @@ alias lz='ls -l --sort=size -r'
 alias u='cd ..'
 alias uu='cd ../..'
 alias uuu='cd ../../..'
+
+# misc
+alias dfh="df -h"
