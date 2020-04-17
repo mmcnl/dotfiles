@@ -7,6 +7,12 @@ time_since_last_commit() {
     git log -1 --pretty=format:"%ar" | sed 's/\([0-9]*\) \(.\).*/\1\2/'
 }
 
+# https://stackoverflow.com/a/10466960/1163042
+NO_COLOR='\033[0m'
+RED='\033[00;31m'
+CYAN='\033[00;36m'
+BLUE='\033[00;34m'
+
 git_prompt () {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then return 0; fi
     git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
