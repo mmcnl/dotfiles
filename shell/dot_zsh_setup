@@ -47,6 +47,18 @@ export SAVEHIST=$HISTSIZE
 # http://stackoverflow.com/a/11200998/1163042
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
+############ zsh completion ############
+
+# enable shift-tab for completion menus - https://unix.stackexchange.com/a/84869
+zmodload zsh/complist
+bindkey -M menuselect '^[[Z' reverse-menu-complete # shift-tab
+
+# enable home-key navigation of menus
+bindkey -M menuselect "^j" complete-word
+bindkey -M menuselect "^k" reverse-menu-complete
+bindkey -M menuselect "^l" forward-char
+bindkey -M menuselect "^h" backward-char
+
 ############ zsh colors and highlights ############
 
 # https://stackoverflow.com/a/6159885/1163042
