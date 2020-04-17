@@ -26,14 +26,8 @@ bindkey -e
 
 # https://zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
 # fixes eg pasting in URLs to curl
-if [[ $TERM == dumb ]]; then
-    # turn off ZLE bracketed paste in dumb term
-    unset zle_bracketed_paste
-else
-    # otherwise turn on ZLE bracketed-paste-magic
-    autoload -Uz bracketed-paste-magic
-    zle -N bracketed-paste bracketed-paste-magic
-fi
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
 ############ zsh env vars ############
 
@@ -59,28 +53,12 @@ bindkey -M menuselect "^k" reverse-menu-complete
 bindkey -M menuselect "^l" forward-char
 bindkey -M menuselect "^h" backward-char
 
-############ zsh colors and highlights ############
-
-# https://stackoverflow.com/a/6159885/1163042
-autoload -U colors && colors
-
-# custom syntax highlighting
-zle_highlight=(paste:fg=blue)
-
-# don't complain about vars defined by zsh plugins
-# shellcheck disable=SC2154
-export NO_COLOR="%{$reset_color%}"
-# shellcheck disable=SC2154
-export RED="%{$fg[red]%}"
-export GREEN="%{$fg[green]%}"
-export BLUE="%{$fg[blue]%}"
-export CYAN="%{$fg[cyan]%}"
+############ zsh highlights ############
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/pattern.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
-typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
+zle_highlight=(paste:fg=blue)
 
 ############ fasd ############
 

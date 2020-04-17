@@ -1,10 +1,23 @@
 # -*- mode: shell-script -*-
 
-# Set the Prezto modules to load (browse modules).
+zstyle ':prezto:*:*' color 'yes'
+
 # The order matters.
 zstyle ':prezto:load' pmodule \
        'environment' \
        'terminal' \
        'history' \
        'completion' \
-       'syntax-highlighting'
+       'syntax-highlighting' # syntax-highlighting must be last
+
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+       'main' \
+       'brackets' \
+       'pattern' \
+       'line' \
+       'cursor' \
+       'root'
+
+zstyle ':prezto:module:syntax-highlighting' styles \
+       'builtin' 'fg=magenta' \
+       'function' 'fg=blue'

@@ -9,11 +9,12 @@ source "$HOME/.sh_env"
 # exit if not in an interactive shell
 if ! [[ -o interactive ]]; then return 0; fi
 
-# load zprezto distribution
-source "$HOME/.zprezto/init.zsh" || echo "$0: ~/.zprezto not present!"
-
 # shared interactive shell setup
 source "$HOME/.sh_rc"
+
+# load prezto distribution before zsh_setup below to prevent initializing things
+# more than once and allow overriding
+source "$HOME/.zprezto/init.zsh"
 
 # zsh-specific setup
 source "$HOME/.zsh_setup"
