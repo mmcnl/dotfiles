@@ -13,7 +13,7 @@ RESET_COLOR = '\033[0m'
 def install_dotfiles():
     home_dir = os.path.expanduser('~')
     print("installing dotfiles into", home_dir, "...\n")
-    for root, dirs, files in os.walk("."):
+    for root, dirs, files in os.walk(os.path.dirname(__file__)):
         for target_name in (files + dirs):
             if not target_name.startswith('dot_'):
                 continue
@@ -33,11 +33,11 @@ def install_dotfiles():
 
 def _overwrite_link(link_path):
     if not os.path.islink(link_path):
-        print("{}{} exists but is not a symlink. Skipping...{}".format(
-            WARNING, link_path, RESET_COLOR))
-        return False
-
-    print("symlink at {} already exists - ".format(link_path), end='')
+        print("{}{} exists but is not a symlink{}. ".format(
+            WARNING, link_path, RESET_COLOR),
+              end='')
+    else:
+        print("symlink at {} already exists - ".format(link_path), end='')
 
     if len(sys.argv) > 1 and sys.argv[1] == '--force':
         print("overwriting.")
