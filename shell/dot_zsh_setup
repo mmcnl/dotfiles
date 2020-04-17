@@ -57,6 +57,7 @@ bindkey -M menuselect "^h" backward-char
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/pattern.md
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' 'fg=white,bold,bg=red')
+typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 zle_highlight=(paste:fg=blue)
 
@@ -105,8 +106,8 @@ precmd() {
     # http://stackoverflow.com/a/15184414/1163042
     # add newline only if non-null
     gp=$(git_prompt)
-    vp=$(virtualenv_prompt)
+    # vp=$(virtualenv_prompt)
     extra="$gp$vp"
     [[ -n $extra ]] && extra=$extra$'\n'
-    PROMPT="${NEWLINE}${extra}$GREEN%~ $NO_COLOR%(!.#.❯) "
+    PROMPT="${NEWLINE}${extra}%F{green}%~ %f%(!.#.❯) "
 }
