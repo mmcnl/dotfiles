@@ -25,7 +25,7 @@
   "dg" 'google-this-noconfirm
   "en" 'flycheck-next-error
   "ep" 'flycheck-previous-error
-  "ff" 'custom-find-files
+  "fyy" 'custom-copy-file-name-to-clipboard
   "fn" 'find-next-file
   "fp" 'find-previous-file
   "fs" 'exit-insert-and-save-buffer-always

@@ -1,3 +1,15 @@
+;; https://stackoverflow.com/a/9414763/1163042
+(defun custom-copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to kill ring and the system clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (simpleclip-set-contents filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+
 (defmacro define-and-bind-text-object (key start-regex end-regex)
   (let ((inner-name (make-symbol "inner-name"))
         (outer-name (make-symbol "outer-name")))
