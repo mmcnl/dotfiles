@@ -29,6 +29,10 @@ bindkey -e
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
+# https://github.com/zsh-users/zsh-autosuggestions/issues/141#issuecomment-210615799
+# prevent slowdowns with bracketed-paste-magic
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
 ############ zsh env vars ############
 
 # https://unix.stackexchange.com/questions/111718/command-history-in-zsh
