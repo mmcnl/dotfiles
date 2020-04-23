@@ -24,7 +24,3 @@ git() {
         done
     fi
 }
-
-pk() {
-    kill -9 "$(ps aux | rg -v '%CPU' | fzf | awk '{print $2 }')"
-}
