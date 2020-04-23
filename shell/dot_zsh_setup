@@ -24,6 +24,10 @@ setopt HIST_IGNORE_SPACE
 # http://zsh.sourceforge.net/Guide/zshguide04.html
 bindkey -e
 
+# allow easier help for zsh builtins, this allows for `run-help cd`
+unalias run-help
+autoload -Uz run-help
+
 # https://zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html
 # fixes eg pasting in URLs to curl
 autoload -Uz bracketed-paste-magic
