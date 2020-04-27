@@ -47,6 +47,21 @@ fkill() {
 
     if [ "x$pid" != "x" ]
     then
-        echo $pid | xargs kill -${1:-9}
+        echo "$pid" | xargs kill -"${1:-9}"
+    fi
+}
+
+# list only hidden files, either in current dir or of a dir
+l. () {
+    # in ZSH, don't warn if the glob doesn't match
+    [ -n "$ZSH_VERSION" ] && setopt +o nomatch
+
+    # if there is an argument (dir)
+    if [ -n "$1" ]; then
+        # cd into that dir (in a subshell) and ls hidden files there
+        echo -e "$(cd "${1}" || exit; ls -lAd "$2" .* 2>/dev/null)"
+    else
+        # just list hidden files in current dir
+        ls -lAd .* 2>/dev/null
     fi
 }

@@ -24,7 +24,6 @@ alias gss="git short-status"
 
 # ls
 alias l='ls -l'
-alias l.='ls -ld .*'
 alias la='ls -lA'
 alias las='ls -A'
 alias lh='ls -l -lh'
