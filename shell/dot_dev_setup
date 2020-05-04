@@ -25,9 +25,9 @@ fi
 alias ncdu="ncdu --color dark -x"
 alias help='tldr'
 
-alias rg='rg --color always --no-heading --smart-case --max-columns 200 --max-columns-preview'
+alias rg='rg --no-heading --smart-case --max-columns 200 --max-columns-preview'
 # search all files
-alias rga='rg -uuu' # see 'man rg' for details on unrestricted flag
+alias rgu='rg -uuu' # see 'man rg' for details on unrestricted flag
 
 ############ python ############
 
