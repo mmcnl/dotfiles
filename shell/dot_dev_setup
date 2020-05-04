@@ -13,6 +13,11 @@ if [ -x "/usr/local/share/chruby" ]; then
     source "/usr/local/share/chruby/auto.sh"
 fi
 
+# rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 ##### aliases ########
 
 # https://remysharp.com/2018/08/23/cli-improved
