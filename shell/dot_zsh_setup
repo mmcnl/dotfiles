@@ -37,6 +37,12 @@ zle -N bracketed-paste bracketed-paste-magic
 # prevent slowdowns with bracketed-paste-magic
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
+# allow editing current line in $EDITOR
+# https://unix.stackexchange.com/a/34251
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # http://www.smallbulb.net/2018/797-zsh-completion-with-visual-hints
 expand-or-complete-with-dots() {
   echo -n "\e[31m...\e[0m"
