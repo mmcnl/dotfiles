@@ -36,7 +36,19 @@ if [ -d "/opt/miniconda3" ]; then
     export WORKON_HOME="/opt/miniconda3/envs"
 fi
 
-# homebrew python3
-if [ -d "/usr/local/opt/python/libexec/bin" ]; then
-    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-fi
+export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# eval "$(pyenv init -)"
+# pyenv rehash
+
+# # homebrew python
+# if [ -h "/usr/local/opt/python@3.9" ]; then
+#     export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+# fi
+
+# if [ -d "/usr/local/opt/python/libexec/bin" ]; then
+#     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# fi

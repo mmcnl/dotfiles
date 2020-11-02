@@ -9,10 +9,6 @@
   (deactivate-mark)
   )
 
-(defadvice delete-other-windows (after hide-neotree activate)
-  (neotree-hide)
-  )
-
 (defadvice evil-force-normal-state (after escape-clear-highlight activate)
   "clear highlights after escape"
   (spacemacs/evil-search-clear-highlight)

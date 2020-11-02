@@ -10,36 +10,61 @@
    dotspacemacs-enable-lazy-installation nil
    dotspacemacs-configuration-layers
    '(
-     ;; ipython-notebook
-     ;; sql
-     (python :variables python-enable-yapf-format-on-save t)
-     csv
      (auto-completion :variables
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory nil)
+     csv
+     dap
+     emacs-lisp
+     fasd
+     git
+     github
      helm
+     helpful
      html
      (dash :variables
            dash-autoload-common-docsets nil)
-     emacs-lisp
-     git
-     github
-     html
-     javascript
+     (html :variables web-fmt-tool 'prettier)
+     ibuffer
+     ;; ipython-notebook
+     (javascript :variables
+                 js2-mode-show-strict-warnings nil
+                 javascript-fmt-tool 'prettier
+                 javascript-backend 'lsp
+                 )
+     (json :variables json-fmt-tool 'prettier)
+     lsp
+     ;; (rust :variables rust-backend 'lsp)
+     ;; (lsp :variables lsp-rust-server 'rust-analyzer)
      (markdown :variables markdown-live-preview-engine 'vmd)
      neotree
+     nginx
      matt
      org
      osx
-     ;; php
+     php
+     prettier
+     (python :variables
+             python-formatter 'black
+             python-sort-imports-on-save t
+             python-format-on-save t
+             python-backend 'lsp python-lsp-server 'pyright
+             )
+     ;; react
      ruby
      ;; (spell-checking :variables spell-checking-enable-by-default nil)
+     ;; sql
      syntax-checking
+     systemd
      (theming :variables theming-headings-inherit-from-default 'all theming-headings-same-size 'all theming-headings-bold 'all)
+     (typescript :variables
+                 typescript-linter 'eslint
+                 typescript-fmt-tool 'typescript-formatter)
      version-control
+     ;; (vue :variables vue-backend 'lsp)
      yaml
      )
    dotspacemacs-additional-packages '(
@@ -49,21 +74,24 @@
                                       ;; vimrc-mode
                                       ;; vlf
                                       ;; vue-mode
-                                      coffee-mode
-                                      flycheck-yamllint
+                                      ;; coffee-mode
+                                      ;; flycheck-yamllint
                                       google-this
-                                      nginx-mode
+                                      ;; indium
                                       simpleclip
-                                      systemd
                                       undohist
                                       yafolding
+                                      xterm-color
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
                                     inf-ruby
                                     magit-gitflow
                                     flyspell
-                                    syntax-checking
+                                    ;; syntax-checking
+                                    ;; persp-mode
+                                    perspective
+                                    treemacs
                                     doom-modeline ;; avoid "apply: Args out of range:" error
                                     spray
                                     pbcopy ;; use simpleclip instead
@@ -84,7 +112,7 @@
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-enable-paste-transient-state t
    dotspacemacs-ex-substitute-global t
-   dotspacemacs-folding-method 'evil
+   ;; dotspacemacs-folding-method 'evil
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native t
    dotspacemacs-helm-no-header nil
@@ -149,7 +177,7 @@
 (defun dotspacemacs/user-config ()
   "Called at end of Spacemacs initialization."
 
-  ;; (setq debug-on-error t)
+  (setq debug-on-error nil)
   ;; to disable custom config, comment out the line below
   (matt-load-deferred-config-files)
   ;; (benchmark-init/show-durations-tabulated)

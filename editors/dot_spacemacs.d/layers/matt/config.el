@@ -4,8 +4,12 @@
   ;; load these after all other spacemacs layers have loaded
   (mapc 'load (file-expand-wildcards "~/.spacemacs.d/layers/matt/deferred/*.el"))
 
+  (setq dired-listing-switches
+        "-AGFhlv --group-directories-first --time-style=long-iso")
+
   (server-start)
   (matt-customize-themes) ;; apply initial theme fixes
+
   (spacemacs/toggle-maximize-frame-on)
   (delete-other-windows)
 

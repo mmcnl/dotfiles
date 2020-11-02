@@ -11,7 +11,7 @@
 (evil-leader/set-key-for-mode 'ruby-mode "{" 'ruby-toggle-block)
 (evil-leader/set-key-for-mode 'ruby-mode "'" 'ruby-toggle-string-quotes)
 (evil-leader/set-key-for-mode 'ruby-mode "e" 'xmpfilter)
-(evil-leader/set-key-for-mode 'ruby-mode "=" 'ruby-beautify-region-or-buffer)
+;; (evil-leader/set-key-for-mode 'ruby-mode "=" 'ruby-beautify-region-or-buffer)
 (evil-leader/set-key-for-mode 'ruby-mode "xx" 'ruby-autocorrect-file)
 
 (defun my-ruby-mode-hook ()

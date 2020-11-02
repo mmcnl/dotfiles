@@ -4,8 +4,6 @@
   (add-to-list 'projectile-globally-ignored-files '"TAGS")
   (add-to-list 'projectile-globally-ignored-files '"undo-tree")
   (add-to-list 'projectile-globally-ignored-directories '"__pycache__")
-
-  (setq projectile-git-command "comm -23 <(git ls-files -co --exclude-standard | sort) <(git ls-files -d | sort) | tr '\\n' '\\0'")
   )
 ;; (defun projectile-idle-regenerate-tags ()
 ;;   "Regenerate the project's tags if in a project"
@@ -22,7 +20,8 @@
 ;;
 (defun projectile-recently-modified-files ()
   "Return a list of recently modified files in the current project"
-  (split-string (shell-command-to-string "recent_files_in_project"))
+  (split-string (shell-command-to-string "/Users/matt/bin/recent_files_in_project"))
+  ;; (split-string (shell-command-to-string "git ls-files"))
   )
 
 (defun my-helm-projectile-findutils-transformer (candidates _source)
@@ -52,6 +51,7 @@
     :filtered-candidate-transformer 'my-helm-projectile-findutils-transformer
     :keymap helm-projectile-find-file-map
     :action 'helm-projectile-file-actions))
+
 (helm-projectile-command "find-recently-modified" '(helm-source-projectile-recently-modified-files) "" t)
 
 (helm-projectile-command "custom-find" '(

@@ -8,6 +8,10 @@
   (add-to-list 'neo-hidden-regexp-list "TAGS$")
   (add-to-list 'neo-hidden-regexp-list "__pycache__")
 
+  (defadvice delete-other-windows (after hide-neotree activate)
+    (neotree-hide)
+    )
+
   ;; patched to allow everything but .DS_Store
   ;; this must be run after neotree loads in order to monkeypatch
   (defun neo-util--walk-dir (path)

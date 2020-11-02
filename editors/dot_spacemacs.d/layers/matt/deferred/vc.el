@@ -11,8 +11,10 @@
 
 (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 (setq magit-popup-show-common-commands t)
-
 (setq magit-diff-refine-hunk nil)
+
+;; https://emacs.stackexchange.com/questions/14483/magit-log-dates#comment67151_40832
+(setq magit-log-margin '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18))
 
 ;; http://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)

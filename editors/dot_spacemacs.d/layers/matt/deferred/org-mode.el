@@ -48,5 +48,6 @@
   (my-org-setup)
   )
 
-(global-set-key (kbd "C-0") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))
+(global-set-key (kbd "C-0") (lambda() (interactive)(find-file "/Users/matt/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/todo.org")))
+(global-set-key (kbd "C-9") (lambda() (interactive)(find-file "/Users/matt/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/schedule.org")))
 ;; (global-set-key (kbd "C-9") (lambda() (interactive)(find-file "~/Dropbox/org/todo.org")))

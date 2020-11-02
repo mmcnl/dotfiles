@@ -5,6 +5,9 @@
 (global-set-key [(hyper h)] 'ns-do-hide-emacs)
 (global-set-key [(hyper meta h)] 'ns-do-hide-others)
 
+(global-set-key [(hyper u)] 'revert-buffer)
+
+
 (define-key evil-normal-state-map (kbd "!") 'shell-command)
 (define-key evil-visual-state-map (kbd "!") 'shell-command)
 (define-key evil-normal-state-map (kbd ":") 'helm-M-x)
@@ -21,8 +24,9 @@
   "be" 'erase-buffer
   "bn" 'new-empty-buffer
   "ce" 'clear-previous-comint-buffer
-  "dd" 'dash-at-point
-  "dg" 'google-this-noconfirm
+  "od" 'dash-at-point
+  "og" 'google-this-noconfirm
+  "ot" 'matt-cycle-themes
   "en" 'flycheck-next-error
   "ep" 'flycheck-previous-error
   "fyy" 'custom-copy-file-name-to-clipboard
@@ -32,17 +36,17 @@
   "ha" 'helm-apropos
   "pK" 'projectile-kill-other-buffers
   "pm" 'helm-projectile-find-recently-modified
-  "sr" 'custom-evil-search-replace
+  ;; "sr" 'custom-evil-search-replace
   "tl" 'visual-line-mode
-  "tt" 'matt-cycle-themes
   "xL" 'lorem-ipsum-insert-paragraphs
   "xW" 'whitespace-cleanup-buffer
   ","  'feng-goto-last-change
   )
 ;; "bN" 'evil-window-vnew
+
 ;; https://github.com/zenozeng/yafolding.el#modify-keybindings
 (require 'yafolding)
-(yafolding-mode)
+(define-key yafolding-mode-map (kbd "<H-M-return>") 'yafolding-toggle-element)
 (define-key yafolding-mode-map (kbd "<C-M-return>") nil)
-(define-key yafolding-mode-map (kbd "<C-S-return>")  'yafolding-toggle-all)
-(define-key yafolding-mode-map (kbd "<C-return>") 'yafolding-toggle-element)
+(define-key yafolding-mode-map (kbd "<C-S-return>")  nil)
+(define-key yafolding-mode-map (kbd "<C-return>") nil)

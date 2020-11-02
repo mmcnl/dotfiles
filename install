@@ -1,29 +1,32 @@
 #!/usr/bin/env python3
 # -*- mode: python -*-
 from __future__ import print_function
+
 import os
 import pathlib
 import sys
 
-OKGREEN = '\033[92m'
-WARNING = '\033[93m'
-RESET_COLOR = '\033[0m'
+OKGREEN = "\033[92m"
+WARNING = "\033[93m"
+RESET_COLOR = "\033[0m"
 
 
 def install_dotfiles():
-    home_dir = os.path.expanduser('~')
+    home_dir = os.path.expanduser("~")
     print("installing dotfiles into", home_dir, "...\n")
     for root, dirs, files in os.walk(os.path.dirname(__file__)):
-        for target_name in (files + dirs):
-            if not target_name.startswith('dot_'):
+        for target_name in files + dirs:
+            if not target_name.startswith("dot_"):
                 continue
-            link_name = target_name.replace('dot_',
-                                            '.').replace('_slash_', '/')
+            link_name = target_name.replace("dot_", ".").replace("_slash_", "/")
             link_path = os.path.join(home_dir, link_name)
             # os.path.exists returns False for broken symlinks
             if os.path.islink(link_path) and not os.path.exists(link_path):
-                print("{}{} is a broken symlink. overwriting...{}".format(
-                    WARNING, link_path, RESET_COLOR))
+                print(
+                    "{}{} is a broken symlink. overwriting...{}".format(
+                        WARNING, link_path, RESET_COLOR
+                    )
+                )
                 _create_symlink(root, target_name, link_path)
             if os.path.exists(link_path) and not _overwrite_link(link_path):
                 continue
@@ -33,18 +36,20 @@ def install_dotfiles():
 
 def _overwrite_link(link_path):
     if not os.path.islink(link_path):
-        print("{}{} exists but is not a symlink{}. ".format(
-            WARNING, link_path, RESET_COLOR),
-              end='')
+        print(
+            "{}{} exists but is not a symlink{}. ".format(
+                WARNING, link_path, RESET_COLOR
+            ),
+            end="",
+        )
     else:
-        print("symlink at {} already exists - ".format(link_path), end='')
+        print("symlink at {} already exists - ".format(link_path), end="")
 
-    if len(sys.argv) > 1 and sys.argv[1] == '--force':
+    if len(sys.argv) > 1 and sys.argv[1] == "--force":
         print("overwriting.")
         return True
-    else:
-        print("use --force to overwrite.")
-        return False
+    print("use --force to overwrite.")
+    return False
 
 
 def _create_symlink(root, target_name, link_path):
@@ -56,8 +61,11 @@ def _create_symlink(root, target_name, link_path):
         pass
     pathlib.Path(os.path.dirname(link_path)).mkdir(parents=True, exist_ok=True)
     os.symlink(os.path.abspath(target_path), link_path)
-    print("{}created symlink {} -> {} {}".format(OKGREEN, link_path,
-                                                 target_path, RESET_COLOR))
+    print(
+        "{}created symlink {} -> {} {}".format(
+            OKGREEN, link_path, target_path, RESET_COLOR
+        )
+    )
 
 
 install_dotfiles()

@@ -29,8 +29,9 @@ git_prompt () {
 }
 
 virtualenv_prompt() {
-    v=$(basename "$VIRTUAL_ENV")
-    if [[ -z $v ]]; then return 0; fi
+    if [[ -z $VIRTUAL_ENV ]]; then return 0; fi
+    v=$(echo $VIRTUAL_ENV | awk -F/ '{print $(NF-1)}')
+    # v=$(basename "$VIRTUAL_ENV")
     echo "$BLUE [$v] $NO_COLOR"
 }
 
