@@ -17,6 +17,7 @@
 (define-key evil-insert-state-map (kbd "C-y") 'yas-expand)
 
 (evil-leader/set-key
+  ","  'feng-goto-last-change
   "/" 'spacemacs/helm-project-smart-do-search
   ":" 'evil-ex
   "ba" 'mark-whole-buffer
@@ -24,23 +25,22 @@
   "be" 'erase-buffer
   "bn" 'new-empty-buffer
   "ce" 'clear-previous-comint-buffer
-  "od" 'dash-at-point
-  "og" 'google-this-noconfirm
-  "ot" 'matt-cycle-themes
   "en" 'flycheck-next-error
   "ep" 'flycheck-previous-error
-  "fyy" 'custom-copy-file-name-to-clipboard
   "fn" 'find-next-file
   "fp" 'find-previous-file
   "fs" 'exit-insert-and-save-buffer-always
+  "fyy" 'custom-copy-file-name-to-clipboard
   "ha" 'helm-apropos
+  "od" 'dash-at-point
+  "og" 'google-this-noconfirm
+  "or" 'custom-evil-search-replace
+  "ot" 'matt-cycle-themes
   "pK" 'projectile-kill-other-buffers
   "pm" 'helm-projectile-find-recently-modified
-  ;; "sr" 'custom-evil-search-replace
   "tl" 'visual-line-mode
   "xL" 'lorem-ipsum-insert-paragraphs
   "xW" 'whitespace-cleanup-buffer
-  ","  'feng-goto-last-change
   )
 ;; "bN" 'evil-window-vnew
 

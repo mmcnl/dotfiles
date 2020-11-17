@@ -93,6 +93,7 @@
                                     perspective
                                     treemacs
                                     doom-modeline ;; avoid "apply: Args out of range:" error
+                                    skewer
                                     spray
                                     pbcopy ;; use simpleclip instead
                                     )
