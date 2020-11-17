@@ -25,8 +25,6 @@ export YELLOWBLUE="\[\033[1;33;44m\]"
 brew_bash_completions=/usr/local/etc/bash_completion
 if test -f "$brew_bash_completions"; then
     source "$brew_bash_completions"
-else
-    echo "$0: brew bash completion missing at ${brew_bash_completions}!"
 fi
 
 # load fzf bindings from homebrew installation

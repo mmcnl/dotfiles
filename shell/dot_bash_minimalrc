@@ -41,6 +41,26 @@ export BLUE="\[\033[0;34m\]"
 export CYAN="\[\033[0;36m\]"
 export YELLOWBLUE="\[\033[1;33;44m\]"
 
+time_since_last_commit() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null 2>&1) || return
+    git log -1 --pretty=format:"%ar" | sed 's/\([0-9]*\) \(.\).*/\1\2/'
+}
+
+git_prompt () {
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then return 0; fi
+    git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
+    git_rev="$(git rev-parse --short HEAD | sed s/..$//)"
+    git_status=$(git status)
+    if [[ $git_status =~ 'clean' &&
+              $git_status != 'ahead' &&
+              $git_status != 'behind' ]]; then
+        echo -n "$CYAN"
+    else
+        echo -n "$RED"
+    fi
+    echo "[$(time_since_last_commit) $git_branch $git_rev] $NO_COLOR"
+}
+
 bash_prompt() {
     # Turn the prompt symbol red if the user is root
     if [ $(id -u) -eq 0 ]; then
@@ -48,6 +68,12 @@ bash_prompt() {
     else
         USER_PRIV='$'
     fi
-    echo "${NEWLINE}$YELLOWBLUE\u@\h$NO_COLOR $GREEN\w$NO_COLOR $USER_PRIV "
+    # work around trailing newlines being swallowed by command substitution
+    # http://stackoverflow.com/a/15184414/1163042
+    # add newline only if non-null
+    gp=$(git_prompt)
+    [[ -n $gp ]] && gp=$gp$'\n'
+    echo "${NEWLINE}$gp$YELLOWBLUE\u@\h$NO_COLOR $GREEN\w$NO_COLOR $USER_PRIV "
+    # echo "${NEWLINE}$gp$GREEN\w$NO_COLOR $USER_PRIV "
 }
 PROMPT_COMMAND='history -a; PS1="$(bash_prompt)"'
