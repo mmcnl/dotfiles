@@ -50,14 +50,9 @@ git_prompt () {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then return 0; fi
     git_branch="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
     git_rev="$(git rev-parse --short HEAD | sed s/..$//)"
-    git_status=$(git status)
-    if [[ $git_status =~ 'clean' &&
-              $git_status != 'ahead' &&
-              $git_status != 'behind' ]]; then
-        echo -n "$CYAN"
-    else
-        echo -n "$RED"
-    fi
+
+    echo -n "$RED"
+    git ls-files --others --exclude-standard --directory   --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>/dev/null || echo -n "$CYAN"
     echo "[$(time_since_last_commit) $git_branch $git_rev] $NO_COLOR"
 }
 
