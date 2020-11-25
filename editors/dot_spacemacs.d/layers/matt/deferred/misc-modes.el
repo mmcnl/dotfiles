@@ -31,6 +31,10 @@
   (company-mode 1)
   )
 
+(add-hook 'php-mode-hook #'(lambda()
+                             (setq php-mode-coding-style 'psr-2)
+                             (setq c-basic-offset 2)))
+
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 
 (add-hook 'prog-mode-hook 'prog-mode-common-setup)

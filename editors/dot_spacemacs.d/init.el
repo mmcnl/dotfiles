@@ -45,7 +45,7 @@
      matt
      org
      osx
-     php
+     (php :variables php-backend 'lsp)
      prettier
      (python :variables
              python-formatter 'black
@@ -85,6 +85,8 @@
                                       )
    dotspacemacs-excluded-packages '(
                                     adaptive-wrap ;; https://github.com/syl20bnr/spacemacs/issues/1418#issuecomment-173703609
+                                    ac-php-core
+                                    ac-php
                                     inf-ruby
                                     magit-gitflow
                                     flyspell
@@ -96,6 +98,7 @@
                                     skewer
                                     spray
                                     pbcopy ;; use simpleclip instead
+                                    phpcbf
                                     )
    ))
 (defun dotspacemacs/init ()

@@ -2,6 +2,12 @@
 
 # set up vars and shell for development
 
+##### internet archive ########
+
+if [ -d "/Users/matt/dev/ia/kre8" ]; then
+    source /Users/matt/dev/ia/kre8/aliases
+fi
+
 ##### misc web development ########
 if type yarn > /dev/null 2>&1; then
     export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
