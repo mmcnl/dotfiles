@@ -2778,8 +2778,8 @@
   "aceJump.finder.pattern": "[\\\\ ,-.{_(\"'<\\[\t]",
   "editor.lineNumbers": "on",
   "editor.renderWhitespace": "all",
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
-  }
+  },
+  "workbench.startupEditor": "newUntitledFile"
 }
