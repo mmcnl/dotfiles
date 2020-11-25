@@ -82,9 +82,9 @@
   "window.zoomLevel": -1,
   "editor.multiCursorModifier": "alt",
   "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 15,
-  "debug.console.fontSize": 14,
-  "terminal.integrated.fontSize": 14,
+  "editor.fontSize": 16,
+  "debug.console.fontSize": 15,
+  "terminal.integrated.fontSize": 15,
   "workbench.colorTheme": "One Dark Pro",
   "vspacecode.bindingOverrides": [],
   "vspacecode.bindings": [
@@ -1525,7 +1525,8 @@
           "key": "m",
           "name": "Maximize window",
           "type": "command",
-          "command": "workbench.action.toggleEditorWidths"
+          "command": "extension.multiCommand.execute" , 
+          "args": { "command": "multiCommand.trueMaximizeWindow" },
         },
         {
           "key": "o",
@@ -2781,5 +2782,19 @@
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "workbench.startupEditor": "newUntitledFile"
+  "workbench.startupEditor": "newUntitledFile",
+  "gitlens.currentLine.enabled": false,
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.trueMaximizeWindow",
+      "sequence": [
+        "workbench.action.closeSidebar",
+        "workbench.action.closeOtherEditors",
+        "workbench.action.closeEditorsInOtherGroups",
+        "workbench.action.closePanel",
+      ]
+    },
+  ],
+  "workbench.editor.showTabs": false,
+  "editor.minimap.size": "fill"
 }
