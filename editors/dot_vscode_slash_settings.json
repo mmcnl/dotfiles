@@ -12,17 +12,11 @@
   "vim.useSystemClipboard": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [","],
       "commands": [
         "vspacecode.space",
         {
@@ -32,28 +26,17 @@
       ]
     },
     {
-      "before": [
-        "ctrl+j"
-      ],
-      "after": [
-        "O",
-        "<Esc>"
-      ]
+      "before": ["ctrl+j"],
+      "after": ["O", "<Esc>"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [","],
       "commands": [
         "vspacecode.space",
         {
@@ -65,13 +48,8 @@
   ],
   "vim.insertModeKeyBindings": [
     {
-      "before": [
-        "f",
-        "d"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["f", "d"],
+      "after": ["<Esc>"]
     }
   ],
   "vim.handleKeys": {
@@ -1021,8 +999,8 @@
               "key": "x",
               "name": "revert changes to file since last commit",
               "type": "command",
-              "command": "git.clean",
-            },
+              "command": "git.clean"
+            }
           ]
         },
         {
@@ -1112,11 +1090,7 @@
           "type": "command",
           "command": "vim.remap",
           "args": {
-            "after": [
-              "leader",
-              "leader",
-              "s"
-            ]
+            "after": ["leader", "leader", "s"]
           }
         },
         {
@@ -1125,15 +1099,7 @@
           "type": "command",
           "command": "vim.remap",
           "args": {
-            "after": [
-              "leader",
-              "leader",
-              "leader",
-              "b",
-              "d",
-              "j",
-              "k"
-            ]
+            "after": ["leader", "leader", "leader", "b", "d", "j", "k"]
           }
         },
         {
@@ -1160,14 +1126,7 @@
           "type": "command",
           "command": "vim.remap",
           "args": {
-            "after": [
-              "leader",
-              "leader",
-              "leader",
-              "b",
-              "d",
-              "w"
-            ]
+            "after": ["leader", "leader", "leader", "b", "d", "w"]
           }
         },
         {
@@ -1561,7 +1520,7 @@
           "command": "extension.multiCommand.execute",
           "args": {
             "command": "multiCommand.trueMaximizeWindow"
-          },
+          }
         },
         {
           "key": "o",
@@ -2832,9 +2791,9 @@
         "workbench.action.closeSidebar",
         "workbench.action.closeOtherEditors",
         "workbench.action.closeEditorsInOtherGroups",
-        "workbench.action.closePanel",
+        "workbench.action.closePanel"
       ]
-    },
+    }
   ],
   "workbench.editor.showTabs": true,
   "editor.minimap.size": "fill",
@@ -2860,7 +2819,7 @@
     "editor.renderWhitespace": "none"
   },
   "editor.formatOnSave": true,
-  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "gitlens.hovers.changesDiff": "hunk",
   "diffEditor.renderSideBySide": false,
   "scm.diffDecorationsGutterWidth": 2,
@@ -2868,4 +2827,10 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "cSpell.diagnosticLevel": "Hint"
 }
