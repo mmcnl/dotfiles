@@ -79,12 +79,12 @@
     "<C-e>": false,
     "<C-k>": false
   },
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.multiCursorModifier": "alt",
   "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 16,
-  "debug.console.fontSize": 15,
-  "terminal.integrated.fontSize": 15,
+  "editor.fontSize": 14,
+  "debug.console.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
   "workbench.colorTheme": "One Dark Pro",
   "vspacecode.bindingOverrides": [],
   "vspacecode.bindings": [
@@ -971,6 +971,18 @@
           "command": "magit.dispatch"
         },
         {
+          "key": "n",
+          "name": "Show next change",
+          "type": "command",
+          "command": "editor.action.dirtydiff.next"
+        },
+        {
+          "key": "p",
+          "name": "Show previous change",
+          "type": "command",
+          "command": "editor.action.dirtydiff.previous"
+        },
+        {
           "key": "s",
           "name": "Status",
           "type": "command",
@@ -1004,7 +1016,13 @@
               "name": "Show log/timeline",
               "type": "command",
               "command": "timeline.focus"
-            }
+            },
+            {
+              "key": "x",
+              "name": "revert changes to file since last commit",
+              "type": "command",
+              "command": "git.clean",
+            },
           ]
         },
         {
@@ -1129,6 +1147,12 @@
           "name": "Jump to outline/variables",
           "type": "command",
           "command": "breadcrumbs.focusAndSelect"
+        },
+        {
+          "key": "r",
+          "name": "jump with ripgrep",
+          "type": "command",
+          "command": "extension.ripgrep"
         },
         {
           "key": "w",
@@ -1313,6 +1337,15 @@
           "command": "editor.action.rename"
         },
         {
+          "key": "E",
+          "name": "Search Editor with selection",
+          "type": "commands",
+          "commands": [
+            "editor.action.addSelectionToNextFindMatch",
+            "search.action.openNewEditor"
+          ]
+        },
+        {
           "key": "h",
           "name": "Highlight symbol",
           "type": "transient",
@@ -1354,16 +1387,16 @@
           "command": "workbench.action.gotoSymbol"
         },
         {
-          "key": "p",
-          "name": "Search in project",
-          "type": "command",
-          "command": "workbench.action.findInFiles"
-        },
-        {
           "key": "r",
           "name": "Search all references",
           "type": "command",
           "command": "editor.action.referenceSearch.trigger"
+        },
+        {
+          "key": "p",
+          "name": "Search in project",
+          "type": "command",
+          "command": "workbench.action.findInFiles"
         },
         {
           "key": "s",
@@ -1525,8 +1558,10 @@
           "key": "m",
           "name": "Maximize window",
           "type": "command",
-          "command": "extension.multiCommand.execute" , 
-          "args": { "command": "multiCommand.trueMaximizeWindow" },
+          "command": "extension.multiCommand.execute",
+          "args": {
+            "command": "multiCommand.trueMaximizeWindow"
+          },
         },
         {
           "key": "o",
@@ -2729,6 +2764,12 @@
           "command": "workbench.action.toggleMaximizedPanel"
         },
         {
+          "key": "M",
+          "name": "Toggle minimap",
+          "type": "command",
+          "command": "editor.action.toggleMinimap"
+        },
+        {
           "key": "s",
           "name": "Select theme",
           "type": "command",
@@ -2776,9 +2817,9 @@
   "intelephense.diagnostics.undefinedTypes": false,
   "intelephense.diagnostics.undefinedFunctions": false,
   "intelephense.diagnostics.undefinedMethods": false,
-  "aceJump.finder.pattern": "[\\\\ ,-.{_(\"'<\\[\t]",
+  "aceJump.finder.pattern": "[\\\\ ,-.{_(\"'><$\\[\t]",
   "editor.lineNumbers": "on",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -2795,6 +2836,36 @@
       ]
     },
   ],
-  "workbench.editor.showTabs": false,
-  "editor.minimap.size": "fill"
+  "workbench.editor.showTabs": true,
+  "editor.minimap.size": "fill",
+  "editor.minimap.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "AllAutocomplete.cycleOpenDocumentsOnLaunch": true,
+  "vim.debug.loggingLevelForAlert": "info",
+  "vim.debug.loggingLevelForConsole": "info",
+  "vim.highlightedyank.enable": true,
+  "vim.overrideCopy": false,
+  "clipboard-manager.snippet.enabled": false,
+  "editor.cursorSurroundingLines": 1,
+  "aceJump.placeholder.upperCase": true,
+  "aceJump.scroll.mode": "none",
+  "workbench.iconTheme": "vs-minimal",
+  "[magit]": {
+    "editor.lineNumbers": "off",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none"
+  },
+  "editor.formatOnSave": true,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "gitlens.hovers.changesDiff": "hunk",
+  "diffEditor.renderSideBySide": false,
+  "scm.diffDecorationsGutterWidth": 2,
+  "gitlens.blame.avatars": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
