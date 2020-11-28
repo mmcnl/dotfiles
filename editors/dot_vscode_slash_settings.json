@@ -14,6 +14,7 @@
   "aceJump.finder.pattern": "[\\\\ ,-.{_(\"'><$\\[\t]",
   "aceJump.placeholder.upperCase": true,
   "aceJump.scroll.mode": "none",
+  "breadcrumbs.enabled": false,
   "clipboard-manager.snippet.enabled": false,
   "dayNightThemeSwitcher.dayTheme": "Solarized Light",
   "dayNightThemeSwitcher.nightTheme": "One Dark Pro",
@@ -2839,6 +2840,7 @@
   ],
   "window.nativeFullScreen": false,
   "window.zoomLevel": 0,
+  "workbench.activityBar.visible": true,
   "workbench.colorTheme": "One Dark Pro",
   "workbench.editor.showTabs": true,
   "workbench.editorAssociations": [
