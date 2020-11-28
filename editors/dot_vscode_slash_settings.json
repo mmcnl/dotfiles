@@ -20,10 +20,10 @@
   "customizeUI.stylesheet": {
     ".monaco-editor .margin-view-overlays .line-numbers": "font-size: 80% !important;"
   },
-  "customizeUI.titleBar": "frameless",
+  "customizeUI.titleBar": "regular",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
-  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.acceptSuggestionOnEnter": "off",
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 1,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -34,7 +34,7 @@
   "editor.formatOnSave": true,
   "editor.glyphMargin": true,
   "editor.lineNumbers": "on",
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.minimap.size": "fill",
   "editor.multiCursorModifier": "alt",
   "editor.occurrencesHighlight": false,
@@ -54,6 +54,7 @@
     "*.inc": "php",
     "*.json": "jsonc"
   },
+  "files.hotExit": "off",
   "fzf-quick-open.ripgrepSearchStyle": "Smart case",
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
@@ -132,6 +133,10 @@
     {
       "after": ["<Esc>"],
       "before": ["f", "d"]
+    },
+    {
+      "after": ["<enter>"],
+      "before": ["<C-j>"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -150,7 +155,7 @@
       ]
     },
     {
-      "after": ["O", "<Esc>"],
+      "after": ["i", "<enter>", "<Esc>", "k", "$"],
       "before": ["ctrl+j"]
     }
   ],
@@ -2879,6 +2884,8 @@
     }
   ],
   "window.nativeFullScreen": false,
+  "window.restoreWindows": "none",
+  "window.title": "${activeEditorShort}${separator}${rootName}${separator}",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "One Dark Pro",

@@ -262,7 +262,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "alt+cmd+b ctrl",
+    "key": "alt+cmd+b",
     "command": "markdown.extension.editing.toggleBold",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
   },
@@ -272,7 +272,7 @@
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
   },
   {
-    "key": "alt+cmd+v ctrl",
+    "key": "alt+cmd+v",
     "command": "markdown.extension.editing.toggleItalic",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
   },
@@ -280,6 +280,12 @@
     "key": "cmd+i",
     "command": "-markdown.extension.editing.toggleItalic",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+  },
+  {
+    // allow creating next list item even if there is an open suggestion (delete the !suggestWidgetVisible condition)
+    "key": "enter",
+    "command": "markdown.extension.onEnterKey",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown' && vim.mode != 'CommandlineInProgress' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'EasyMotionMode' && vim.mode != 'Normal' && vim.mode != 'Replace' && vim.mode != 'SearchInProgressMode' && vim.mode != 'SurroundInputMode' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
   }
   //   [], code: Enter, keyCode: 13, key: Enter
   // [2020-11-27 10:27:51.780] [renderer3] [info] [KeybindingService]: | Converted keydown event - modifiers: [], code: Enter, keyCode: 3 ('Enter')
