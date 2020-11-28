@@ -16,18 +16,23 @@
   "aceJump.scroll.mode": "none",
   "breadcrumbs.enabled": false,
   "clipboard-manager.snippet.enabled": false,
-  "dayNightThemeSwitcher.dayTheme": "Solarized Light",
-  "dayNightThemeSwitcher.nightTheme": "One Dark Pro",
+  "customizeUI.activityBar": "regular",
+  "customizeUI.stylesheet": {
+    ".monaco-editor .margin-view-overlays .line-numbers": "font-size: 80% !important;"
+  },
+  "customizeUI.titleBar": "frameless",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 1,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.folding": true,
   "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.glyphMargin": true,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": true,
   "editor.minimap.size": "fill",
@@ -81,6 +86,35 @@
   "scm.diffDecorationsGutterWidth": 2,
   "screencastMode.onlyKeyboardShortcuts": true,
   "search.smartCase": true,
+  "settings.cycle": [
+    {
+      "id": "colorTheme",
+      "overrideWorkspaceSettings": false,
+      "values": [
+        {
+          "workbench.colorTheme": "One Dark Pro"
+        },
+        {
+          "workbench.colorTheme": "Solarized Light"
+        }
+      ]
+    },
+    {
+      "id": "lineNumbers",
+      "values": [
+        {
+          "editor.folding": false,
+          "editor.glyphMargin": false,
+          "editor.lineNumbers": "off"
+        },
+        {
+          "editor.folding": true,
+          "editor.glyphMargin": true,
+          "editor.lineNumbers": "on"
+        }
+      ]
+    }
+  ],
   "sync-rsync.executable": "/Users/matt/dev/ia/kre8/branch-sync-edit.sh",
   "sync-rsync.local": "/Users/matt/petabox",
   "sync-rsync.onSaveIndividual": true,
@@ -1236,7 +1270,7 @@
           "type": "command"
         },
         {
-          "command": "dayNightThemeSwitcher.toggleDayNightTheme",
+          "command": "settings.cycle.colorTheme",
           "key": "t",
           "name": "Toggle night/dark themes",
           "type": "command"
@@ -1484,6 +1518,12 @@
           "command": "editor.action.toggleWordWrap",
           "key": "l",
           "name": "Toggle word wrap",
+          "type": "command"
+        },
+        {
+          "command": "settings.cycle.lineNumbers",
+          "key": "n",
+          "name": "Toggle line numbers",
           "type": "command"
         },
         {
