@@ -169,6 +169,10 @@
     "command": "editor.action.fontZoomIn"
   },
   {
+    "key": "cmd+0",
+    "command": "editor.action.fontZoomReset"
+  },
+  {
     "key": "cmd+1",
     "command": "workbench.action.openEditorAtIndex1"
   },
@@ -231,5 +235,54 @@
     "key": "cmd+s",
     "command": "searchEditorApplyChanges.apply",
     "when": "inSearchEditor"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "-markdown.extension.togglePreview",
+    "when": "!terminalFocus"
+  },
+  {
+    "command": "-markdown.showPreview",
+    "key": "shift+cmd+v",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "-notebook.cell.pasteAbove",
+    "when": "notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+b ctrl",
+    "command": "markdown.extension.editing.toggleBold",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-markdown.extension.editing.toggleBold",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+  },
+  {
+    "key": "alt+cmd+v ctrl",
+    "command": "markdown.extension.editing.toggleItalic",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-markdown.extension.editing.toggleItalic",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
   }
+  //   [], code: Enter, keyCode: 13, key: Enter
+  // [2020-11-27 10:27:51.780] [renderer3] [info] [KeybindingService]: | Converted keydown event - modifiers: [], code: Enter, keyCode: 3 ('Enter')
+  // [2020-11-27 10:27:51.781] [renderer3] [info] [KeybindingService]: | Resolving [Enter]
+  // [2020-11-27 10:27:51.782] [renderer3] [info] [KeybindingService]: \ From 25 keybinding entries, matched search.action.openResult, when: fileMatchOrMatchFocus && searchViewletVisible, source: built-in.
 ]
