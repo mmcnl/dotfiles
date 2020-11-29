@@ -40,7 +40,7 @@
   "editor.formatOnSave": true,
   "editor.glyphMargin": true,
   "editor.lineNumbers": "on",
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.minimap.size": "fill",
   "editor.multiCursorModifier": "alt",
   "editor.occurrencesHighlight": false,
@@ -75,6 +75,7 @@
   },
   "gitlens.blame.avatars": false,
   "gitlens.codeLens.recentChange.command": "gitlens.showQuickCommitDetails",
+  "gitlens.codeLens.scopes": ["document"],
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.changesDiff": "hunk",
   "gitlens.hovers.currentLine.over": "line",
@@ -1183,7 +1184,7 @@
           "type": "command"
         },
         {
-          "command": "treeLocalHistoryExplorer.focus",
+          "command": "treeLocalHistory.focus",
           "key": "v",
           "name": "Show previous versions of file",
           "type": "command"
