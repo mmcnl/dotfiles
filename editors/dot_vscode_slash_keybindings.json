@@ -33,7 +33,7 @@
   {
     "key": "q",
     "command": "closeReferenceSearch",
-    "when": "referenceSearchVisible && !config.editor.stablePeek"
+    "when": "referenceSearchVisible"
   },
   {
     "key": "ctrl+c",
@@ -86,10 +86,16 @@
     "when": "listFocus && !inputFocus"
   },
   {
+    // currently doesn't work as it still focuses the editor
+    "key": "tab",
+    "command": "multiCommand.peekLocalHistory",
+    "when": "activeViewlet =~ /workbench.view.extension.localHistory/"
+  },
+  {
     // provide peek functionality for explorer and open editors
     "key": "tab",
     "command": "list.selectAndPreserveFocus",
-    "when": "listFocus && !inputFocus && sideBarFocus"
+    "when": "listFocus && !inputFocus && sideBarFocus && activeViewlet !~ /workbench.view.extension.localHistory/"
   },
   {
     "key": "space",
@@ -342,6 +348,20 @@
     "key": "enter",
     "command": "markdown.extension.onEnterKey",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown' && vim.mode != 'CommandlineInProgress' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'EasyMotionMode' && vim.mode != 'Normal' && vim.mode != 'Replace' && vim.mode != 'SearchInProgressMode' && vim.mode != 'SurroundInputMode' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine'"
+  },
+  {
+    "key": "cmd+alt+i",
+    "command": "workbench.action.toggleDevTools"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-file-browser.actions",
+    "when": "inFileBrowser"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "file-browser.actions",
+    "when": "inFileBrowser"
   }
   //   [], code: Enter, keyCode: 13, key: Enter
   // [2020-11-27 10:27:51.780] [renderer3] [info] [KeybindingService]: | Converted keydown event - modifiers: [], code: Enter, keyCode: 3 ('Enter')

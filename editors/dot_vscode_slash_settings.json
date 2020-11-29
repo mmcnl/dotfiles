@@ -101,6 +101,11 @@
   "markdownlint.run": "onSave",
   "multiCommand.commands": [
     {
+      "command": "multiCommand.peekLocalHistory",
+      // "sequence": ["list.select", "treeLocalHistory.focus"]
+      "sequence": ["list.select"]
+    },
+    {
       "command": "multiCommand.trueMaximizeWindow",
       "sequence": [
         "workbench.action.closeSidebar",
@@ -431,7 +436,7 @@
         },
         {
           "command": "workbench.action.closeOtherEditors",
-          "key": "M",
+          "key": "k",
           "name": "Close other buffers",
           "type": "command"
         },
@@ -526,6 +531,12 @@
           "command": "editor.action.marker.nextInFiles",
           "key": "n",
           "name": "Next error",
+          "type": "command"
+        },
+        {
+          "command": "workbench.action.closeOtherEditors",
+          "key": "K",
+          "name": "Close other editors in this group",
           "type": "command"
         },
         {
@@ -1669,27 +1680,27 @@
           "type": "command"
         },
         {
-          "command": "workbench.action.focusPreviousGroup",
-          "key": "h",
-          "name": "Focus window left",
+          "command": "workbench.action.navigateRight",
+          "key": "l",
+          "name": "Focus to right",
           "type": "command"
         },
         {
-          "command": "workbench.action.focusBelowGroup",
+          "command": "workbench.action.navigateLeft",
+          "key": "h",
+          "name": "Focus to left",
+          "type": "command"
+        },
+        {
+          "command": "workbench.action.navigateDown",
           "key": "j",
           "name": "Focus window down",
           "type": "command"
         },
         {
-          "command": "workbench.action.focusAboveGroup",
+          "command": "workbench.action.navigateUp",
           "key": "k",
           "name": "Focus window up",
-          "type": "command"
-        },
-        {
-          "command": "workbench.action.focusNextGroup",
-          "key": "l",
-          "name": "Focus window right",
           "type": "command"
         },
         {
