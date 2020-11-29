@@ -18,7 +18,9 @@
   "clipboard-manager.snippet.enabled": false,
   "customizeUI.activityBar": "regular",
   "customizeUI.stylesheet": {
-    ".monaco-editor .margin-view-overlays .line-numbers": "font-size: 80% !important;"
+    ".monaco-editor .margin-view-overlays .line-numbers": "font-size: 80% !important;",
+    ".statusbar .left-items.items-container": "font-size: 13px !important",
+    ".statusbar .right-items.items-container": "font-size: 13px !important"
   },
   "customizeUI.titleBar": "regular",
   "diffEditor.ignoreTrimWhitespace": false,
@@ -29,7 +31,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.folding": true,
   "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.glyphMargin": true,
@@ -120,6 +122,7 @@
   "sync-rsync.local": "/Users/matt/petabox",
   "sync-rsync.onSaveIndividual": true,
   "sync-rsync.remote": "mattm@home.archive.org:petabox",
+  "terminal.integrated.fontSize": 14,
   "vim.debug.loggingLevelForAlert": "info",
   "vim.debug.loggingLevelForConsole": "info",
   "vim.easymotion": false,
