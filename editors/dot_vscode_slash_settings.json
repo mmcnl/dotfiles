@@ -170,7 +170,7 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<space>"],
-      "commands": ["vspacecode.space"]
+      "commands": ["vspacecode.space", ":"]
     },
     {
       "before": [","],
@@ -796,14 +796,8 @@
           "type": "command"
         },
         {
-          "command": "workbench.action.files.save",
-          "key": "f",
-          "name": "Save file",
-          "type": "command"
-        },
-        {
           "command": "file-browser.open",
-          "key": "F",
+          "key": "f",
           "name": "Open file/folder",
           "type": "command"
         },
@@ -2965,5 +2959,6 @@
   "workbench.iconTheme": "vs-minimal",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "filesize.showGzip": false
 }

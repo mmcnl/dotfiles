@@ -1,6 +1,51 @@
 // Place your key bindings in this file to override the defaults
 [
   {
+    "key": "space",
+    "command": "whichkey.show",
+    "when": "!textInputFocus && !inputFocus"
+  },
+  {
+    "key": "q",
+    "command": "workbench.action.closePanel",
+    "when": "panelFocus && !inputFocus"
+  },
+  {
+    "key": "q",
+    "command": "workbench.action.closePanel",
+    "when": "panelFocus && inputFocus && editorReadonly"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closePanel",
+    "when": "panelFocus && !terminalFocus"
+  },
+  {
+    "key": "q",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "q",
+    "command": "closeReferenceSearch",
+    "when": "referenceSearchVisible && !config.editor.stablePeek"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "closeReferenceSearch",
+    "when": "referenceSearchVisible && !config.editor.stablePeek"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  {
     "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
@@ -39,6 +84,12 @@
     "key": "ctrl+k",
     "command": "list.focusUp",
     "when": "listFocus && !inputFocus"
+  },
+  {
+    // provide peek functionality for explorer and open editors
+    "key": "tab",
+    "command": "list.selectAndPreserveFocus",
+    "when": "listFocus && !inputFocus && sideBarFocus"
   },
   {
     "key": "space",
