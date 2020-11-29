@@ -12,6 +12,7 @@
     "editor.renderWhitespace": "none"
   },
   "[markdown]": {
+    "editor.lineNumbers": "off",
     "gitlens.codeLens.scopes": ["document"]
   },
   "aceJump.finder.pattern": "[\\\\ /!,-.{_(\"'><$\\[\t]",
@@ -83,6 +84,8 @@
   "intelephense.diagnostics.undefinedTypes": false,
   "intelephense.environment.shortOpenTag": true,
   "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "local-history.path": "~/.vscode",
+  "local-history.treeLocation": "localHistory",
   "markdown.extension.tableFormatter.normalizeIndentation": true,
   "markdown.preview.lineHeight": 1.2,
   "markdownlint.run": "onSave",
@@ -137,6 +140,7 @@
   "vim.debug.loggingLevelForAlert": "info",
   "vim.debug.loggingLevelForConsole": "info",
   "vim.easymotion": false,
+  "vim.foldfix": true,
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-e>": false,
@@ -144,6 +148,10 @@
   },
   "vim.highlightedyank.enable": true,
   "vim.insertModeKeyBindings": [
+    {
+      "after": ["<Esc>"],
+      "before": ["f", "d"]
+    },
     {
       "after": ["<enter>"],
       "before": ["<C-j>"]
@@ -163,6 +171,14 @@
           "command": "whichkey.triggerKey"
         }
       ]
+    },
+    {
+      "before": ["g", ";"],
+      "commands": ["navigateEditHistory.moveCursorToPreviousEdit"]
+    },
+    {
+      "before": ["g", ":"],
+      "commands": ["navigateEditHistory.moveCursorToPreviousEditInCurrentFile"]
     },
     {
       "after": ["i", "<enter>", "<Esc>", "k", "$"],
@@ -1167,6 +1183,12 @@
           "type": "command"
         },
         {
+          "command": "treeLocalHistoryExplorer.focus",
+          "key": "v",
+          "name": "Show previous versions of file",
+          "type": "command"
+        },
+        {
           "command": "workbench.action.openIssueReporter",
           "key": "I",
           "name": "Report VSCode Issue",
@@ -1180,7 +1202,7 @@
         }
       ],
       "key": "h",
-      "name": "Help...",
+      "name": "Help/History...",
       "type": "bindings"
     },
     {
@@ -2933,6 +2955,5 @@
   "workbench.iconTheme": "vs-minimal",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false,
-  "vim.foldfix": true
+  "zenMode.fullScreen": false
 }
