@@ -11,7 +11,7 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none"
   },
-  "aceJump.finder.pattern": "[\\\\ ,-.{_(\"'><$\\[\t]",
+  "aceJump.finder.pattern": "[\\\\ /!,-.{_(\"'><$\\[\t]",
   "aceJump.placeholder.upperCase": true,
   "aceJump.scroll.mode": "none",
   "breadcrumbs.enabled": false,
@@ -58,6 +58,7 @@
   },
   "files.hotExit": "off",
   "fzf-quick-open.ripgrepSearchStyle": "Smart case",
+  "git.confirmSync": false,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
   },
@@ -1275,6 +1276,12 @@
           "command": "extension.googleSearch",
           "key": "g",
           "name": "Google search selection",
+          "type": "command"
+        },
+        {
+          "command": "editor.action.openLink",
+          "key": "o",
+          "name": "open link at point",
           "type": "command"
         },
         {
@@ -2902,6 +2909,5 @@
   "workbench.iconTheme": "vs-minimal",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false,
-  "git.confirmSync": false
+  "zenMode.fullScreen": false
 }
