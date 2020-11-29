@@ -85,6 +85,15 @@
   "intelephense.diagnostics.undefinedTypes": false,
   "intelephense.environment.shortOpenTag": true,
   "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "local-history.exclude": [
+    "**/.history/**",
+    "**/.vscode/**",
+    "**/node_modules/**",
+    "**/typings/**",
+    "**/out/**",
+    "**/.git/**",
+    "**/Code/User/**"
+  ],
   "local-history.path": "~/.vscode",
   "local-history.treeLocation": "localHistory",
   "markdown.extension.tableFormatter.normalizeIndentation": true,
