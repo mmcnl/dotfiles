@@ -39,7 +39,7 @@
   "editor.formatOnSave": true,
   "editor.glyphMargin": true,
   "editor.lineNumbers": "on",
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.minimap.size": "fill",
   "editor.multiCursorModifier": "alt",
   "editor.occurrencesHighlight": false,
@@ -770,8 +770,14 @@
           "type": "command"
         },
         {
-          "command": "file-browser.open",
+          "command": "workbench.action.files.save",
           "key": "f",
+          "name": "Save file",
+          "type": "command"
+        },
+        {
+          "command": "file-browser.open",
+          "key": "F",
           "name": "Open file/folder",
           "type": "command"
         },
