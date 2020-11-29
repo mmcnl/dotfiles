@@ -2885,7 +2885,7 @@
   ],
   "window.nativeFullScreen": false,
   "window.restoreWindows": "none",
-  "window.title": "${activeEditorShort}${separator}${rootName}${separator}",
+  "window.title": "${activeEditorShort}${separator}${activeFolderMedium}${separator}${rootName}${separator}",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "One Dark Pro",
