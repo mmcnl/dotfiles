@@ -227,6 +227,11 @@
     "when": "inSearchEditor && inputBoxFocus || inputBoxFocus && searchViewletVisible"
   },
   {
+    "key": "escape",
+    "command": "search.action.focusQueryEditorWidget",
+    "when": "inSearchEditor"
+  },
+  {
     "key": "ctrl+l",
     "command": "acceptSelectedSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"

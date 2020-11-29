@@ -11,6 +11,9 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none"
   },
+  "[markdown]": {
+    "gitlens.codeLens.scopes": ["document"]
+  },
   "aceJump.finder.pattern": "[\\\\ /!,-.{_(\"'><$\\[\t]",
   "aceJump.placeholder.upperCase": true,
   "aceJump.scroll.mode": "none",
@@ -56,7 +59,14 @@
     "*.inc": "php",
     "*.json": "jsonc"
   },
+  "files.exclude": {
+    "**.css.map": true,
+    "**.js.map": true,
+    "**.min.css": true,
+    "**.min.js": true
+  },
   "files.hotExit": "off",
+  "filesize.use24HourFormat": false,
   "fzf-quick-open.ripgrepSearchStyle": "Smart case",
   "git.confirmSync": false,
   "gitlens.advanced.messages": {
@@ -134,10 +144,6 @@
   },
   "vim.highlightedyank.enable": true,
   "vim.insertModeKeyBindings": [
-    {
-      "after": ["<Esc>"],
-      "before": ["f", "d"]
-    },
     {
       "after": ["<enter>"],
       "before": ["<C-j>"]
@@ -1063,14 +1069,26 @@
           "type": "command"
         },
         {
-          "command": "editor.action.dirtydiff.next",
+          "command": "workbench.action.editor.nextChange",
           "key": "n",
+          "name": "jump to next change",
+          "type": "command"
+        },
+        {
+          "command": "workbench.action.editor.previousChange",
+          "key": "p",
+          "name": "jump to previous change",
+          "type": "command"
+        },
+        {
+          "command": "editor.action.dirtydiff.next",
+          "key": "N",
           "name": "Show next change",
           "type": "command"
         },
         {
           "command": "editor.action.dirtydiff.previous",
-          "key": "p",
+          "key": "P",
           "name": "Show previous change",
           "type": "command"
         },
@@ -2909,5 +2927,6 @@
   "workbench.iconTheme": "vs-minimal",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "vim.foldfix": true
 }
