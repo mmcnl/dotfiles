@@ -85,17 +85,19 @@
     "command": "list.focusUp",
     "when": "listFocus && !inputFocus"
   },
-  {
-    // currently doesn't work as it still focuses the editor
-    "key": "tab",
-    "command": "multiCommand.peekLocalHistory",
-    "when": "activeViewlet =~ /workbench.view.extension.localHistory/"
-  },
+  // {
+  //   // currently doesn't work as it still focuses the editor
+  //   "key": "tab",
+  //   "command": "multiCommand.peekLocalHistory",
+  //   "when": "activeViewlet =~ /workbench.view.extension.localHistory/"
+  // },
   {
     // provide peek functionality for explorer and open editors
     "key": "tab",
     "command": "list.selectAndPreserveFocus",
-    "when": "listFocus && !inputFocus && sideBarFocus && activeViewlet !~ /workbench.view.extension.localHistory/"
+    // "when": "listFocus && !inputFocus && sideBarFocus && activeViewlet !~ /workbench.view.extension.localHistory/"
+    "when": "listFocus && !inputFocus"
+    // "when": "listFocus && !inputFocus && sideBarFocus"
   },
   {
     "key": "space",

@@ -67,9 +67,18 @@
     "**.min.js": true
   },
   "files.hotExit": "off",
+  "filesize.showGzip": false,
   "filesize.use24HourFormat": false,
   "fzf-quick-open.ripgrepSearchStyle": "Smart case",
   "git.confirmSync": false,
+  "gitProjectManager.baseProjectsFolders": [
+    "~/dotfiles/",
+    "~/dev/",
+    "~/petabox"
+  ],
+  "gitProjectManager.checkRemoteOrigin": false,
+  "gitProjectManager.ignoredFolders": ["node_modules", "bundle"],
+  "gitProjectManager.maxDepthRecursion": 4,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
   },
@@ -95,15 +104,17 @@
     "**/Code/User/**"
   ],
   "local-history.path": "~/.vscode",
-  "local-history.treeLocation": "localHistory",
+  "local-history.treeLocation": "explorer",
   "markdown.extension.tableFormatter.normalizeIndentation": true,
   "markdown.preview.lineHeight": 1.2,
   "markdownlint.run": "onSave",
   "multiCommand.commands": [
     {
       "command": "multiCommand.peekLocalHistory",
-      // "sequence": ["list.select", "treeLocalHistory.focus"]
-      "sequence": ["list.select"]
+      "sequence": [
+        "list.selectAndPreserveFocus",
+        "treeLocalHistoryExplorer.focus"
+      ]
     },
     {
       "command": "multiCommand.trueMaximizeWindow",
@@ -114,6 +125,7 @@
       ]
     }
   ],
+  "open-native-terminal.use-default-terminal": "/Users/matt/Applications/iTerm.app",
   "problems.showCurrentInStatus": true,
   "scm.diffDecorationsGutterWidth": 2,
   "screencastMode.onlyKeyboardShortcuts": true,
@@ -151,6 +163,7 @@
   "sync-rsync.local": "/Users/matt/petabox",
   "sync-rsync.onSaveIndividual": true,
   "sync-rsync.remote": "mattm@home.archive.org:petabox",
+  "terminal.external.osxExec": "/Users/matt/Applications/iTerm.app",
   "terminal.integrated.fontSize": 14,
   "vim.debug.loggingLevelForAlert": "info",
   "vim.debug.loggingLevelForConsole": "info",
@@ -757,12 +770,6 @@
               "key": "p",
               "name": "Previous error",
               "type": "command"
-            },
-            {
-              "command": "editor.action.marker.prevInFiles",
-              "key": "N",
-              "name": "Previous error",
-              "type": "command"
             }
           ],
           "key": ".",
@@ -773,24 +780,6 @@
           "command": "workbench.actions.view.problems",
           "key": "l",
           "name": "List errors",
-          "type": "command"
-        },
-        {
-          "command": "editor.action.marker.nextInFiles",
-          "key": "n",
-          "name": "Next error",
-          "type": "command"
-        },
-        {
-          "command": "editor.action.marker.prevInFiles",
-          "key": "p",
-          "name": "Previous error",
-          "type": "command"
-        },
-        {
-          "command": "editor.action.marker.prevInFiles",
-          "key": "N",
-          "name": "Previous error",
           "type": "command"
         }
       ],
@@ -1198,7 +1187,7 @@
           "type": "command"
         },
         {
-          "command": "treeLocalHistory.focus",
+          "command": "treeLocalHistoryExplorer.focus",
           "key": "v",
           "name": "Show previous versions of file",
           "type": "command"
@@ -2970,6 +2959,5 @@
   "workbench.iconTheme": "vs-minimal",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false,
-  "filesize.showGzip": false
+  "zenMode.fullScreen": false
 }
