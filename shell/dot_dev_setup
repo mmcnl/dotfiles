@@ -8,6 +8,10 @@ if [ -d "/Users/matt/dev/ia/kre8" ]; then
     source /Users/matt/dev/ia/kre8/aliases
 fi
 
+if [ -d "/Users/matt/.composer/vendor/bin/" ]; then
+    export PATH="/Users/matt/.composer/vendor/bin:$PATH"
+fi
+
 ##### misc web development ########
 if type yarn > /dev/null 2>&1; then
     export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
