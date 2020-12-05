@@ -1,7 +1,7 @@
 {
-  "AllAutocomplete.cycleOpenDocumentsOnLaunch": true,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -12,13 +12,20 @@
     "editor.renderWhitespace": "none"
   },
   "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": false,
     "editor.lineNumbers": "off",
     "gitlens.codeLens.scopes": ["document"]
+  },
+  "[php]": {
+    "editor.defaultFormatter": "wongjn.php-sniffer",
+    "editor.formatOnSaveMode": "file"
   },
   "aceJump.finder.pattern": "[\\\\ /!,-.{_(\"'><$\\[\t]",
   "aceJump.placeholder.upperCase": true,
   "aceJump.scroll.mode": "none",
   "breadcrumbs.enabled": false,
+  "clipboard-manager.saveTo": "/Users/matt/.vscode/clipboard-history.json",
   "clipboard-manager.snippet.enabled": false,
   "customizeUI.activityBar": "regular",
   "customizeUI.stylesheet": {
@@ -26,10 +33,13 @@
     ".statusbar .left-items.items-container": "font-size: 13px !important",
     ".statusbar .right-items.items-container": "font-size: 13px !important"
   },
-  "customizeUI.titleBar": "regular",
+  "customizeUI.titleBar": "frameless",
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": true,
   "editor.acceptSuggestionOnEnter": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 1,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -38,6 +48,7 @@
   "editor.fontSize": 15,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "editor.glyphMargin": true,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
@@ -50,12 +61,17 @@
     "strings": true
   },
   "editor.renderWhitespace": "none",
+  "editor.stickyTabStops": true,
   "editor.tabSize": 2,
+  "editor.wordBasedSuggestionsMode": "allDocuments",
   "emmet.includeLanguages": {
     "javascript": "html",
     "typescript": "html"
   },
+  "errorLens.enabledDiagnosticLevels": ["error", "info", "hint", "warning"],
+  "errorLens.followCursor": "activeLine",
   "errorLens.gutterIconsEnabled": true,
+  "eslint.format.enable": true,
   "files.associations": {
     "*.inc": "php",
     "*.json": "jsonc"
@@ -79,6 +95,7 @@
   "gitProjectManager.checkRemoteOrigin": false,
   "gitProjectManager.ignoredFolders": ["node_modules", "bundle"],
   "gitProjectManager.maxDepthRecursion": 4,
+  "gitlab.instanceUrl": "https://git.archive.org",
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
   },
@@ -94,6 +111,7 @@
   "intelephense.diagnostics.undefinedTypes": false,
   "intelephense.environment.shortOpenTag": true,
   "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "keyboard.touchbar.enabled": false,
   "local-history.exclude": [
     "**/.history/**",
     "**/.vscode/**",
@@ -109,6 +127,30 @@
   "markdown.preview.lineHeight": 1.2,
   "markdownlint.run": "onSave",
   "multiCommand.commands": [
+    {
+      "command": "multiCommand.onSave",
+      "sequence": ["workbench.action.files.save"]
+    },
+    {
+      "command": "multiCommand.commentThenDeselect",
+      "sequence": ["editor.action.commentLine", "extension.vim_escape"]
+    },
+    {
+      "command": "multiCommand.jump",
+      "sequence": ["extension.aceJump"]
+    },
+    {
+      "command": "multiCommand.copyThenDeselect",
+      "sequence": ["editor.action.clipboardCopyAction", "extension.vim_escape"]
+    },
+    {
+      "command": "multiCommand.duplicateSelectionThenDeselect",
+      "sequence": ["editor.action.copyLinesDownAction", "extension.vim_escape"]
+    },
+    {
+      "command": "multiCommand.pasteThenDeselect",
+      "sequence": ["editor.action.clipboardPasteAction", "extension.vim_escape"]
+    },
     {
       "command": "multiCommand.peekLocalHistory",
       "sequence": [
@@ -126,7 +168,10 @@
     }
   ],
   "open-native-terminal.use-default-terminal": "/Users/matt/Applications/iTerm.app",
+  "phpSniffer.executablesFolder": "/Users/matt/.composer/vendor/bin/",
   "problems.showCurrentInStatus": true,
+  "projectNameInStatusBar.align": "left",
+  "projectNameInStatusBar.alignPriority": 1000000,
   "scm.diffDecorationsGutterWidth": 2,
   "screencastMode.onlyKeyboardShortcuts": true,
   "search.smartCase": true,
@@ -165,7 +210,7 @@
   "sync-rsync.remote": "mattm@home.archive.org:petabox",
   "terminal.external.osxExec": "/Users/matt/Applications/iTerm.app",
   "terminal.integrated.fontSize": 14,
-  "vim.debug.loggingLevelForAlert": "info",
+  "vim.debug.loggingLevelForAlert": "warn",
   "vim.debug.loggingLevelForConsole": "info",
   "vim.easymotion": false,
   "vim.foldfix": true,
@@ -183,12 +228,40 @@
     {
       "after": ["<enter>"],
       "before": ["<C-j>"]
+    },
+    {
+      "before": ["ctrl+k"],
+      "commands": ["deleteAllRight"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<space>"],
       "commands": ["vspacecode.space", ":"]
+    },
+    {
+      "after": ["O", "<esc>", "j", "^"],
+      "before": ["[", "<space>"]
+    },
+    {
+      "after": ["m", "m", "o", "<esc>", "`", "m"],
+      "before": ["]", "<space>"]
+    },
+    {
+      "after": ["g", "j"],
+      "before": ["j"]
+    },
+    {
+      "after": ["g", "k"],
+      "before": ["k"]
+    },
+    {
+      "before": ["ctrl+k"],
+      "commands": ["deleteAllRight"]
+    },
+    {
+      "before": ["%"],
+      "commands": ["extension.matchitJumpItems"]
     },
     {
       "before": [","],
@@ -234,7 +307,7 @@
   "vspacecode.bindingOverrides": [],
   "vspacecode.bindings": [
     {
-      "command": "extension.aceJump",
+      "command": "multiCommand.jump",
       "key": " ",
       "name": "Ace Jump",
       "type": "command"
@@ -330,7 +403,7 @@
       "type": "command"
     },
     {
-      "command": "editor.action.commentLine",
+      "command": "multiCommand.commentThenDeselect",
       "key": ";",
       "name": "Toggle comment",
       "type": "command"
@@ -535,32 +608,14 @@
     {
       "bindings": [
         {
-          "command": "editor.action.commentLine",
-          "key": "l",
-          "name": "Toggle line comment",
-          "type": "command"
-        },
-        {
-          "command": "editor.action.marker.nextInFiles",
-          "key": "n",
-          "name": "Next error",
-          "type": "command"
-        },
-        {
-          "command": "workbench.action.closeOtherEditors",
-          "key": "K",
-          "name": "Close other editors in this group",
-          "type": "command"
-        },
-        {
-          "command": "editor.action.marker.prevInFiles",
-          "key": "N",
-          "name": "Previous error",
+          "command": "multiCommand.duplicateSelectionThenDeselect",
+          "key": "y",
+          "name": "Duplicate line or selection",
           "type": "command"
         }
       ],
-      "key": "c",
-      "name": "Comments...",
+      "key": "y",
+      "name": "Yank...",
       "type": "bindings"
     },
     {
@@ -832,7 +887,7 @@
           "type": "command"
         },
         {
-          "command": "workbench.action.files.save",
+          "command": "multiCommand.onSave",
           "key": "s",
           "name": "Save file",
           "type": "command"
@@ -2674,8 +2729,27 @@
                   "type": "command"
                 }
               ],
-              "key": "c",
+              "key": "b",
               "name": "Buffer commands...",
+              "type": "bindings"
+            },
+            {
+              "bindings": [
+                {
+                  "command": "markdown.todo.toggleDone",
+                  "key": "d",
+                  "name": "Toggle done",
+                  "type": "command"
+                },
+                {
+                  "command": "markdown.todo.toggleTodo",
+                  "key": "t",
+                  "name": "Toggle Todo",
+                  "type": "command"
+                }
+              ],
+              "key": "t",
+              "name": "Todo...",
               "type": "bindings"
             },
             {
@@ -2705,7 +2779,7 @@
                   "type": "command"
                 }
               ],
-              "key": "t",
+              "key": "c",
               "name": "Table of Contents...",
               "type": "bindings"
             },
@@ -2956,7 +3030,6 @@
       "viewType": "default"
     }
   ],
-  "workbench.iconTheme": "vs-minimal",
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false

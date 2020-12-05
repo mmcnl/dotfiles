@@ -1,6 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
   {
+    "key": "ctrl+w",
+    "command": "-workbench.action.switchWindow"
+  },
+  {
     "key": "space",
     "command": "whichkey.show",
     "when": "!textInputFocus && !inputFocus"
@@ -16,6 +20,14 @@
     "when": "panelFocus && inputFocus && editorReadonly"
   },
   {
+    "key": "cmd+c",
+    "command": "multiCommand.copyThenDeselect"
+  },
+  {
+    "key": "cmd+v",
+    "command": "multiCommand.pasteThenDeselect"
+  },
+  {
     "key": "ctrl+c",
     "command": "workbench.action.closePanel",
     "when": "panelFocus && !terminalFocus"
@@ -24,6 +36,16 @@
     "key": "q",
     "command": "workbench.action.closeSidebar",
     "when": "sideBarFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "closeFindWidget",
+    "when": "editorFocus && findWidgetVisible && !isComposing"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus"
   },
   {
     "key": "ctrl+c",
