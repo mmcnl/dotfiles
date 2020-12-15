@@ -24,7 +24,7 @@
   "aceJump.finder.pattern": "[\\\\ /!,-.{_(\"'><$\\[\t]",
   "aceJump.placeholder.upperCase": true,
   "aceJump.scroll.mode": "none",
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "clipboard-manager.saveTo": "/Users/matt/.vscode/clipboard-history.json",
   "clipboard-manager.snippet.enabled": false,
   "customizeUI.activityBar": "regular",
@@ -167,7 +167,6 @@
       ]
     }
   ],
-  "open-native-terminal.use-default-terminal": "/Users/matt/Applications/iTerm.app",
   "phpSniffer.executablesFolder": "/Users/matt/.composer/vendor/bin/",
   "problems.showCurrentInStatus": true,
   "projectNameInStatusBar.align": "left",
@@ -204,14 +203,14 @@
       ]
     }
   ],
-  "sync-rsync.executable": "/Users/matt/dev/ia/kre8/branch-sync-edit.sh",
+  "sync-rsync.executable": "/Users/matt/dev/ia/nomad/vsync",
   "sync-rsync.local": "/Users/matt/petabox",
   "sync-rsync.onSaveIndividual": true,
   "sync-rsync.remote": "mattm@home.archive.org:petabox",
   "terminal.external.osxExec": "/Users/matt/Applications/iTerm.app",
   "terminal.integrated.fontSize": 14,
-  "vim.debug.loggingLevelForAlert": "warn",
   "vim.debug.loggingLevelForConsole": "info",
+  "vim.debug.silent": true,
   "vim.easymotion": false,
   "vim.foldfix": true,
   "vim.handleKeys": {
@@ -3032,5 +3031,6 @@
   ],
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "search.followSymlinks": false
 }

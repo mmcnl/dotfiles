@@ -4,8 +4,10 @@
 
 ##### internet archive ########
 
-if [ -d "/Users/matt/dev/ia/kre8" ]; then
-    source /Users/matt/dev/ia/kre8/aliases
+if [ -d "/Users/matt/dev/ia/nomad" ]; then
+    autoload -Uz compinit
+    compinit
+    source /Users/matt/dev/ia/nomad/aliases
 fi
 
 if [ -d "/Users/matt/.composer/vendor/bin/" ]; then
