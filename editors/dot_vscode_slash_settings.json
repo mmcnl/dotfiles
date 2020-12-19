@@ -19,6 +19,7 @@
   },
   "[php]": {
     "editor.defaultFormatter": "wongjn.php-sniffer",
+    "editor.formatOnSave": false,
     "editor.formatOnSaveMode": "file"
   },
   "aceJump.finder.pattern": "[\\\\ /!,-.{_(\"'><$\\[\t]",
@@ -87,6 +88,7 @@
   "filesize.use24HourFormat": false,
   "fzf-quick-open.ripgrepSearchStyle": "Smart case",
   "git.confirmSync": false,
+  "git.enableStatusBarSync": false,
   "gitProjectManager.baseProjectsFolders": [
     "~/dotfiles/",
     "~/dev/",
@@ -96,6 +98,7 @@
   "gitProjectManager.ignoredFolders": ["node_modules", "bundle"],
   "gitProjectManager.maxDepthRecursion": 4,
   "gitlab.instanceUrl": "https://git.archive.org",
+  "gitlens.advanced.fileHistoryFollowsRenames": true,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
   },
@@ -105,6 +108,7 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.changesDiff": "hunk",
   "gitlens.hovers.currentLine.over": "line",
+  "gitlens.mode.statusBar.alignment": "left",
   "gitlens.statusBar.reduceFlicker": true,
   "intelephense.diagnostics.undefinedFunctions": false,
   "intelephense.diagnostics.undefinedMethods": false,
@@ -173,6 +177,7 @@
   "projectNameInStatusBar.alignPriority": 1000000,
   "scm.diffDecorationsGutterWidth": 2,
   "screencastMode.onlyKeyboardShortcuts": true,
+  "search.followSymlinks": false,
   "search.smartCase": true,
   "settings.cycle": [
     {
@@ -203,6 +208,7 @@
       ]
     }
   ],
+  "sync-rsync.autoShowOutputOnError": false,
   "sync-rsync.executable": "/Users/matt/dev/ia/nomad/vsync",
   "sync-rsync.local": "/Users/matt/petabox",
   "sync-rsync.onSaveIndividual": true,
@@ -273,12 +279,16 @@
       ]
     },
     {
+      "before": ["g", ","],
+      "commands": ["navigateEditHistory.moveCursorToNextEdit"]
+    },
+    {
       "before": ["g", ";"],
-      "commands": ["navigateEditHistory.moveCursorToPreviousEdit"]
+      "commands": ["navigateEditHistory.moveCursorToPreviousEditInCurrentFile"]
     },
     {
       "before": ["g", ":"],
-      "commands": ["navigateEditHistory.moveCursorToPreviousEditInCurrentFile"]
+      "commands": ["navigateEditHistory.list"]
     },
     {
       "after": ["i", "<enter>", "<Esc>", "k", "$"],
@@ -3031,6 +3041,5 @@
   ],
   "workbench.startupEditor": "newUntitledFile",
   "zenMode.centerLayout": false,
-  "zenMode.fullScreen": false,
-  "search.followSymlinks": false
+  "zenMode.fullScreen": false
 }
