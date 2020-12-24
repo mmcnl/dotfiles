@@ -5,7 +5,7 @@ date
 
 # git
 alias gaa="git add --all"
-alias gacm='gaa && git ci -m'
+alias gacm='gaa && git commit -m'
 alias gap="git add -p"
 alias gb="git branch -a"
 alias gc="git commit"
@@ -17,10 +17,8 @@ alias gdw="gd -w"
 alias gdwc="gdc -w"
 alias gf="git fetch"
 alias gg="git --no-pager grep --break --heading --line-number --color"
-alias gl="git l"
-alias gla="git la"
-alias gll="git log --summary --stat"
-alias glp="git log -p --since='1 month ago'"
+alias gl="git log --summary --stat"
+alias glp="git log --summary --stat -p --since='1 month ago'"
 alias gs="git status"
 alias gsa="git status --untracked-files=all"
 alias gss="git short-status"
