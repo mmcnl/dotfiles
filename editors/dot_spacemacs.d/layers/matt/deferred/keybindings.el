@@ -30,7 +30,6 @@
   "fn" 'find-next-file
   "fp" 'find-previous-file
   "fs" 'exit-insert-and-save-buffer-always
-  "fyy" 'custom-copy-file-name-to-clipboard
   "ha" 'helm-apropos
   "od" 'dash-at-point
   "og" 'google-this-noconfirm
@@ -42,7 +41,7 @@
   "xL" 'lorem-ipsum-insert-paragraphs
   "xW" 'whitespace-cleanup-buffer
   )
-;; "bN" 'evil-window-vnew
+(spacemacs/set-leader-keys "fyy" 'custom-copy-file-name-to-clipboard)
 
 ;; https://github.com/zenozeng/yafolding.el#modify-keybindings
 (require 'yafolding)

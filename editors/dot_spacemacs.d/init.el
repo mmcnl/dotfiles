@@ -28,7 +28,6 @@
      (dash :variables
            dash-autoload-common-docsets nil)
      (html :variables web-fmt-tool 'prettier)
-     ibuffer
      ;; ipython-notebook
      (javascript :variables
                  js2-mode-show-strict-warnings nil

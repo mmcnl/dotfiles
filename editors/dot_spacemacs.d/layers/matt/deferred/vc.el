@@ -9,11 +9,38 @@
 
 ;;;;;;;;;;; variables ;;;;;;;;;;;;;;
 
-;; use native apple git
-(setq magit-git-exectuable "/usr/bin/git")
+(spacemacs|use-package-add-hook magit
+  :pre-init
+  ;; Code
+
+  :post-init
+  ;; Code
+
+  :pre-config
+  ;; Code
+
+  :post-config
+  ;; use native apple git
+  (setq magit-git-executable "/usr/local/bin/git")
+
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
+
+  (define-key magit-mode-map (kbd "1") 'magit-section-show-level-1-all)
+  (define-key magit-mode-map (kbd "2") 'magit-section-show-level-2-all)
+  (define-key magit-mode-map (kbd "3") 'magit-section-show-level-3-all)
+  (define-key magit-mode-map (kbd "4") 'magit-section-show-level-4-all)
+
+  )
+
+;; Magit can be told to refresh buffers verbosely using M-x
+;; magit-toggle-verbose-refresh. Enabling this helps figuring out which sections
+;; are bottlenecks. The additional output can be found in the *Messages* buffer.
 
 (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-(setq magit-popup-show-common-commands t)
 (setq magit-diff-refine-hunk nil)
 
 ;; https://emacs.stackexchange.com/questions/14483/magit-log-dates#comment67151_40832
@@ -37,13 +64,6 @@
 (setq evil-magit-want-horizontal-movement t)
 
 ;;;;;;;;;;;;;;;; keybindings ;;;;;;;;;;;;;;;;;;;
-
-(with-eval-after-load 'magit
-  (define-key magit-mode-map (kbd "1") 'magit-section-show-level-1-all)
-  (define-key magit-mode-map (kbd "2") 'magit-section-show-level-2-all)
-  (define-key magit-mode-map (kbd "3") 'magit-section-show-level-3-all)
-  (define-key magit-mode-map (kbd "4") 'magit-section-show-level-4-all)
-  )
 
 (define-key evil-normal-state-map (kbd "]h") 'git-gutter+-next-hunk)
 (define-key evil-normal-state-map (kbd "[h") 'git-gutter+-previous-hunk)
