@@ -12,13 +12,6 @@
 ;; use native apple git
 (setq magit-git-exectuable "/usr/bin/git")
 
-;; (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
-(remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
-;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
-(remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
-(remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
-(remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
-
 (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 (setq magit-popup-show-common-commands t)
 (setq magit-diff-refine-hunk nil)
