@@ -34,6 +34,19 @@
   (define-key magit-mode-map (kbd "3") 'magit-section-show-level-3-all)
   (define-key magit-mode-map (kbd "4") 'magit-section-show-level-4-all)
 
+  (spacemacs/set-leader-keys "gL" nil)
+  (spacemacs/declare-prefix "gL" "magit log")
+  (spacemacs/set-leader-keys "gLa" 'magit-log-all)
+  (spacemacs/set-leader-keys "gLl" 'magit-log-current)
+  (spacemacs/set-leader-keys "gLf" 'magit-log-buffer-file)
+
+  (spacemacs/set-leader-keys "gd" nil)
+  (spacemacs/declare-prefix "gd" "git diff")
+  (spacemacs/set-leader-keys "gdd" 'magit-diff-buffer-file)
+  (spacemacs/set-leader-keys "gdw" 'magit-diff-working-tree)
+  (spacemacs/set-leader-keys "gds" 'magit-diff-staged)
+
+  (spacemacs/set-leader-keys "gS" 'git-short-status)
   )
 
 ;; Magit can be told to refresh buffers verbosely using M-x
@@ -71,16 +84,9 @@
 (evil-leader/set-key
   "as" 'stree
   "gB" 'tig-blame-current-file
-  "gP" 'git-push
-  ;; "gS" 'git-short-status
   "gU" 'vc-revert
   "gX" 'spacemacs/vcs-revert-hunk
   "ga" 'git-add-all-commit
-  "gd" 'magit-diff-buffer-file
-  ;; "gf" 'git-fetch
-  ;; "gl" 'magit-log-all
-  "gL" 'magit-log-buffer-file
-  ;; "gv" 'vc-diff
   )
 ;;;;;;;;;;;;;;;; advice ;;;;;;;;;;;;;;;;;;;
 
